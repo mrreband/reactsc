@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from 'react-dom';
+import { PlayButton, Timer } from 'react-soundplayer/components';
 
-function App() {
+// it's just an alias for `withSoundCloudAudio` but makes code clearer
+import { withCustomAudio } from 'react-soundplayer/addons';
+
+// audio source
+const streamUrl = 'http://feeds.soundcloud.com/stream/610950675-michael-reband-waves.mp3';
+
+// some track meta information
+const trackTitle = 'Great song by random artist';
+
+const AWSSoundPlayer = withCustomAudio(props => {
+  const { trackTitle } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <PlayButton {...this.props} />
+      <h2>{trackTitle}</h2>
+      <Timer {...this.props} />
     </div>
   );
+});
+
+class App extends React.Component {
+  render() {
+    return (
+      <AWSSoundPlayer
+        streamUrl={streamUrl}
+        trackTitle={trackTitle} 
+        preloadType="auto" />
+    );
+  }
 }
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('app'));
