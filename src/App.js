@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { PlayButton, Timer } from 'react-soundplayer/components';
 
 // it's just an alias for `withSoundCloudAudio` but makes code clearer
@@ -16,9 +15,9 @@ const AWSSoundPlayer = withCustomAudio(props => {
 
   return (
     <div>
-      <PlayButton {...this.props} />
-      <h2>{trackTitle}</h2>
-      <Timer {...this.props} />
+      <PlayButton {...props} />
+      <h2 style={{color:'blue'}}>{trackTitle}</h2>
+      <Timer {...props} />
     </div>
   );
 });
@@ -28,10 +27,10 @@ class App extends React.Component {
     return (
       <AWSSoundPlayer
         streamUrl={streamUrl}
-        trackTitle={trackTitle} 
+        trackTitle={trackTitle}
         preloadType="auto" />
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
