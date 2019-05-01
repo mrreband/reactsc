@@ -16,9 +16,9 @@ class SoundList extends React.Component {
           <div>
             <h2>{value.title}</h2>
             <p>{value.description}</p>
-            <p>{value['enclosures'].url}</p>
+            <p>{value.url}</p>
             <audio controls>
-              <source src={value.enclosures[1]} type="audio/mpeg" />
+              <source src={value.url} type="audio/mpeg" />
             </audio>
           </div>
         ))}

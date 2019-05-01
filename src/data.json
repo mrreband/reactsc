@@ -1,173 +1,47 @@
 [
-  {
-    "title": "Waves",
-    "description": "Waves by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/waves",
-    "url": "https://soundcloud.com/michael-reband/waves",
-    "itunes_subtitle": "Waves by mr.reband",
-    "itunes_summary": "Waves by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:01:34",
-    "created": 1555891200000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/610950675-michael-reband-waves.mp3",
-        "length": "3764766"
-      }
-    ]
-  },
-  {
-    "title": "Microbial Life Beneath The Ice",
-    "description": "Microbial Life Beneath The Ice by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/microbial-life-beneath-the-ice",
-    "url": "https://soundcloud.com/michael-reband/microbial-life-beneath-the-ice",
-    "itunes_subtitle": "Microbial Life Beneath The Ice by mr.reband",
-    "itunes_summary": "Microbial Life Beneath The Ice by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:01:55",
-    "created": 1548534574000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/565058706-michael-reband-microbial-life-beneath-the-ice.mp3",
-        "length": "4629966"
-      }
-    ]
-  },
-  {
-    "title": "Wasn't Hudson",
-    "description": "Wasn't Hudson by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/wasnt-hudson",
-    "url": "https://soundcloud.com/michael-reband/wasnt-hudson",
-    "itunes_subtitle": "Wasn't Hudson by mr.reband",
-    "itunes_summary": "Wasn't Hudson by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:02:08",
-    "created": 1540778410000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/521373048-michael-reband-wasnt-hudson.mp3",
-        "length": "5154608"
-      }
-    ]
-  },
-  {
-    "title": "8-bit ending",
-    "description": "8-bit ending by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/8-bit-ending",
-    "url": "https://soundcloud.com/michael-reband/8-bit-ending",
-    "itunes_subtitle": "8-bit ending by mr.reband",
-    "itunes_summary": "8-bit ending by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:02:12",
-    "created": 1535997044000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/494676735-michael-reband-8-bit-ending.mp3",
-        "length": "5287310"
-      }
-    ]
-  },
-  {
-    "title": "Snapdragon",
-    "description": "Snapdragon by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/snapdragon",
-    "url": "https://soundcloud.com/michael-reband/snapdragon",
-    "itunes_subtitle": "Snapdragon by mr.reband",
-    "itunes_summary": "Snapdragon by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:01:55",
-    "created": 1533004464000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/479004738-michael-reband-snapdragon.mp3",
-        "length": "4608127"
-      }
-    ]
-  },
-  {
-    "title": "Schrodinger's Fortune pt3",
-    "description": "Schrodinger's Fortune pt3 by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/schrodingers-fortune-pt3",
-    "url": "https://soundcloud.com/michael-reband/schrodingers-fortune-pt3",
-    "itunes_subtitle": "Schrodinger's Fortune pt3 by mr.reband",
-    "itunes_summary": "Schrodinger's Fortune pt3 by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:05:13",
-    "created": 1530499389000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/466134603-michael-reband-schrodingers-fortune-pt3.mp3",
-        "length": "12533678"
-      }
-    ]
-  },
-  {
-    "title": "Schrodinger's Fortune pt2",
-    "description": "Schrodinger's Fortune pt2 by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/schrodingers-fortune-pt2",
-    "url": "https://soundcloud.com/michael-reband/schrodingers-fortune-pt2",
-    "itunes_subtitle": "Schrodinger's Fortune pt2 by mr.reband",
-    "itunes_summary": "Schrodinger's Fortune pt2 by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:03:42",
-    "created": 1528287669000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/454579335-michael-reband-schrodingers-fortune-pt2.mp3",
-        "length": "8891163"
-      }
-    ]
-  },
-  {
-    "title": "Schrodinger's Fortune pt1",
-    "description": "Schrodinger's Fortune pt1 by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/schrodingers-fortune-pt1-1",
-    "url": "https://soundcloud.com/michael-reband/schrodingers-fortune-pt1-1",
-    "itunes_subtitle": "Schrodinger's Fortune pt1 by mr.reband",
-    "itunes_summary": "Schrodinger's Fortune pt1 by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:03:35",
-    "created": 1525064608000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/437152749-michael-reband-schrodingers-fortune-pt1-1.mp3",
-        "length": "8630984"
-      }
-    ]
-  },
-  {
-    "title": "Up",
-    "description": "Up by mr.reband",
-    "link": "https://soundcloud.com/michael-reband/up-1",
-    "url": "https://soundcloud.com/michael-reband/up-1",
-    "itunes_subtitle": "Up by mr.reband",
-    "itunes_summary": "Up by mr.reband",
-    "itunes_author": "mr.reband",
-    "itunes_explicit": "no",
-    "itunes_duration": "00:07:06",
-    "created": 1522716900000,
-    "enclosures": [
-      {
-        "type": "audio/mpeg",
-        "url": "http://feeds.soundcloud.com/stream/423945819-michael-reband-up-1.mp3",
-        "length": "17054951"
-      }
-    ]
-  }
+    {
+        "title": "Waves",
+        "description": "Waves by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/610950675-michael-reband-waves.mp3"
+    },
+    {
+        "title": "Microbial Life Beneath The Ice",
+        "description": "Microbial Life Beneath The Ice by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/565058706-michael-reband-microbial-life-beneath-the-ice.mp3"
+    },
+    {
+        "title": "Wasn't Hudson",
+        "description": "Wasn't Hudson by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/521373048-michael-reband-wasnt-hudson.mp3"
+    },
+    {
+        "title": "8-bit ending",
+        "description": "8-bit ending by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/494676735-michael-reband-8-bit-ending.mp3"
+    },
+    {
+        "title": "Snapdragon",
+        "description": "Snapdragon by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/479004738-michael-reband-snapdragon.mp3"
+    },
+    {
+        "title": "Schrodinger's Fortune pt3",
+        "description": "Schrodinger's Fortune pt3 by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/466134603-michael-reband-schrodingers-fortune-pt3.mp3"
+    },
+    {
+        "title": "Schrodinger's Fortune pt2",
+        "description": "Schrodinger's Fortune pt2 by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/454579335-michael-reband-schrodingers-fortune-pt2.mp3"
+    },
+    {
+        "title": "Schrodinger's Fortune pt1",
+        "description": "Schrodinger's Fortune pt1 by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/437152749-michael-reband-schrodingers-fortune-pt1-1.mp3"
+    },
+    {
+        "title": "Up",
+        "description": "Up by mr.reband",
+        "url": "http://feeds.soundcloud.com/stream/423945819-michael-reband-up-1.mp3"
+    }
 ]

@@ -13,4 +13,11 @@ code {
     monospace;
 }
 
+.trackPlayButton {
+  height: 32px;
+  width: 32px;  
+}
 
+.trackContainer  {
+  background-color: #efefef;
+}
