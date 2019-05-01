@@ -1,13 +1,17 @@
-let Parser = require('rss-parser');
+const fs = require("fs");
+let Parser = require("rss-parser");
 let parser = new Parser();
 
-async function getSongs () {
-	let feed = await parser.parseURL('http://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss');
-	return feed.items;
-};
-
-getSongs().then(function(value) {
-    value.forEach((item) => {
-        console.log(item);
-    });
-});
+(async () => {
+  let feed = await parser.parseURL(
+    "http://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss"
+  );
+  // console.log(feed);
+  fs.writeFile("./data1.json", JSON.stringify(feed), err => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("File has been created");
+  });
+})();
