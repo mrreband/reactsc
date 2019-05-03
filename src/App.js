@@ -4,7 +4,7 @@ import "./App.css"
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import SoundList from "./SoundList";
+import SoundList from "./components/SoundList";
 
 class App extends React.Component {
   render() {
