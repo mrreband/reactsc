@@ -1,16 +1,26 @@
 import React from "react";
+import spotify from "../img/spotify.svg";
 
 
 class Header extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <header>
         <div className="container">
-          <a className="navbar-brand" href="/">
-            Michael Reband
-          </a>
+        <div className="logo">
+            <h1>mr.Reband</h1>
         </div>
-      </nav>
+        <div className="bottom">
+          <ul className="feeds">
+            <li>
+                <a href="https://open.spotify.com/artist/2qFU2QneC3YZ32Qd6vGFAj?si=ZP_c9L3LQWCEC_lG_vQk8A">
+                  <img src={spotify} alt=""/>
+                </a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </header>
     );
   }
 }
