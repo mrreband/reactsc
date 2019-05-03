@@ -1,5 +1,6 @@
 import React from "react";
 import SoundData from "./data.json";
+import Sound from "./Sound";
 
 class SoundList extends React.Component {
   constructor() {
@@ -33,18 +34,14 @@ class SoundList extends React.Component {
   render() {
     return (
       <div>
-        {this.state.SoundData.map(value => (
-          <div>
-            <h2>{value.title}</h2>
-            <audio
-              controls
-              id={`SoundData_${value.id}`}
-              onPlay={this.pauseAllOtherTracks}
-              onEnded={this.startNextTrack}
-            >
-              <source src={value.url} type="audio/mpeg" />
-            </audio>
-          </div>
+        {this.state.SoundData.map(sound => (
+          <Sound 
+          key={sound.id} 
+          id={sound.id} 
+          title={sound.title} 
+          url={sound.url} 
+          pauseAllOtherTracks={this.pauseAllOtherTracks}
+          startNextTrack={this.startNextTrack}/>
         ))}
       </div>
     );
