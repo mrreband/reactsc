@@ -6,7 +6,8 @@ export default class Sound extends Component {
       <div>
         <h2>{this.props.title}</h2>
         <audio
-          controls
+          controls 
+          preload="none"
           key={`${this.props.id}`}
           id={`SoundData_${this.props.id}`}
           onPlay={this.props.pauseAllOtherTracks.bind(this)}
