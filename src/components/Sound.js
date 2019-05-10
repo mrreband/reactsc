@@ -4,12 +4,25 @@ import SoundTitle from "./SoundTitle.js";
 import SoundTimer from "./SoundTimer.js";
 
 export default class Sound extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      duration: this.props.duration,
+      currentTime: 0
+    }
+  }
+
   playSound = (buttonKey) => {
     document.getElementById(`SoundData_${this.props.id}`).play();
   }
 
   pauseSound = (buttonKey) => {
     document.getElementById(`SoundData_${this.props.id}`).pause();
+  }
+
+  updateCurrentTime() {
+    var audioElement = document.getElementById(`SoundData_${this.props.id}`);
+    this.setState({currentTime: Math.ceil(audioElement.currentTime)});
   }
 
   render() {
@@ -21,13 +34,16 @@ export default class Sound extends Component {
           pauseSound={this.pauseSound}
           /> 
         <SoundTitle title={this.props.title} />
-        <SoundTimer len={this.props.len} />
+        <SoundTimer 
+          duration={this.state.duration} 
+          currentTime={this.state.currentTime} />
         <audio
           preload="none"
           key={`${this.props.id}`}
           id={`SoundData_${this.props.id}`}
           onPlay={this.props.pauseAllOtherTracks.bind(this)}
           onEnded={this.props.startNextTrack.bind(this)}
+          onTimeUpdate={this.updateCurrentTime.bind(this)}
         >
           <source src={this.props.url} type="audio/mpeg" />
 

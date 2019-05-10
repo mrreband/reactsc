@@ -40,7 +40,7 @@ class SoundList extends React.Component {
           id={sound.id} 
           title={sound.title} 
           url={sound.url} 
-          len={sound.len}
+          duration={sound.duration}
           pauseAllOtherTracks={this.pauseAllOtherTracks}
           startNextTrack={this.startNextTrack}/>
         ))}
