@@ -14,10 +14,12 @@ export default class Sound extends Component {
 
   playSound = (buttonKey) => {
     document.getElementById(`SoundData_${this.props.id}`).play();
+    this.props.playSound(buttonKey);
   }
 
   pauseSound = (buttonKey) => {
     document.getElementById(`SoundData_${this.props.id}`).pause();
+    this.props.pauseSound(buttonKey);
   }
 
   updateCurrentTime() {
@@ -30,8 +32,11 @@ export default class Sound extends Component {
       <div>
         <PlayButton  
           id={`${this.props.id}`}
+          playing={this.props.active}
+          buttonText={(this.props.active) ? "Pause" : "Play"}
           playSound={this.playSound}
           pauseSound={this.pauseSound}
+          playPauseSound={this.props.playPauseSound}
           /> 
         <SoundTitle title={this.props.title} />
         <SoundTimer 
