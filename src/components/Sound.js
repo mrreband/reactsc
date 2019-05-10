@@ -30,17 +30,19 @@ export default class Sound extends Component {
   render() {
     return (
       <div>
-        <PlayButton  
+        <PlayButton
           id={`${this.props.id}`}
           playing={this.props.active}
           buttonText={(this.props.active) ? "Pause" : "Play"}
           playSound={this.playSound}
           pauseSound={this.pauseSound}
           playPauseSound={this.props.playPauseSound}
-          /> 
+          />
+        <h2>
         <SoundTitle title={this.props.title} />
-        <SoundTimer 
-          duration={this.state.duration} 
+        </h2>
+        <SoundTimer
+          duration={this.state.duration}
           currentTime={this.state.currentTime} />
         <audio
           preload="none"
