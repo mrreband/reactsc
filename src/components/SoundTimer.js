@@ -10,11 +10,11 @@ export default class SoundTimer extends Component {
 
   render() {
     var duration = this.getDisplayLength(this.props.duration)
-    var currentTime = this.getDisplayLength(this.props.currentTime)
+    var currentTime = this.getDisplayLength(Math.ceil(this.props.currentTime))
 
     return (
-      <span>
-        ----- {currentTime} / {duration} ------
+      <span className="SoundTimer">
+         {currentTime} / {duration} 
       </span>
     )
   }

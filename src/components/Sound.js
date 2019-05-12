@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PlayButton from "./PlayButton.js";
 import SoundTitle from "./SoundTitle.js";
 import SoundTimer from "./SoundTimer.js";
+import ProgressBar from "./ProgressBar.js";
 
 export default class Sound extends Component {
   constructor(props) {
@@ -24,22 +25,19 @@ export default class Sound extends Component {
   }
 
   updateCurrentTime() {
-    this.setState({currentTime: Math.ceil(this.htmlPlayer.current.currentTime)});
+    this.setState({currentTime: this.htmlPlayer.current.currentTime});
   }
 
   render() {
     return (
-      <div>
+      <div className="Sound">
         <PlayButton
           id={`${this.props.id}`}
           playing={this.props.active}
-          buttonText={(this.props.active) ? "Pause" : "Play"}
           playSound={this.playSound}
           pauseSound={this.pauseSound}
           />
-        <h2>
         <SoundTitle title={this.props.title} />
-        </h2>
         <SoundTimer
           duration={this.state.duration}
           currentTime={this.state.currentTime} />
@@ -54,6 +52,9 @@ export default class Sound extends Component {
         >
           <source src={this.props.url} type="audio/mpeg" />
         </audio>
+        <ProgressBar 
+          duration={this.state.duration}
+          currentTime={this.state.currentTime} />
       </div>
     );
   }

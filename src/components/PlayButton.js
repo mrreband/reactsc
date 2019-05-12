@@ -13,7 +13,7 @@ class PlayButton extends Component {
   }
 
   render() {
-    let playClass =["play"];
+    let playClass =["play", "PlayButton"];
     if(this.props.playing === true){
       playClass.push("active")
     }
