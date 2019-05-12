@@ -527,7 +527,7 @@ footer a:hover {
 
 .Sound {
     height: 50px;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
     background-color: rgba(139, 164, 169, 0.657);
     display: flex;
 }
@@ -552,6 +552,7 @@ footer a:hover {
 .ProgressBarContainer
 {
     height: 5px;
+    margin: 0px 10px 0px 10px;
 }
 
 .ProgressBar 

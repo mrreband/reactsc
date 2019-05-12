@@ -30,31 +30,34 @@ export default class Sound extends Component {
 
   render() {
     return (
-      <div className="Sound">
-        <PlayButton
-          id={`${this.props.id}`}
-          playing={this.props.active}
-          playSound={this.playSound}
-          pauseSound={this.pauseSound}
-          />
-        <SoundTitle title={this.props.title} />
-        <SoundTimer
-          duration={this.state.duration}
-          currentTime={this.state.currentTime} />
-        <audio
-          ref={this.htmlPlayer}
-          preload="none"
-          key={`${this.props.id}`}
-          id={`SoundData_${this.props.id}`}
-          onPlay={this.props.pauseAllOtherTracks.bind(this)}
-          onEnded={this.props.startNextTrack.bind(this)}
-          onTimeUpdate={this.updateCurrentTime.bind(this)}
-        >
-          <source src={this.props.url} type="audio/mpeg" />
-        </audio>
+      <div>
+        <div className="Sound">
+          <PlayButton
+            id={`${this.props.id}`}
+            playing={this.props.active}
+            playSound={this.playSound}
+            pauseSound={this.pauseSound}
+            />
+          <SoundTitle title={this.props.title} />
+          <SoundTimer
+            duration={this.state.duration}
+            currentTime={this.state.currentTime} />
+          <audio
+            ref={this.htmlPlayer}
+            preload="none"
+            key={`${this.props.id}`}
+            id={`SoundData_${this.props.id}`}
+            onPlay={this.props.pauseAllOtherTracks.bind(this)}
+            onEnded={this.props.startNextTrack.bind(this)}
+            onTimeUpdate={this.updateCurrentTime.bind(this)}
+          >
+            <source src={this.props.url} type="audio/mpeg" />
+          </audio>
+
+        </div>
         <ProgressBar 
-          duration={this.state.duration}
-          currentTime={this.state.currentTime} />
+            duration={this.state.duration}
+            currentTime={this.state.currentTime} />
       </div>
     );
   }
