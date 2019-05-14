@@ -6,9 +6,9 @@ class PlayButton extends Component {
     e.preventDefault();
     if (this.props.playing === true)
     {
-      this.props.pauseSound(this.props.id)
+      this.props.pauseSound()
     } else {
-      this.props.playSound(this.props.id);
+      this.props.playSound();
     }
   }
 

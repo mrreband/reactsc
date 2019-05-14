@@ -11,12 +11,8 @@ class SoundList extends React.Component {
     };
   }
 
-  playSound = (id) => {
+  updateCurrentPlayer = (id) => {
     this.setState({currentPlayerId: id.toString()});
-  }
-  
-  pauseSound = (id) => {
-    this.setState({currentPlayerId: ""});
   }
 
   pauseAllOtherTracks = e => {
@@ -55,8 +51,7 @@ class SoundList extends React.Component {
           duration={sound.duration}
           pauseAllOtherTracks={this.pauseAllOtherTracks}
           startNextTrack={this.startNextTrack}
-          playSound={this.playSound}
-          pauseSound={this.pauseSound}
+          updateCurrentPlayer={this.updateCurrentPlayer}
           />
         ))}
       </div>

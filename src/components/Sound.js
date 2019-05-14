@@ -6,25 +6,25 @@ import SoundTimer from "./SoundTimer.js";
 export default class Sound extends Component {
   constructor(props) {
     super(props);
+    this.htmlPlayer = React.createRef();
     this.state = {
       duration: this.props.duration,
       currentTime: 0
     }
   }
 
-  playSound = (buttonKey) => {
-    document.getElementById(`SoundData_${this.props.id}`).play();
-    this.props.playSound(buttonKey);
+  playSound = () => {
+    this.htmlPlayer.current.play();
+    this.props.updateCurrentPlayer(this.props.id);
   }
-
-  pauseSound = (buttonKey) => {
-    document.getElementById(`SoundData_${this.props.id}`).pause();
-    this.props.pauseSound(buttonKey);
+  
+  pauseSound = () => {
+    this.htmlPlayer.current.pause();
+    this.props.updateCurrentPlayer("");
   }
 
   updateCurrentTime() {
-    var audioElement = document.getElementById(`SoundData_${this.props.id}`);
-    this.setState({currentTime: Math.ceil(audioElement.currentTime)});
+    this.setState({currentTime: Math.ceil(this.htmlPlayer.current.currentTime)});
   }
 
   render() {
@@ -36,7 +36,6 @@ export default class Sound extends Component {
           buttonText={(this.props.active) ? "Pause" : "Play"}
           playSound={this.playSound}
           pauseSound={this.pauseSound}
-          playPauseSound={this.props.playPauseSound}
           />
         <h2>
         <SoundTitle title={this.props.title} />
@@ -45,6 +44,7 @@ export default class Sound extends Component {
           duration={this.state.duration}
           currentTime={this.state.currentTime} />
         <audio
+          ref={this.htmlPlayer}
           preload="none"
           key={`${this.props.id}`}
           id={`SoundData_${this.props.id}`}
@@ -53,7 +53,6 @@ export default class Sound extends Component {
           onTimeUpdate={this.updateCurrentTime.bind(this)}
         >
           <source src={this.props.url} type="audio/mpeg" />
-
         </audio>
       </div>
     );
