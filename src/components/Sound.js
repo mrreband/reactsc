@@ -3,6 +3,7 @@ import PlayButton from "./PlayButton.js";
 import SoundTitle from "./SoundTitle.js";
 import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
+import MidiCanvas from "./MidiCanvas.js";
 
 export default class Sound extends Component {
   constructor(props) {
@@ -58,6 +59,10 @@ export default class Sound extends Component {
         <ProgressBar 
             duration={this.state.duration}
             currentTime={this.state.currentTime} />
+        <MidiCanvas 
+          key={this.props.id}
+          id={`MidiCanvas_${this.props.id}`}
+          currentTime={this.state.currentTime} />
       </div>
     );
   }
