@@ -6,7 +6,7 @@ class SoundList extends React.Component {
   constructor() {
     super();
     this.state = {
-      SoundData, 
+      SoundData,
       currentPlayerId: ""
     };
   }
@@ -40,14 +40,15 @@ class SoundList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="musics">
+        <h2 className="container">Piano Podcast</h2>
         {this.state.SoundData.map(sound => (
-          <Sound 
+          <Sound
           active={sound.id.toString() === this.state.currentPlayerId}
-          key={sound.id} 
-          id={sound.id} 
-          title={sound.title} 
-          url={sound.url} 
+          key={sound.id}
+          id={sound.id}
+          title={sound.title}
+          url={sound.url}
           duration={sound.duration}
           pauseAllOtherTracks={this.pauseAllOtherTracks}
           startNextTrack={this.startNextTrack}

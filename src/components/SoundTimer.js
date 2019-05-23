@@ -5,7 +5,7 @@ export default class SoundTimer extends Component {
   {
     var minutes = Math.floor(duration / 60);
     var remainingSeconds = duration % 60;
-    return `${minutes}:${("00" + remainingSeconds).slice(-2)}`  
+    return `${minutes}:${("00" + remainingSeconds).slice(-2)}`
   }
 
   render() {
@@ -13,9 +13,9 @@ export default class SoundTimer extends Component {
     var currentTime = this.getDisplayLength(Math.ceil(this.props.currentTime))
 
     return (
-      <span className="SoundTimer">
-         {currentTime} / {duration} 
-      </span>
+      <h4 className="SoundTimer">
+         {currentTime} / {duration}
+      </h4>
     )
   }
 }

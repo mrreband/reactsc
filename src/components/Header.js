@@ -2,6 +2,7 @@ import React from "react";
 import spotify from "../img/spotify.svg";
 import soundcloud from "../img/soundcloud.svg";
 import itunes from "../img/itunes.svg";
+import googlepodcasts from "../img/googlepodcasts.svg"
 import rss from "../img/rss.svg";
 import logo from "../img/mr.svg"
 // import itunes from "../img/itunes.svg";
@@ -32,6 +33,13 @@ class Header extends React.Component {
                   href="https://podcasts.apple.com/us/podcast/mr-reband-piano-podcast/id1464272392"
                 >
                   <img src={itunes} alt="" />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://play.google.com/music/m/I43twkhz5ocrkrcr4rky3j3i2ly?t=mrreband_piano_podcast"
+                >
+                  <img src={googlepodcasts} alt="" />
                 </a>
                 <a
                   target="_blank"
