@@ -172,8 +172,7 @@ header h1 {
     color: #8ba4a9;
     margin: 0;
     font-family: 'Radley', serif;
-    font-size: 42px;
-    font-size: 4.2rem
+    font-size: 32px;
 }
 
 header h2 {
@@ -190,7 +189,7 @@ header .logo {
     display: block
 }
 
-.episodes a,
+.musics a,
 .placeholder-wrapper {
     padding: 30px 0 20px
 }
@@ -232,51 +231,51 @@ header .logo {
     max-width: 400px
 }
 
-.episodes {
+.musics {
     margin-top: 30px;
     margin-bottom: 30px
 }
 
-.episodes h2 {
+.musics h2 {
     font-size: 32px;
     margin-bottom: 30px
 }
 
-.episodes p {
+.musics p {
     width: 100%;
     margin-left: 85px
 }
 
-.episodes a {
+.musics a {
     color: #2d363f;
     width: 100%;
     height: 100%;
     display: block
 }
 
-.episodes a:focus,
-.episodes a:hover {
+.musics a:focus,
+.musics a:hover {
     background: #d6d8d7
 }
 
-.episodes a .container {
+.musics a .container {
     display: flex;
     flex-wrap: wrap;
     align-items: center
 }
 
-.episodes ol li,
-.episodes ul li {
+.musics ol li,
+.musics ul li {
     position: relative;
     border-bottom: 1px dotted #d6d8d7
 }
 
-.episodes ol li:last-child,
-.episodes ul li:last-child {
+.musics ol li:last-child,
+.musics ul li:last-child {
     border-bottom: none
 }
 
-.episode .episode-number {
+.music .music-number {
     display: inline-block;
     font-size: 28px;
     background: #2d363f;
@@ -288,17 +287,17 @@ header .logo {
     border-radius: 70px
 }
 
-.episode .title {
+.music .title {
     font-size: 36px;
     width: calc(100% - 85px)
 }
 
-.episode .date {
+.music .date {
     font-style: italic
 }
 
 @media (max-width:600px) {
-    .episode .episode-number {
+    .music .music-number {
         margin: 0 10px 0 0;
         order: 1;
         font-size: 14px;
@@ -306,25 +305,25 @@ header .logo {
         height: 40px;
         line-height: 40px
     }
-    .episode .title {
+    .music .title {
         order: 3;
         margin: 15px 0
     }
-    .episode .date {
+    .music .date {
         order: 2;
         margin-bottom: 0;
         line-height: 40px;
         width: calc(100% - 50px)
     }
-    .episode .description {
+    .music .description {
         order: 4
     }
-    .episode p {
+    .music p {
         margin-left: 0
     }
 }
 
-.episode-number {
+.music-number {
     display: inline-block;
     font-size: 28px;
     width: 70px;
@@ -334,54 +333,54 @@ header .logo {
     margin-right: 15px
 }
 
-.placeholder-episodes .title {
+.placeholder-musics .title {
     height: 25px
 }
 
-.placeholder-episodes .date {
+.placeholder-musics .date {
     width: 50%;
     height: 10px
 }
 
-.placeholder-episodes .description {
+.placeholder-musics .description {
     margin-left: 85px;
     width: 85%;
     height: 15px
 }
 
-.placeholder-episodes ol li,
-.placeholder-episodes ul li {
+.placeholder-musics ol li,
+.placeholder-musics ul li {
     position: relative;
     border-bottom: 1px dotted #d6d8d7
 }
 
-.placeholder-episodes ol li:last-child,
-.placeholder-episodes ul li:last-child {
+.placeholder-musics ol li:last-child,
+.placeholder-musics ul li:last-child {
     border-bottom: none
 }
 
 @media (max-width:600px) {
-    .placeholder-episodes .episode-number {
+    .placeholder-musics .music-number {
         margin: 0 10px 20px 0;
         order: 1;
         width: 40px;
         height: 40px;
         line-height: 40px
     }
-    .placeholder-episodes .title-area {
+    .placeholder-musics .title-area {
         margin-bottom: 20px
     }
-    .placeholder-episodes .title {
+    .placeholder-musics .title {
         order: 3;
         margin: 5px 0
     }
-    .placeholder-episodes .date {
+    .placeholder-musics .date {
         order: 2;
         margin-bottom: 0;
         line-height: 40px;
         width: calc(100% - 50px)
     }
-    .placeholder-episodes .description {
+    .placeholder-musics .description {
         order: 4;
         margin-left: auto;
         margin-right: auto;
@@ -555,8 +554,8 @@ footer a:hover {
     margin: 0px 10px 0px 10px;
 }
 
-.ProgressBar 
-{    
+.ProgressBar
+{
     position: relative;
     height: 100%;
     background-color: #000000;
