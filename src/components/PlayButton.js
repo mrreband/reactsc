@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import play from "../img/play.svg";
-import pause from "../img/pause.svg";
 
 class PlayButton extends Component {
   constructor(props) {
