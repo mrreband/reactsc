@@ -10,12 +10,12 @@ class PlayButton extends Component {
 
   toggleAll(rotate) {
     var svg = this.svg.current;
-    svg.getElementById("triangle").classList.toggle("hidden");
-    svg.getElementById("triangle").classList.toggle("visible");
-    svg.getElementById("pause1").classList.toggle("hidden");
-    svg.getElementById("pause1").classList.toggle("visible");
-    svg.getElementById("pause2").classList.toggle("hidden");
-    svg.getElementById("pause2").classList.toggle("visible");
+    // svg.getElementById("triangle").classList.toggle("hidden");
+    // svg.getElementById("triangle").classList.toggle("visible");
+    // svg.getElementById("pause1").classList.toggle("hidden");
+    // svg.getElementById("pause1").classList.toggle("visible");
+    // svg.getElementById("pause2").classList.toggle("hidden");
+    // svg.getElementById("pause2").classList.toggle("visible");
 
     if (rotate === true) {
       svg.getElementById("circle1").classList.toggle("rotated");
@@ -34,13 +34,9 @@ class PlayButton extends Component {
   };
 
   render() {
-    let playClass = ["play", "PlayButton"];
-
-    if (this.props.playing === true) {
-      playClass.push("active");
-    }
     return (
       <svg
+        className={`PlayButton ${this.props.playing === true ? "active" : ""}`}
         viewBox="0 0 163 163"
         width="40"
         height="40"
@@ -60,7 +56,7 @@ class PlayButton extends Component {
             ry="10"
             width="10"
             height="72.4"
-            className="hidden"
+            className="pause"
             id="pause1"
           />
           <rect
@@ -70,7 +66,7 @@ class PlayButton extends Component {
             ry="10"
             width="10"
             height="72.4"
-            className="hidden"
+            className="pause"
             id="pause2"
           />
 
@@ -83,8 +79,7 @@ class PlayButton extends Component {
                      L105.9,83.3158594 
                      C108.8,81.1158594 108.8,76.6158594 105.9,74.4158594 
                      L105.9,74.4158594"
-            id="triangle"
-            className="visible"
+            className="play"
           />
         </g>
       </svg>

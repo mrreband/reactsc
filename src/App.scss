@@ -479,12 +479,6 @@ footer h4 {
   display: flex;
 }
 
-.PlayButton {
-  // overriding the play class's "margin" property
-  margin: 10px auto 10px 20px;
-  order: 1;
-}
-
 .SoundTitle {
   order: 2;
   flex-basis: 60%;
@@ -509,37 +503,39 @@ footer h4 {
 }
 
 /* play button stuff */
-
-svg#play {
-  width: 200px;
-  margin: 120px auto;
+.PlayButton {
+  order: 1;
   display: block;
   cursor: pointer;
   transform-origin: 50% 50%;
 }
 
-svg#play #triangle {
+.PlayButton g .play {
   fill: rgba(22, 22, 22, 0);
   transform-origin: 50% 50%;
 }
 
-svg #lineOne,
-svg #lineTwo {
-  transform-origin: 50% 50%;
+.PlayButton.active g .play {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.PlayButton g .pause {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.PlayButton.active g .pause {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.PlayButton g .circle {
+  transform-origin: 49% 49%;
   transition: 1s;
-}
-
-svg #lineOne.rotated {
-  transform: rotate(260deg);
-  -webkit-transform: rotate(260deg);
-  -moz-transform: rotate(260deg);
-  -o-transform: rotate(260deg);
-  transform-origin: 50% 50%;
-}
-
-svg #lineTwo.rotated {
-  transform: rotate(-450deg);
-  transform-origin: 50% 50%;
 }
 
 @keyframes rotate {
@@ -562,8 +558,9 @@ svg #lineTwo.rotated {
   stroke-dashoffset: 0;
 }
 
-svg .circle {
+#circle1.rotated {
   transform-origin: 49% 49%;
+  transform: rotate(-720deg);
   transition: 1s;
 }
 
@@ -571,22 +568,4 @@ svg .circle {
   transform-origin: 49% 49%;
   transform: rotate(720deg);
   transition: 1s;
-}
-
-#circle1.rotated {
-  transform-origin: 49% 49%;
-  transform: rotate(-720deg);
-  transition: 1s;
-}
-
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 0.5s, opacity 0.5s linear;
-}
-
-.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.5s linear;
 }
