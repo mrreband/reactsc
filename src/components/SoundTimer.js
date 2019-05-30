@@ -12,7 +12,7 @@ export default class SoundTimer extends Component {
     var currentTime = this.getDisplayLength(Math.ceil(this.props.currentTime));
 
     return (
-      <div className="SoundTimer SoundElement">
+      <div className="SoundTimer">
         {currentTime} / {duration}
       </div>
     );

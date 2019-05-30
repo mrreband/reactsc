@@ -22,9 +22,11 @@ class PlayButton extends Component {
 
   render() {
     return (
-      <div className="PlayButton SoundElement">
+      <div className="PlayButtonContainer SoundElement">
         <svg
-          className={`PlaySvg ${this.props.playing === true ? "active" : ""}`}
+          className={`PlayButton PlaySvg ${
+            this.props.playing === true ? "active" : ""
+          }`}
           viewBox="0 0 163 163"
           width="40"
           height="40"

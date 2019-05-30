@@ -478,31 +478,30 @@ footer h4 {
   display: flex;
 }
 
-/* PlayButton, SoundTitle, and SoundTimer are all SoundElements*/
+/* PlayButtonContainer, SoundTitle, and SoundTimer are all SoundElements*/
 .SoundElement {
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column; /* column | row */
 }
 
-.PlayButton {
+.PlayButtonContainer {
   display: flex;
   align-content: center;
   cursor: pointer;
   transform-origin: 50% 50%;
-  width: 6%;
-  flex-direction: column;
+  width: 10%;
+  padding: 5px 0px 0px 0px;
 }
 
 .SoundTitle {
-  width: 65%;
-  padding: 0px 0px 0px 20px;
+  width: 61%;
+  padding: 10px 0px 0px 20px;
 }
 
 .SoundTimer {
   color: #2d363f;
-  padding: 0px 20px 0px 0px;
+  padding: 10px 15px 0px 0px;
   width: 29%;
   text-align: right;
 }
