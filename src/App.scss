@@ -471,7 +471,6 @@ footer h4 {
 }
 
 /* Custom Sound Components */
-
 .Sound {
   height: 50px;
   margin: 10px 10px 0px 10px;
@@ -479,18 +478,43 @@ footer h4 {
   display: flex;
 }
 
+/* PlayButton, SoundTitle, and SoundTimer are all SoundElements*/
+.SoundElement {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column; /* column | row */
+}
+
+.PlayButton {
+  display: flex;
+  align-content: center;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  width: 6%;
+  flex-direction: column;
+}
+
 .SoundTitle {
-  order: 2;
-  flex-basis: 60%;
-  padding: 5px;
+  width: 74%;
+  padding: 0px 0px 0px 20px;
 }
 
 .SoundTimer {
   color: #2d363f;
-  padding: 5px;
-  order: 3;
+  padding: 0px 20px 0px 0px;
+  width: 20%;
+  text-align: right;
 }
 
+/* PlaySvg centers the svg inside the PlayButton div */
+.PlaySvg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* start of progress bar stuff */
 .ProgressBarContainer {
   height: 5px;
   margin: 0px 10px 0px 10px;
@@ -501,15 +525,9 @@ footer h4 {
   height: 100%;
   background-color: #000000;
 }
+/* end of progress bar stuff */
 
-/* play button stuff */
-.PlayButton {
-  order: 1;
-  display: block;
-  cursor: pointer;
-  transform-origin: 50% 50%;
-}
-
+/* start of play button stuff */
 .PlayButton g .play {
   fill: rgba(22, 22, 22, 0);
   transform-origin: 50% 50%;
@@ -569,3 +587,5 @@ footer h4 {
   transform: rotate(720deg);
   transition: 1s;
 }
+
+/* end of play button stuff */

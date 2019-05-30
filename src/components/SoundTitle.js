@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class SoundTitle extends Component {
   render() {
-    return (
-      <h4 className="SoundTitle">
-        {this.props.title}
-      </h4>
-    )
+    return <div className="SoundTitle SoundElement">{this.props.title}</div>;
   }
 }
