@@ -478,7 +478,7 @@ footer h4 {
   display: flex;
 }
 
-/* PlayButton, SoundTitle, and SoundTimer are all SoundElements*/
+/* PlayButtonContainer, SoundTitle, and SoundTimer are all SoundElements*/
 .SoundElement {
   display: flex;
   justify-content: center;
@@ -486,7 +486,7 @@ footer h4 {
   flex-direction: column; /* column | row */
 }
 
-.PlayButton {
+.PlayButtonContainer {
   display: flex;
   align-content: center;
   cursor: pointer;
