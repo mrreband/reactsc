@@ -35,11 +35,18 @@
         "duration": 115
     },
     {
+        "id": 9,
+        "title": "Up",
+        "description": "Up by mr.reband",
+        "url": "https://feeds.soundcloud.com/stream/423945819-michael-reband-up-1.mp3",
+        "duration": 426
+    },
+    {
         "id": 6,
-        "title": "Schrodinger's Fortune pt3",
-        "description": "Schrodinger's Fortune pt3 by mr.reband",
-        "url": "https://feeds.soundcloud.com/stream/466134603-michael-reband-schrodingers-fortune-pt3.mp3",
-        "duration": 313
+        "title": "Schrodinger's Fortune pt1",
+        "description": "Schrodinger's Fortune pt1 by mr.reband",
+        "url": "https://feeds.soundcloud.com/stream/437152749-michael-reband-schrodingers-fortune-pt1-1.mp3",
+        "duration": 215
     },
     {
         "id": 7,
@@ -50,16 +57,9 @@
     },
     {
         "id": 8,
-        "title": "Schrodinger's Fortune pt1",
-        "description": "Schrodinger's Fortune pt1 by mr.reband",
-        "url": "https://feeds.soundcloud.com/stream/437152749-michael-reband-schrodingers-fortune-pt1-1.mp3",
-        "duration": 215
-    },
-    {
-        "id": 9,
-        "title": "Up",
-        "description": "Up by mr.reband",
-        "url": "https://feeds.soundcloud.com/stream/423945819-michael-reband-up-1.mp3",
-        "duration": 426
+        "title": "Schrodinger's Fortune pt3",
+        "description": "Schrodinger's Fortune pt3 by mr.reband",
+        "url": "https://feeds.soundcloud.com/stream/466134603-michael-reband-schrodingers-fortune-pt3.mp3",
+        "duration": 313
     }
 ]
