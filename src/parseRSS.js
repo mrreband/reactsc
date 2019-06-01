@@ -6,7 +6,7 @@ let parser = new Parser();
   var songs = [];
   
   let feed = await parser.parseURL(
-    "http://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss"
+    "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss"
   );
 
   var i = 1;
@@ -15,7 +15,8 @@ let parser = new Parser();
       id: i, 
       title: item["title"],
       description: item["itunes"]["subtitle"],
-      url: item["enclosure"]["url"]
+      url: item["enclosure"]["url"],
+      duration: Math.floor(item["enclosure"]["length"] / 40000)
     };
     console.log(song);
     songs.push(song);
