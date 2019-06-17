@@ -13,7 +13,9 @@ export default class SoundTimer extends Component {
 
     return (
       <div className="SoundTimer">
-        {currentTime} / {duration}
+        <h5>
+          {currentTime} / {duration}
+        </h5>
       </div>
     );
   }
