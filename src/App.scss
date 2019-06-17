@@ -483,6 +483,7 @@ footer h4 {
   display: flex;
   justify-content: center;
   align-content: center;
+  white-space: nowrap;
 }
 
 .PlayButtonContainer {
@@ -501,7 +502,7 @@ footer h4 {
 
 .SoundTimer {
   color: #2d363f;
-  padding: 10px 15px 0px 0px;
+  padding: 10px 5px 0px 0px;
   width: 29%;
   text-align: right;
 }
