@@ -15,7 +15,12 @@ export default class Sound extends Component {
   }
 
   componentDidUpdate() {
-    if ((this.props.active === true) & this.htmlPlayer.current.paused) {
+    if (
+      (this.props.active === true) &
+      this.htmlPlayer.current.paused &
+      (this.htmlPlayer.current.currentTime < this.state.duration)
+    ) {
+      console.log("componentDidUpdate");
       this.playSound();
     }
     if ((this.props.active === false) & !this.htmlPlayer.current.paused) {
