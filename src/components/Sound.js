@@ -18,15 +18,30 @@ export default class Sound extends Component {
     if (
       (this.props.active === true) &
       this.htmlPlayer.current.paused &
-      (this.htmlPlayer.current.currentTime < this.state.duration)
+      (this.htmlPlayer.current.currentTime === 0)
     ) {
-      console.log("componentDidUpdate");
+      console.log("componentDidUpdate - playing");
       this.playSound();
-    }
-    if ((this.props.active === false) & !this.htmlPlayer.current.paused) {
+    } else if (
+      (this.props.active === false) &
+      !this.htmlPlayer.current.paused
+    ) {
+      console.log("componentDidUpdate - pausing");
       this.pauseSound();
     }
   }
+
+  setCurrentPlayer = () => {
+    console.log("setCurrentPlayer: " + this.props.id.toString());
+    if (this.props.currentPlayerId !== this.props.id) {
+      this.props.updateCurrentPlayer(this.props.id);
+    }
+  };
+
+  unsetCurrentPlayer = () => {
+    console.log("unsetCurrentPlayer: " + this.props.id.toString());
+    this.props.updateCurrentPlayer("");
+  };
 
   playSound = () => {
     console.log(
@@ -36,16 +51,12 @@ export default class Sound extends Component {
         this.props.currentPlayerId
     );
 
-    if (this.props.currentPlayerId !== this.props.id) {
-      this.props.updateCurrentPlayer(this.props.id);
-    }
     this.htmlPlayer.current.play();
   };
 
   pauseSound = () => {
     console.log("pauseSound: " + this.props.id.toString());
     this.htmlPlayer.current.pause();
-    this.props.updateCurrentPlayer("");
   };
 
   setNextTrack = () => {
@@ -84,8 +95,8 @@ export default class Sound extends Component {
           <PlayButton
             id={`${this.props.id}`}
             playing={this.props.active}
-            playSound={this.playSound}
-            pauseSound={this.pauseSound}
+            playSound={this.setCurrentPlayer}
+            pauseSound={this.unsetCurrentPlayer}
           />
           <SoundTitle title={this.props.title} />
           <SoundTimer
