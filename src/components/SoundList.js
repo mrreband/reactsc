@@ -25,27 +25,10 @@ class SoundList extends React.Component {
     this.setState({ currentPlayerId: id.toString() });
   };
 
-  pauseAllOtherTracks = e => {
-    for (var i = 1; i < this.state.SoundData.length; i++) {
-      var targetPlayerId = "SoundData_" + i.toString();
-      if (targetPlayerId !== e.target.id) {
-        var player = document.getElementById(targetPlayerId);
-        player.pause();
-      }
-    }
-  };
-
-  startNextTrack = e => {
-    var currentPlayer = document.getElementById(e.target.id);
-    currentPlayer.pause();
-    currentPlayer.currentTime = 0;
-
-    var currentPlayerId = Number(e.target.id.match(/\d+/)[0]);
-    this.setState({ currentPlayerId: (currentPlayerId + 1).toString() });
-
-    var nextPlayerId = "SoundData_" + (currentPlayerId + 1).toString();
-    var nextPlayer = document.getElementById(nextPlayerId);
-    if (nextPlayer) nextPlayer.play();
+  setNextTrack = id => {
+    var nextId = (id + 1).toString();
+    console.log("setNextTrack: nextId = " + nextId);
+    this.setState({ currentPlayerId: nextId });
   };
 
   render() {
@@ -57,8 +40,7 @@ class SoundList extends React.Component {
         title={sound.title}
         url={sound.url}
         duration={sound.duration}
-        pauseAllOtherTracks={this.pauseAllOtherTracks}
-        startNextTrack={this.startNextTrack}
+        setNextTrack={this.setNextTrack}
         updateCurrentPlayer={this.updateCurrentPlayer}
       />
     ));

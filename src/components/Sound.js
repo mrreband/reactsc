@@ -15,35 +15,57 @@ export default class Sound extends Component {
   }
 
   setActive = () => {
+    console.log("setActive: " + this.props.id.toString());
     if (this.props.active === false) {
       this.playSound();
-      this.active = true;
     }
   };
 
   setInActive = () => {
+    console.log("setInactive: " + this.props.id.toString());
     if (this.props.active === true) {
       this.pauseSound();
-      this.active = false;
     }
   };
 
   playSound = () => {
-    this.htmlPlayer.current.play();
+    console.log("playSound: " + this.props.id.toString());
     this.props.updateCurrentPlayer(this.props.id);
+    this.htmlPlayer.current.play();
   };
 
   pauseSound = () => {
+    console.log("pauseSound: " + this.props.id.toString());
     this.htmlPlayer.current.pause();
     this.props.updateCurrentPlayer("");
   };
 
+  setNextTrack = () => {
+    console.log("setNextTrack: " + this.props.id.toString());
+    this.props.setNextTrack(this.props.id);
+  };
+
   updateCurrentTime() {
+    console.log(
+      "updateCurrentTime: " +
+        this.props.id.toString() +
+        " (" +
+        this.htmlPlayer.current.currentTime.toString() +
+        ")"
+    );
     this.setState({ currentTime: this.htmlPlayer.current.currentTime });
   }
 
   updateCurrentProgress(pct) {
     var newTime = Math.floor(pct * this.state.duration);
+    console.log(
+      "updateCurrentProgress: " +
+        this.props.id.toString() +
+        " (" +
+        newTime.toString() +
+        ")"
+    );
+
     this.htmlPlayer.current.currentTime = newTime;
   }
 
@@ -67,8 +89,7 @@ export default class Sound extends Component {
             preload="none"
             key={`${this.props.id}`}
             id={`SoundData_${this.props.id}`}
-            onPlay={this.props.pauseAllOtherTracks.bind(this)}
-            onEnded={this.props.startNextTrack.bind(this)}
+            onEnded={this.setNextTrack.bind(this)}
             onTimeUpdate={this.updateCurrentTime.bind(this)}
           >
             <source src={this.props.url} type="audio/mpeg" />
