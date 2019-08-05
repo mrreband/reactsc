@@ -14,19 +14,14 @@ export default class Sound extends Component {
     };
   }
 
-  setActive = () => {
-    console.log("setActive: " + this.props.id.toString());
-    if (this.props.active === false) {
+  componentDidUpdate() {
+    if ((this.props.active === true) & this.htmlPlayer.current.paused) {
       this.playSound();
     }
-  };
-
-  setInActive = () => {
-    console.log("setInactive: " + this.props.id.toString());
-    if (this.props.active === true) {
+    if ((this.props.active === false) & !this.htmlPlayer.current.paused) {
       this.pauseSound();
     }
-  };
+  }
 
   playSound = () => {
     console.log("playSound: " + this.props.id.toString());
@@ -76,8 +71,8 @@ export default class Sound extends Component {
           <PlayButton
             id={`${this.props.id}`}
             playing={this.props.active}
-            playSound={this.setActive}
-            pauseSound={this.setInActive}
+            playSound={this.playSound}
+            pauseSound={this.pauseSound}
           />
           <SoundTitle title={this.props.title} />
           <SoundTimer
