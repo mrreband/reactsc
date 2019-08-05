@@ -24,8 +24,16 @@ export default class Sound extends Component {
   }
 
   playSound = () => {
-    console.log("playSound: " + this.props.id.toString());
-    this.props.updateCurrentPlayer(this.props.id);
+    console.log(
+      "playSound: " +
+        this.props.id.toString() +
+        "; currentPlayerId = " +
+        this.props.currentPlayerId
+    );
+
+    if (this.props.currentPlayerId !== this.props.id) {
+      this.props.updateCurrentPlayer(this.props.id);
+    }
     this.htmlPlayer.current.play();
   };
 

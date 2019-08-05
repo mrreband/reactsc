@@ -13,6 +13,7 @@ class SoundList extends React.Component {
   }
 
   updateCurrentPlayer = id => {
+    console.log("updateCurrentPlayer: " + id.toString());
     this.setState({ currentPlayerId: id.toString() });
   };
 
@@ -29,6 +30,7 @@ class SoundList extends React.Component {
         {this.state.SoundData.map(sound => (
           <Sound
             active={sound.id.toString() === this.state.currentPlayerId}
+            currentPlayerId={this.state.currentPlayerId}
             key={sound.id}
             id={sound.id}
             title={sound.title}
