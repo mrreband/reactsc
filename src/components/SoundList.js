@@ -6,17 +6,8 @@ class SoundList extends React.Component {
   constructor() {
     super();
 
-    var sounds = SoundData.map(sound => ({
-      key: sound.id,
-      id: sound.id,
-      title: sound.title,
-      url: sound.url,
-      duration: sound.duration
-    }));
-
     this.state = {
       SoundData,
-      sounds: sounds,
       currentPlayerId: ""
     };
   }
@@ -32,23 +23,21 @@ class SoundList extends React.Component {
   };
 
   render() {
-    var sounds = this.state.sounds.map(sound => (
-      <Sound
-        active={sound.id.toString() === this.state.currentPlayerId}
-        key={sound.id}
-        id={sound.id}
-        title={sound.title}
-        url={sound.url}
-        duration={sound.duration}
-        setNextTrack={this.setNextTrack}
-        updateCurrentPlayer={this.updateCurrentPlayer}
-      />
-    ));
-
     return (
       <div className="musics">
         <h2 className="container">Piano Podcast</h2>
-        {sounds}
+        {this.state.SoundData.map(sound => (
+          <Sound
+            active={sound.id.toString() === this.state.currentPlayerId}
+            key={sound.id}
+            id={sound.id}
+            title={sound.title}
+            url={sound.url}
+            duration={sound.duration}
+            setNextTrack={this.setNextTrack}
+            updateCurrentPlayer={this.updateCurrentPlayer}
+          />
+        ))}
       </div>
     );
   }
