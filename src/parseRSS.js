@@ -1,7 +1,7 @@
 let Parser = require("rss-parser");
 let parser = new Parser();
 
-async function parseRss() {
+export default async function parseRss() {
   const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
   const RSS_URL =
     "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
@@ -56,11 +56,6 @@ async function parseRss() {
   return finalList;
 }
 
-export default function asyncCall() {
-  console.log("calling");
-  return parseRss();
-}
-
-asyncCall().then(result => {
+parseRss().then(result => {
   console.log(result);
 });

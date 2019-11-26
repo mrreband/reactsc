@@ -1,5 +1,5 @@
 import React from "react";
-import asyncCall from "../parseRSS";
+import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
 
@@ -14,7 +14,7 @@ class SoundList extends React.Component {
   }
 
   async componentWillMount() {
-    var songs = await asyncCall();
+    var songs = await parseRss();
     if (songs) {
       this.setState({ SoundData: songs });
     } else {
