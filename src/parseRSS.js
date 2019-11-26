@@ -26,7 +26,34 @@ async function parseRss() {
     songs.push(song);
     i += 1;
   });
-  return songs;
+
+  /////////////////////////////////////////////////////////
+  // split out shrodinger tracks to reorder them separately
+  function Shrodinger(title, include) {
+    if (title.includes("Schrodinger")) {
+      return include;
+    } else {
+      return !include;
+    }
+  }
+
+  var nonShrodingers = songs.filter(function(song) {
+    return Shrodinger(song.title, false);
+  });
+  var shrodingers = songs.filter(function(song) {
+    return Shrodinger(song.title, true);
+  });
+
+  // sort each sub-array
+  nonShrodingers.sort(function(song) {
+    return song.publish_date;
+  });
+
+  shrodingers.sort((a, b) => a.title.localeCompare(b.title));
+
+  //re-concatenate
+  var finalList = nonShrodingers.concat(shrodingers);
+  return finalList;
 }
 
 export default function asyncCall() {
