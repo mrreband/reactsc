@@ -9,7 +9,6 @@ export default async function parseRss() {
   let i = 1;
 
   let feed = await parser.parseURL(CORS_PROXY + RSS_URL);
-  console.log(feed.title);
 
   feed.items.forEach(item => {
     let duration =
@@ -56,6 +55,6 @@ export default async function parseRss() {
   return finalList;
 }
 
-parseRss().then(result => {
-  console.log(result);
-});
+// parseRss().then(result => {
+//   console.log(result);
+// });
