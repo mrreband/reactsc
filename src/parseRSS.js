@@ -1,22 +1,25 @@
-const fs = require("fs");
 let Parser = require("rss-parser");
 let parser = new Parser();
 
-(async () => {
-  var songs = [];
+export default async function parseRss() {
+  const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+  const RSS_URL =
+    "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
+  let songs = [];
+  let i = 1;
 
-  let feed = await parser.parseURL(
-    "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss"
-  );
+  let feed = await parser.parseURL(CORS_PROXY + RSS_URL);
 
-  var i = 1;
-  feed.items.forEach(function(item) {
-    var song = {
+  feed.items.forEach(item => {
+    let duration =
+      parseInt(item["itunes"]["duration"].split(":")[1]) * 60 +
+      parseInt(item["itunes"]["duration"].split(":")[2]);
+    let song = {
       id: i,
       title: item["title"],
       description: item["itunes"]["subtitle"],
       url: item["enclosure"]["url"],
-      duration: Math.floor(item["enclosure"]["length"] / 40000),
+      duration: duration,
       publish_date: item["publish_date"]
     };
     songs.push(song);
@@ -48,15 +51,10 @@ let parser = new Parser();
   shrodingers.sort((a, b) => a.title.localeCompare(b.title));
 
   //re-concatenate
-  songs = nonShrodingers.concat(shrodingers);
+  var finalList = nonShrodingers.concat(shrodingers);
+  return finalList;
+}
 
-  /////////////////////////////////////////////////////////
-  // write to file
-  fs.writeFile("./data.json", JSON.stringify(songs), err => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log("File has been created");
-  });
-})();
+// parseRss().then(result => {
+//   console.log(result);
+// });
