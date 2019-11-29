@@ -39,7 +39,6 @@ class SoundList extends React.Component {
 
   setNextTrack = id => {
     var nextId = (id + 1).toString();
-    console.log("setNextTrack: nextId = " + nextId);
     this.updateCurrentPlayer(nextId);
   };
 

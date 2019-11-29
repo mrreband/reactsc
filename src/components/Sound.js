@@ -20,71 +20,43 @@ export default class Sound extends Component {
       this.htmlPlayer.current.paused &
       (this.htmlPlayer.current.currentTime === 0)
     ) {
-      console.log("componentDidUpdate - playing");
       this.playSound();
     } else if (
       (this.props.active === false) &
       !this.htmlPlayer.current.paused
     ) {
-      console.log("componentDidUpdate - pausing");
       this.pauseSound();
     }
   }
 
   setCurrentPlayer = () => {
-    console.log("setCurrentPlayer: " + this.props.id.toString());
     if (this.props.currentPlayerId !== this.props.id) {
       this.props.updateCurrentPlayer(this.props.id);
     }
   };
 
   unsetCurrentPlayer = () => {
-    console.log("unsetCurrentPlayer: " + this.props.id.toString());
     this.props.updateCurrentPlayer("");
   };
 
   playSound = () => {
-    console.log(
-      "playSound: " +
-        this.props.id.toString() +
-        "; currentPlayerId = " +
-        this.props.currentPlayerId
-    );
-
     this.htmlPlayer.current.play();
   };
 
   pauseSound = () => {
-    console.log("pauseSound: " + this.props.id.toString());
     this.htmlPlayer.current.pause();
   };
 
   setNextTrack = () => {
-    console.log("setNextTrack: " + this.props.id.toString());
     this.props.setNextTrack(this.props.id);
   };
 
   updateCurrentTime() {
-    console.log(
-      "updateCurrentTime: " +
-        this.props.id.toString() +
-        " (" +
-        this.htmlPlayer.current.currentTime.toString() +
-        ")"
-    );
     this.setState({ currentTime: this.htmlPlayer.current.currentTime });
   }
 
   updateCurrentProgress(pct) {
     var newTime = Math.floor(pct * this.state.duration);
-    console.log(
-      "updateCurrentProgress: " +
-        this.props.id.toString() +
-        " (" +
-        newTime.toString() +
-        ")"
-    );
-
     this.htmlPlayer.current.currentTime = newTime;
   }
 
