@@ -1,4 +1,5 @@
 import React from "react";
+import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
 
@@ -7,14 +8,33 @@ class SoundList extends React.Component {
     super();
 
     this.state = {
-      SoundData,
+      SoundData: [],
       currentPlayerId: ""
     };
   }
 
+  async componentWillMount() {
+    var songs = await parseRss();
+    if (songs) {
+      this.setState({ SoundData: songs });
+    } else {
+      this.setState({ SoundData: SoundData });
+    }
+    this.render();
+  }
+
   updateCurrentPlayer = id => {
-    console.log("updateCurrentPlayer: " + id.toString());
     this.setState({ currentPlayerId: id.toString() });
+  };
+
+  pauseAllOtherTracks = e => {
+    for (var i = 1; i < this.state.SoundData.length; i++) {
+      var targetPlayerId = "SoundData_" + i.toString();
+      if (targetPlayerId !== e.target.id) {
+        var player = document.getElementById(targetPlayerId);
+        player.pause();
+      }
+    }
   };
 
   setNextTrack = id => {
