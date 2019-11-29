@@ -8,7 +8,8 @@ export default class ProgressBar extends Component {
   }
 
   getProgress = (currentTime, duration) => {
-    return ((currentTime / duration) * 100).toString() + "%";
+    let currentProgress = Math.min((currentTime / duration) * 100, 100);
+    return currentProgress.toString() + "%";
   };
 
   setProgress = pct => {

@@ -14,28 +14,41 @@ export default class Sound extends Component {
     };
   }
 
-  setActive = () => {
-    if (this.props.active === false) {
+  componentDidUpdate() {
+    if (
+      (this.props.active === true) &
+      this.htmlPlayer.current.paused &
+      (this.htmlPlayer.current.currentTime === 0)
+    ) {
       this.playSound();
-      this.active = true;
+    } else if (
+      (this.props.active === false) &
+      !this.htmlPlayer.current.paused
+    ) {
+      this.pauseSound();
+    }
+  }
+
+  setCurrentPlayer = () => {
+    if (this.props.currentPlayerId !== this.props.id) {
+      this.props.updateCurrentPlayer(this.props.id);
     }
   };
 
-  setInActive = () => {
-    if (this.props.active === true) {
-      this.pauseSound();
-      this.active = false;
-    }
+  unsetCurrentPlayer = () => {
+    this.props.updateCurrentPlayer("");
   };
 
   playSound = () => {
     this.htmlPlayer.current.play();
-    this.props.updateCurrentPlayer(this.props.id);
   };
 
   pauseSound = () => {
     this.htmlPlayer.current.pause();
-    this.props.updateCurrentPlayer("");
+  };
+
+  setNextTrack = () => {
+    this.props.setNextTrack(this.props.id);
   };
 
   updateCurrentTime() {
@@ -54,8 +67,8 @@ export default class Sound extends Component {
           <PlayButton
             id={`${this.props.id}`}
             playing={this.props.active}
-            playSound={this.setActive}
-            pauseSound={this.setInActive}
+            playSound={this.setCurrentPlayer}
+            pauseSound={this.unsetCurrentPlayer}
           />
           <SoundTitle title={this.props.title} />
           <SoundTimer
@@ -67,8 +80,7 @@ export default class Sound extends Component {
             preload="none"
             key={`${this.props.id}`}
             id={`SoundData_${this.props.id}`}
-            onPlay={this.props.pauseAllOtherTracks.bind(this)}
-            onEnded={this.props.startNextTrack.bind(this)}
+            onEnded={this.setNextTrack.bind(this)}
             onTimeUpdate={this.updateCurrentTime.bind(this)}
           >
             <source src={this.props.url} type="audio/mpeg" />
