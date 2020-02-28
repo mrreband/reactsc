@@ -1,6 +1,10 @@
 let Parser = require("rss-parser");
 let parser = new Parser();
 
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 export default async function parseRss() {
   const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
   const RSS_URL =
@@ -48,11 +52,12 @@ export default async function parseRss() {
     return song.publish_date;
   });
 
+  await sleep(2000);
   shrodingers.sort((a, b) => a.title.localeCompare(b.title));
 
   //re-concatenate
   var finalList = nonShrodingers.concat(shrodingers);
-  return finalList;
+  return finalList;  
 }
 
 // parseRss().then(result => {
