@@ -3,17 +3,28 @@ import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
 import { usePromiseTracker } from "react-promise-tracker";
-import { trackPromise } from 'react-promise-tracker';
-
+import { trackPromise } from "react-promise-tracker";
+import Loader from "react-loader-spinner";
 
 const LoadingIndicator = props => {
   const { promiseInProgress } = usePromiseTracker();
 
   return (
-    promiseInProgress && 
-   <h1>Hey some async call in progress ! </h1>
- );  
-}
+    promiseInProgress && (
+      <div
+        style={{
+          width: "100%",
+          height: "100",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Loader type="ThreeDots" color="#455A64" height="100" width="100" />
+      </div>
+    )
+  );
+};
 
 function getRssData() {
   var songs = parseRss();
@@ -36,12 +47,12 @@ class SoundList extends React.Component {
 
   async componentWillMount() {
     trackPromise(
-      getRssData()
-        .then((songs) => {
-          this.setState({
-            SoundData: songs
-          })
-        }));
+      getRssData().then(songs => {
+        this.setState({
+          SoundData: songs
+        });
+      })
+    );
     this.render();
   }
 
@@ -67,8 +78,8 @@ class SoundList extends React.Component {
   render() {
     return (
       <div className="musics">
-        <LoadingIndicator/>
-        <h2 className="container">Piano Podcast</h2>
+        <h2>Piano Podcast</h2>
+        <LoadingIndicator />
         {this.state.SoundData.map(sound => (
           <Sound
             active={sound.id.toString() === this.state.currentPlayerId}
