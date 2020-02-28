@@ -2,6 +2,18 @@ import React from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
+import { trackPromise } from "react-promise-tracker";
+import LoadingIndicator from "./LoadingIndicator";
+
+
+function getRssData() {
+  var songs = parseRss();
+  if (songs) {
+    return songs;
+  } else {
+    return SoundData;
+  }
+}
 
 class SoundList extends React.Component {
   constructor() {
@@ -14,12 +26,13 @@ class SoundList extends React.Component {
   }
 
   async componentWillMount() {
-    var songs = await parseRss();
-    if (songs) {
-      this.setState({ SoundData: songs });
-    } else {
-      this.setState({ SoundData: SoundData });
-    }
+    trackPromise(
+      getRssData().then(songs => {
+        this.setState({
+          SoundData: songs
+        });
+      })
+    );
     this.render();
   }
 
@@ -45,7 +58,8 @@ class SoundList extends React.Component {
   render() {
     return (
       <div className="musics">
-        <h2 className="container">Piano Podcast</h2>
+        <h2>Piano Podcast</h2>
+        <LoadingIndicator />
         {this.state.SoundData.map(sound => (
           <Sound
             active={sound.id.toString() === this.state.currentPlayerId}
