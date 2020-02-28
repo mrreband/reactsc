@@ -2,29 +2,9 @@ import React from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
-import { usePromiseTracker } from "react-promise-tracker";
 import { trackPromise } from "react-promise-tracker";
-import Loader from "react-loader-spinner";
+import LoadingIndicator from "./LoadingIndicator";
 
-const LoadingIndicator = props => {
-  const { promiseInProgress } = usePromiseTracker();
-
-  return (
-    promiseInProgress && (
-      <div
-        style={{
-          width: "100%",
-          height: "100",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Loader type="ThreeDots" color="#455A64" height="100" width="100" />
-      </div>
-    )
-  );
-};
 
 function getRssData() {
   var songs = parseRss();
