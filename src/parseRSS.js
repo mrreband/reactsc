@@ -51,13 +51,20 @@ export default async function parseRss() {
   nonShrodingers.sort(function(song) {
     return song.publish_date;
   });
-
-  await sleep(2000);
   shrodingers.sort((a, b) => a.title.localeCompare(b.title));
 
-  //re-concatenate
+  //// placeholder for simulating latency
+  // await sleep(2000);
+
+  //re-concatenate and re-assign ids
   var finalList = nonShrodingers.concat(shrodingers);
-  return finalList;  
+  i = 1;
+  finalList.forEach(song => {
+    song.id = i;
+    i++;
+  })
+
+  return finalList;
 }
 
 // parseRss().then(result => {

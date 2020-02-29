@@ -36,7 +36,7 @@ class PlayButton extends Component {
           onClick={this.toggle.bind(this)}
         >
           <g fill="none" strokeWidth="3" stroke="#000000">
-            <circle cx="80" cy="80" r="70" id="circle2" className="circle" />
+            <circle cx="80" cy="80" r="65" id="circle2" className="circle" />
             <circle cx="80" cy="80" r="60" id="circle1" className="circle" />
 
             <rect
@@ -46,6 +46,7 @@ class PlayButton extends Component {
               ry="10"
               width="10"
               height="72.4"
+              fill="#455A64"
               className="pause"
               id="pause1"
             />
@@ -56,6 +57,7 @@ class PlayButton extends Component {
               ry="10"
               width="10"
               height="72.4"
+              fill="#455A64"
               className="pause"
               id="pause2"
             />
@@ -70,6 +72,7 @@ class PlayButton extends Component {
                      C108.8,81.1158594 108.8,76.6158594 105.9,74.4158594 
                      L105.9,74.4158594"
               className="play"
+              fill="#455A64"
             />
           </g>
         </svg>
