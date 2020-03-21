@@ -1,5 +1,6 @@
 import React from "react";
 import parseRss from "../parseRSS";
+import getPlaylist from "../getPlaylist";
 import SoundData from "./data.json";
 import Sound from "./Sound";
 import { trackPromise } from "react-promise-tracker";
@@ -21,6 +22,7 @@ class SoundList extends React.Component {
 
     this.state = {
       SoundData: [],
+      Playlist: [],
       currentPlayerId: ""
     };
   }
@@ -28,8 +30,11 @@ class SoundList extends React.Component {
   async componentWillMount() {
     trackPromise(
       getRssData().then(songs => {
+        let playlist = getPlaylist(songs);
+        console.log(playlist);
         this.setState({
-          SoundData: songs
+          SoundData: songs, 
+          Playlist: playlist
         });
       })
     );
