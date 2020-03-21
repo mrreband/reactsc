@@ -1,9 +1,6 @@
 let Parser = require("rss-parser");
 let parser = new Parser();
 
-const sleep = (milliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
 
 export default async function parseRss() {
   const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
@@ -31,6 +28,8 @@ export default async function parseRss() {
   });
 
   /////////////////////////////////////////////////////////
+  // Custom track sorting
+
   // split out shrodinger tracks to reorder them separately
   function Shrodinger(title, include) {
     if (title.includes("Schrodinger")) {
@@ -53,7 +52,10 @@ export default async function parseRss() {
   });
   shrodingers.sort((a, b) => a.title.localeCompare(b.title));
 
-  //// placeholder for simulating latency
+  //// Simulate latency to test the LoadingIndicator
+  // const sleep = (milliseconds) => {
+  //   return new Promise(resolve => setTimeout(resolve, milliseconds))
+  // }  
   // await sleep(2000);
 
   //re-concatenate and re-assign ids
@@ -66,7 +68,3 @@ export default async function parseRss() {
 
   return finalList;
 }
-
-// parseRss().then(result => {
-//   console.log(result);
-// });
