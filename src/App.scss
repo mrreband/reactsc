@@ -523,13 +523,12 @@ footer h4 {
 .ProgressBar {
   position: relative;
   height: 100%;
-  background-color: #000000;
+  background-color: #455A64;
 }
 /* end of progress bar stuff */
 
 /* start of play button stuff */
 .PlayButton g .play {
-  fill: rgba(22, 22, 22, 0);
   transform-origin: 50% 50%;
 }
 
@@ -548,7 +547,6 @@ footer h4 {
 .PlayButton.active g .pause {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .PlayButton g .circle {
@@ -562,27 +560,29 @@ footer h4 {
   }
 }
 
-/*circle2 circumference = 376*/
+//circle1 circumference = 376
 #circle1 {
   stroke: black;
-  stroke-dasharray: 60;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 47;
+  stroke-dashoffset: 70;
 }
 
-/*circle2 circumference = 440*/
+//circle2 circumference = 408
 #circle2 {
-  stroke: black;
-  stroke-dasharray: 70;
-  stroke-dashoffset: 0;
+  stroke: #455A64;
+  stroke-dasharray: 51;
+  stroke-dashoffset: 77;
 }
 
 #circle1.rotated {
+  stroke: #455A64;
   transform-origin: 49% 49%;
   transform: rotate(-720deg);
   transition: 1s;
 }
 
 #circle2.rotated {
+  stroke: black;
   transform-origin: 49% 49%;
   transform: rotate(720deg);
   transition: 1s;
