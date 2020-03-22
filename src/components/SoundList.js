@@ -60,6 +60,7 @@ class SoundList extends React.Component {
       <div className="musics">
         <h2>Piano Podcast</h2>
         <LoadingIndicator />
+        
         {this.state.SoundData.map(sound => (
           <Sound
             active={sound.id.toString() === this.state.currentPlayerId}

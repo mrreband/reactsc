@@ -14,7 +14,7 @@ class Header extends React.Component {
         <div className="container">
           <a href="/">
             <h1>
-              <img src={logo} alt="mr.Reband's logo" className="logo"/>
+              <img src={logo} alt="mr.Reband" className="logo"/>
             </h1>
           </a>
           <div className="bottom">

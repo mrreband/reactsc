@@ -45,7 +45,7 @@ h3,
 h4,
 h5,
 h6 {
-  padding-left: 10px;
+  padding: 0;
   margin: 0 0 1rem;
   font-weight: 400;
   color: #263238;
@@ -96,7 +96,7 @@ header {
   background: #455a64;
   color: #d6d8d7;
   margin-bottom: 30px;
-  height: 200px;
+  height: 170px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -118,7 +118,7 @@ header h2 {
 }
 
 header .logo {
-  max-width: 180px;
+  max-width: 170px;
   padding: 15px 0;
   margin: 0 auto;
   display: block;
@@ -176,6 +176,7 @@ header .logo {
 
 .musics h2 {
   font-size: 32px;
+  font-family:'Radley-Regular';
   margin-bottom: 30px;
 }
 
@@ -473,7 +474,7 @@ footer h4 {
 /* Custom Sound Components */
 .Sound {
   height: 50px;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 10px 0px 0px;
   background-color: #b0bec5;
   display: flex;
 }
@@ -497,7 +498,12 @@ footer h4 {
 
 .SoundTitle {
   width: 61%;
+  font-family:'Radley-Regular';
   padding: 10px 0px 0px 20px;
+}
+
+.SoundTitle h5 {
+  font-weight: 600;
 }
 
 .SoundTimer {
