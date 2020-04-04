@@ -46,7 +46,6 @@ h4,
 h5,
 h6 {
   padding: 0;
-  margin: 0 0 1rem;
   font-weight: 400;
   color: #263238;
 }
@@ -489,6 +488,8 @@ footer h4 {
 }
 
 .SoundElementText h5 {
+  position: relative;
+  bottom: 50%;
   font-weight: 550;
   font-family:'Radley-Regular';
 }
@@ -504,7 +505,6 @@ footer h4 {
 
 .SoundTitle {
   width: 61%;
-  font-family:'Radley-Regular';
   padding: 10px 0px 0px 20px;
 }
 
