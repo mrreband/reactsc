@@ -168,9 +168,25 @@ header .logo {
   max-width: 400px;
 }
 
+@media (max-width: 600px)
+{
+  .musics {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
 .musics {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media (max-width: 600px)
+{
+  .PianoPodcastDiv h2 {
+    visibility: hidden;
+    height: 0px;
+  }
 }
 
 .PianoPodcastDiv h2 {
