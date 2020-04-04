@@ -94,7 +94,6 @@ p {
 header {
   background: #455a64;
   color: #d6d8d7;
-  margin-bottom: 30px;
   height: 170px;
 }
 
@@ -170,14 +169,13 @@ header .logo {
 }
 
 .musics {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.musics h2 {
-  font-size: 32px;
+.PianoPodcastDiv h2 {
+  font-size: 26px;
   font-family:'Radley-Regular';
-  margin-bottom: 30px;
 }
 
 .musics p {
@@ -474,7 +472,7 @@ footer h4 {
 /* Custom Sound Components */
 .Sound {
   height: 50px;
-  margin: 10px 10px 0px 0px;
+  margin: 10px 0px 0px 0px;
   background-color: #b0bec5;
   display: flex;
 }
