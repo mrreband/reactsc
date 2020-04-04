@@ -488,6 +488,11 @@ footer h4 {
   white-space: nowrap;
 }
 
+.SoundElementText h5 {
+  font-weight: 550;
+  font-family:'Radley-Regular';
+}
+
 .PlayButtonContainer {
   display: flex;
   align-content: center;
@@ -501,10 +506,6 @@ footer h4 {
   width: 61%;
   font-family:'Radley-Regular';
   padding: 10px 0px 0px 20px;
-}
-
-.SoundTitle h5 {
-  font-weight: 600;
 }
 
 .SoundTimer {
