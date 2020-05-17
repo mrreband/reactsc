@@ -49,6 +49,10 @@ class SoundList extends React.Component {
     this.updateCurrentPlayer(nextId);
   };
 
+  playPause = (id) => {
+    console.log(id)
+  };
+
   render() {
     return (
       <div className="musics">
@@ -68,8 +72,7 @@ class SoundList extends React.Component {
             title={sound.title}
             url={sound.url}
             duration={sound.duration}
-            setNextTrack={this.setNextTrack}
-            updateCurrentPlayer={this.updateCurrentPlayer}
+            playPause={this.playPause}
           />
         ))}
       </div>

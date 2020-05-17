@@ -22,6 +22,11 @@ export default class Sound extends Component {
     this.htmlPlayer.current.currentTime = newTime;
   }
 
+  playPause = () => {
+      console.log(this.props.id);
+      this.props.playPause(this.props.id)
+  }
+
   render() {
     return (
       <div>
@@ -29,8 +34,7 @@ export default class Sound extends Component {
           <PlayButton
             id={`${this.props.id}`}
             playing={this.props.active}
-            playSound={this.setCurrentPlayer}
-            pauseSound={this.unsetCurrentPlayer}
+            playPause={this.playPause}
           />
           <SoundTitle title={this.props.title} />
           <SoundTimer

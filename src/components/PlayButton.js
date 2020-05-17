@@ -6,12 +6,13 @@ class PlayButton extends Component {
     this.svg = React.createRef();
   }
 
-  toggle = e => {
+  toggle = (e) => {
     e.preventDefault();
 
     var svg = this.svg.current;
     svg.getElementById("circle1").classList.toggle("rotated");
     svg.getElementById("circle2").classList.toggle("rotated");
+    this.props.playPause();
   };
 
   render() {
