@@ -6,7 +6,6 @@ import Sound from "./Sound";
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
 
-
 function getRssData() {
   var songs = parseRss();
   if (songs) {
@@ -23,29 +22,29 @@ class SoundList extends React.Component {
     this.state = {
       SoundData: [],
       Playlist: [],
-      currentPlayerId: ""
+      currentPlayerId: "",
     };
   }
 
   async componentWillMount() {
     trackPromise(
-      getRssData().then(songs => {
+      getRssData().then((songs) => {
         let playlist = getPlaylist(songs);
         console.log(playlist);
         this.setState({
-          SoundData: songs, 
-          Playlist: playlist
+          SoundData: songs,
+          Playlist: playlist,
         });
       })
     );
     this.render();
   }
 
-  updateCurrentPlayer = id => {
+  updateCurrentPlayer = (id) => {
     this.setState({ currentPlayerId: id.toString() });
   };
 
-  pauseAllOtherTracks = e => {
+  pauseAllOtherTracks = (e) => {
     for (var i = 1; i < this.state.SoundData.length; i++) {
       var targetPlayerId = "SoundData_" + i.toString();
       if (targetPlayerId !== e.target.id) {
@@ -55,7 +54,7 @@ class SoundList extends React.Component {
     }
   };
 
-  setNextTrack = id => {
+  setNextTrack = (id) => {
     var nextId = (id + 1).toString();
     this.updateCurrentPlayer(nextId);
   };
@@ -65,19 +64,21 @@ class SoundList extends React.Component {
       <div className="musics">
         <h2>Piano Podcast</h2>
         <LoadingIndicator />
-        {this.state.SoundData.map(sound => (
-          <Sound
-            active={sound.id.toString() === this.state.currentPlayerId}
-            currentPlayerId={this.state.currentPlayerId}
-            key={sound.id}
-            id={sound.id}
-            title={sound.title}
-            url={sound.url}
-            duration={sound.duration}
-            setNextTrack={this.setNextTrack}
-            updateCurrentPlayer={this.updateCurrentPlayer}
+        <audio>
+          {this.state.SoundData.map((sound) => (
+            <source src={sound.url} type="audio/mpeg" />
+          ))}
+        </audio>
+        <audio controls>
+          <source
+            src="https://feeds.soundcloud.com/stream/630013437-michael-reband-star-from-star.mp3"
+            type="audio/mpeg"
           />
-        ))}
+          <source
+            src="https://feeds.soundcloud.com/stream/659235344-michael-reband-then-again.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
       </div>
     );
   }
