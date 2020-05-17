@@ -18,6 +18,7 @@ function getRssData() {
 class SoundList extends React.Component {
   constructor() {
     super();
+    this.audioPlayer = React.createRef();
 
     this.state = {
       SoundData: [],
@@ -50,7 +51,13 @@ class SoundList extends React.Component {
   };
 
   playPause = (id) => {
-    console.log(id)
+    console.log(id);
+    if (id === this.state.currentPlayerId) {
+      this.setState({ currentPlayerId: "" });
+    } else {
+      this.setState({ currentPlayerId: id.toString() });
+      //   this.htmlPlayer.current.play();
+    }
   };
 
   render() {
@@ -58,12 +65,12 @@ class SoundList extends React.Component {
       <div className="musics">
         <h2>Piano Podcast</h2>
         <LoadingIndicator />
-        <audio>
+        <audio ref={this.htmlPlayer}>
           {this.state.SoundData.map((sound) => (
             <source src={sound.url} type="audio/mpeg" />
           ))}
         </audio>
-        {this.state.SoundData.map(sound => (
+        {this.state.SoundData.map((sound) => (
           <Sound
             active={sound.id.toString() === this.state.currentPlayerId}
             currentPlayerId={this.state.currentPlayerId}
