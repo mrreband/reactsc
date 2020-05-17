@@ -24,6 +24,7 @@ class SoundList extends React.Component {
             SoundData: [],
             Playlist: [],
             currentPlayerId: "",
+            currentTime: 0.0,
         };
     }
 
@@ -41,6 +42,17 @@ class SoundList extends React.Component {
         this.render();
     }
 
+    updateCurrentTime() {
+        let newTime = this.audioPlayer.current.currentTime;
+        console.log(newTime);
+        this.setState({ currentTime: newTime });
+    }
+    updateCurrentProgress(pct) {
+        console.log(pct);
+        var newTime = Math.floor(pct * this.state.duration);
+        this.audioPlayer.current.currentTime = newTime;
+    }
+
     getSoundById = (id) => {
         return this.state.SoundData.find(
             (s) => s.id.toString() === id.toString()
@@ -53,7 +65,6 @@ class SoundList extends React.Component {
     };
 
     updateCurrentPlayer = (id) => {
-        // todo: also update the current source in the audio tag
         if (this.state.currentPlayerId) {
             this.toggleActive(this.state.currentPlayerId);
         } else {
@@ -84,9 +95,17 @@ class SoundList extends React.Component {
             <div className="musics">
                 <h2>Piano Podcast</h2>
                 <LoadingIndicator />
-                <audio ref={this.audioPlayer}>
+                <audio
+                    ref={this.audioPlayer}
+                    onEnded={this.setNextTrack}
+                    onTimeUpdate={this.updateCurrentTime.bind(this)}
+                >
                     {this.state.SoundData.map((sound) => (
-                        <source src={sound.url} type="audio/mpeg" />
+                        <source
+                            src={sound.url}
+                            type="audio/mpeg"
+                            key={sound.id}
+                        />
                     ))}
                 </audio>
                 {this.state.SoundData.map((sound) => (
@@ -95,6 +114,7 @@ class SoundList extends React.Component {
                             sound.id.toString() === this.state.currentPlayerId
                         }
                         currentPlayerId={this.state.currentPlayerId}
+                        currentTime={this.state.currentTime}
                         key={sound.id}
                         id={sound.id}
                         title={sound.title}

@@ -13,15 +13,6 @@ export default class Sound extends Component {
         };
     }
 
-    updateCurrentTime() {
-        this.setState({ currentTime: this.htmlPlayer.current.currentTime });
-    }
-
-    updateCurrentProgress(pct) {
-        var newTime = Math.floor(pct * this.state.duration);
-        this.htmlPlayer.current.currentTime = newTime;
-    }
-
     playPause = () => {
         console.log(this.props.id);
         this.props.playPause(this.props.id);
@@ -39,15 +30,16 @@ export default class Sound extends Component {
                     <SoundTitle title={this.props.title} />
                     <SoundTimer
                         duration={this.state.duration}
-                        currentTime={this.state.currentTime}
+                        currentTime={
+                            this.props.active
+                                ? this.props.currentTime
+                                : this.state.currentTime
+                        }
                     />
                 </div>
                 <ProgressBar
                     duration={this.state.duration}
                     currentTime={this.state.currentTime}
-                    updateCurrentProgress={this.updateCurrentProgress.bind(
-                        this
-                    )}
                 />
             </div>
         );
