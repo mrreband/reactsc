@@ -41,13 +41,18 @@ class SoundList extends React.Component {
         this.render();
     }
 
+    toggleActive = (id) => {
+        const currentSong = this.state.SoundData.find(
+            (s) => s.id.toString() === id.toString()
+        );
+        currentSong.active = !currentSong.active;
+    };
+
     updateCurrentPlayer = (id) => {
         if (this.state.currentPlayerId) {
-            const currentSongId = this.state.currentPlayerId;
-            const currentSong = this.state.SoundData.find(
-                (s) => s.id.toString() === currentSongId
-            );
-            currentSong.active = false;
+            this.toggleActive(this.state.currentPlayerId);
+        } else {
+            this.toggleActive(id);
         }
         this.setState({ currentPlayerId: id.toString() });
     };
@@ -59,8 +64,8 @@ class SoundList extends React.Component {
 
     playPause = (id) => {
         if (id.toString() === this.state.currentPlayerId) {
-            this.updateCurrentPlayer("");
             this.audioPlayer.current.pause();
+            this.updateCurrentPlayer("");
         } else {
             this.updateCurrentPlayer(id);
             this.audioPlayer.current.play();

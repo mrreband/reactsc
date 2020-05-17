@@ -9,7 +9,6 @@ export default class Sound extends Component {
         super(props);
         this.state = {
             duration: this.props.duration,
-            active: this.props.active,
             currentTime: 0,
         };
     }
@@ -25,7 +24,6 @@ export default class Sound extends Component {
 
     playPause = () => {
         console.log(this.props.id);
-        this.setState({ active: !this.state.active });
         this.props.playPause(this.props.id);
     };
 
@@ -35,7 +33,7 @@ export default class Sound extends Component {
                 <div className="Sound">
                     <PlayButton
                         id={`${this.props.id}`}
-                        playing={this.state.active && this.props.active}
+                        playing={this.props.active}
                         playPause={this.playPause}
                     />
                     <SoundTitle title={this.props.title} />
