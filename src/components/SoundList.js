@@ -56,7 +56,7 @@ class SoundList extends React.Component {
       this.setState({ currentPlayerId: "" });
     } else {
       this.setState({ currentPlayerId: id.toString() });
-      //   this.htmlPlayer.current.play();
+      this.audioPlayer.current.play();
     }
   };
 
@@ -65,7 +65,7 @@ class SoundList extends React.Component {
       <div className="musics">
         <h2>Piano Podcast</h2>
         <LoadingIndicator />
-        <audio ref={this.htmlPlayer}>
+        <audio ref={this.audioPlayer}>
           {this.state.SoundData.map((sound) => (
             <source src={sound.url} type="audio/mpeg" />
           ))}
