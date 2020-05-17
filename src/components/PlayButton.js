@@ -12,12 +12,6 @@ class PlayButton extends Component {
     var svg = this.svg.current;
     svg.getElementById("circle1").classList.toggle("rotated");
     svg.getElementById("circle2").classList.toggle("rotated");
-
-    if (this.props.playing === true) {
-      this.props.pauseSound();
-    } else {
-      this.props.playSound();
-    }
   };
 
   render() {
@@ -63,13 +57,13 @@ class PlayButton extends Component {
             />
 
             <path
-              d="M105.9,74.4158594 
-                     L67.2,44.2158594 
-                     C63.5,41.3158594 58,43.9158594 58,48.7158594 
-                     L58,109.015859 
-                     C58,113.715859 63.4,116.415859 67.2,113.515859 
-                     L105.9,83.3158594 
-                     C108.8,81.1158594 108.8,76.6158594 105.9,74.4158594 
+              d="M105.9,74.4158594
+                     L67.2,44.2158594
+                     C63.5,41.3158594 58,43.9158594 58,48.7158594
+                     L58,109.015859
+                     C58,113.715859 63.4,116.415859 67.2,113.515859
+                     L105.9,83.3158594
+                     C108.8,81.1158594 108.8,76.6158594 105.9,74.4158594
                      L105.9,74.4158594"
               className="play"
               fill="#455A64"
