@@ -1,6 +1,5 @@
 import React from "react";
 import parseRss from "../parseRSS";
-import getPlaylist from "../getPlaylist";
 import SoundData from "./data.json";
 import Sound from "./Sound";
 import { trackPromise } from "react-promise-tracker";
@@ -22,8 +21,7 @@ class SoundList extends React.Component {
 
         this.state = {
             SoundData: [],
-            Playlist: [],
-            currentPlayerId: "",
+            currentSoundId: "",
             currentTime: 0.0,
         };
     }
@@ -31,24 +29,16 @@ class SoundList extends React.Component {
     async componentWillMount() {
         trackPromise(
             getRssData().then((songs) => {
-                let playlist = getPlaylist(songs);
-                console.log(playlist);
                 this.setState({
                     SoundData: songs,
-                    Playlist: playlist,
                 });
             })
         );
         this.render();
     }
 
-    setCurrentTime() {
-        let newTime = this.audioPlayer.current.currentTime;
-        this.setState({ currentTime: newTime });
-    }
-
     currentSound = () => {
-        return this.getSoundById(this.state.currentPlayerId);
+        return this.getSoundById(this.state.currentSoundId);
     };
 
     getSoundById = (id) => {
@@ -62,27 +52,39 @@ class SoundList extends React.Component {
         sound.active = !sound.active;
     };
 
+    /** set the currentSound and set the active prop */
     setCurrentSound = (id) => {
-        if (this.state.currentPlayerId) {
-            this.toggleActive(this.state.currentPlayerId);
+        if (this.state.currentSoundId) {
+            this.toggleActive(this.state.currentSoundId);
         } else {
             this.toggleActive(id);
         }
-        this.setState({ currentPlayerId: id.toString() });
+        this.setState({ currentSoundId: id.toString() });
     };
 
+    /** skip to the next track when one track ends */
     setNextSound = () => {
-        const nextId = (parseInt(this.state.currentPlayerId) + 1).toString();
-        this.playPause(nextId);
+        const nextId = (parseInt(this.state.currentSoundId) + 1).toString();
+        if (this.getSoundById(nextId) !== undefined) {
+            this.playPause(nextId);
+        }
     };
 
+    /** Set the currentTime from the audio element */
+    setCurrentTime() {
+        let newTime = this.audioPlayer.current.currentTime;
+        this.setState({ currentTime: newTime });
+    }
+
+    /** Set the current time from the Progress Bar */
     setProgress = (pct) => {
         const newPosition = this.currentSound().duration * pct;
         this.audioPlayer.current.currentTime = newPosition;
     };
 
+    /** toggle play / pause status, update current sound if the id is different */
     playPause = (id) => {
-        if (id.toString() === this.state.currentPlayerId) {
+        if (id.toString() === this.state.currentSoundId) {
             if (this.audioPlayer.current.paused) {
                 this.audioPlayer.current.play();
             } else {
@@ -102,6 +104,7 @@ class SoundList extends React.Component {
             <div className="musics">
                 <h2>Piano Podcast</h2>
                 <LoadingIndicator />
+
                 <audio
                     ref={this.audioPlayer}
                     onEnded={this.setNextSound}
@@ -115,12 +118,13 @@ class SoundList extends React.Component {
                         />
                     ))}
                 </audio>
+
                 {this.state.SoundData.map((sound) => (
                     <Sound
                         active={
-                            sound.id.toString() === this.state.currentPlayerId
+                            sound.id.toString() === this.state.currentSoundId
                         }
-                        currentPlayerId={this.state.currentPlayerId}
+                        currentSoundId={this.state.currentSoundId}
                         currentTime={this.state.currentTime}
                         key={sound.id}
                         id={sound.id}
