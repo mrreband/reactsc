@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PlayButton from "./PlayButton.js";
 import SoundTitle from "./SoundTitle.js";
+import ShareButton from "./ShareButton.js";
 import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
 
