@@ -80,9 +80,13 @@ class SoundList extends React.Component {
 
     playPause = (id) => {
         if (id.toString() === this.state.currentPlayerId) {
-            this.updateCurrentPlayer("");
-            this.audioPlayer.current.pause();
+            if (this.audioPlayer.current.paused) {
+                this.audioPlayer.current.play();
+            } else {
+                this.audioPlayer.current.pause();
+            }
         } else {
+            this.audioPlayer.current.pause();
             this.updateCurrentPlayer(id);
             const sound = this.getSoundById(id);
             this.audioPlayer.current.src = sound.url;

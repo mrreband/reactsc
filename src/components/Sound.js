@@ -14,7 +14,6 @@ export default class Sound extends Component {
     }
 
     playPause = () => {
-        console.log(this.props.id);
         this.props.playPause(this.props.id);
     };
 
