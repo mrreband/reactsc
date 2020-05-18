@@ -5,93 +5,51 @@ import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
 
 export default class Sound extends Component {
-  constructor(props) {
-    super(props);
-    this.htmlPlayer = React.createRef();
-    this.state = {
-      duration: this.props.duration,
-      currentTime: 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            duration: this.props.duration,
+            currentTime: 0,
+        };
+    }
+
+    playPause = () => {
+        this.props.playPause(this.props.id);
     };
-  }
 
-  componentDidUpdate() {
-    if (
-      (this.props.active === true) &
-      this.htmlPlayer.current.paused &
-      (this.htmlPlayer.current.currentTime === 0)
-    ) {
-      this.playSound();
-    } else if (
-      (this.props.active === false) &
-      !this.htmlPlayer.current.paused
-    ) {
-      this.pauseSound();
+    setProgress = (pct) => {
+        this.props.setProgress(pct);
+    };
+
+    render() {
+        return (
+            <div>
+                <div className="Sound">
+                    <PlayButton
+                        id={`${this.props.id}`}
+                        playing={this.props.active}
+                        playPause={this.playPause}
+                    />
+                    <SoundTitle title={this.props.title} />
+                    <SoundTimer
+                        duration={this.state.duration}
+                        currentTime={
+                            this.props.active
+                                ? this.props.currentTime
+                                : this.state.currentTime
+                        }
+                    />
+                </div>
+                <ProgressBar
+                    duration={this.state.duration}
+                    currentTime={
+                        this.props.active
+                            ? this.props.currentTime
+                            : this.state.currentTime
+                    }
+                    setProgress={this.setProgress.bind(this)}
+                />
+            </div>
+        );
     }
-  }
-
-  setCurrentPlayer = () => {
-    if (this.props.currentPlayerId !== this.props.id) {
-      this.props.updateCurrentPlayer(this.props.id);
-    }
-  };
-
-  unsetCurrentPlayer = () => {
-    this.props.updateCurrentPlayer("");
-  };
-
-  playSound = () => {
-    this.htmlPlayer.current.play();
-  };
-
-  pauseSound = () => {
-    this.htmlPlayer.current.pause();
-  };
-
-  setNextTrack = () => {
-    this.props.setNextTrack(this.props.id);
-  };
-
-  updateCurrentTime() {
-    this.setState({ currentTime: this.htmlPlayer.current.currentTime });
-  }
-
-  updateCurrentProgress(pct) {
-    var newTime = Math.floor(pct * this.state.duration);
-    this.htmlPlayer.current.currentTime = newTime;
-  }
-
-  render() {
-    return (
-      <div>
-        <div className="Sound">
-          <PlayButton
-            id={`${this.props.id}`}
-            playing={this.props.active}
-            playSound={this.setCurrentPlayer}
-            pauseSound={this.unsetCurrentPlayer}
-          />
-          <SoundTitle title={this.props.title} />
-          <SoundTimer
-            duration={this.state.duration}
-            currentTime={this.state.currentTime}
-          />
-          <audio
-            ref={this.htmlPlayer}
-            preload="none"
-            key={`${this.props.id}`}
-            id={`SoundData_${this.props.id}`}
-            onEnded={this.setNextTrack.bind(this)}
-            onTimeUpdate={this.updateCurrentTime.bind(this)}
-          >
-            <source src={this.props.url} type="audio/mpeg" />
-          </audio>
-        </div>
-        <ProgressBar
-          duration={this.state.duration}
-          currentTime={this.state.currentTime}
-          updateCurrentProgress={this.updateCurrentProgress.bind(this)}
-        />
-      </div>
-    );
-  }
 }
