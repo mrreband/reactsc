@@ -1,6 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2f44b19a-4cfc-4887-8795-b04a3a01e34f/deploy-status)](https://app.netlify.com/sites/infallible-swirles-271fb6/deploys)
 
-## React website for RSS feeds
+## React SPA website for RSS feeds
+
+Built for a SoundCloud artist feed [mr.reband.io]
 
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then gutted.
 
