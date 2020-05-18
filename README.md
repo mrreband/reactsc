@@ -14,27 +14,25 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
     "react-loader-spinner": "^3.1.5",
     "react-promise-tracker": "^2.0.6",
     "react-scripts": "^3.3.0",
-    "react-soundplayer": "^1.0.4",
     "rss-parser": "^3.7.2"
 
 ---
 
 ### **Component Structure**
 
-- App.js
-    - Header.js
-    - SoundList.js
-        - LoadingIndicator.js
-        - Sound.js
-            - PlayButton.js
-            - ProgressBar.js
-            - SoundTimer.js
-            - SoundTitle.js
-    - Footer.js
+-   App.js
+    -   Header.js
+    -   SoundList.js `(<audio>)`
+        -   LoadingIndicator.js
+        -   Sound.js `(<source>)`
+            -   PlayButton.js
+            -   ProgressBar.js
+            -   SoundTimer.js
+            -   SoundTitle.js
+    -   Footer.js
 
 ---
 
 ### parseRSS.js
 
 Parse an RSS feed to create and return a list of `Sound` objects
-

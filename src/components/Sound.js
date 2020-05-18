@@ -4,6 +4,8 @@ import SoundTitle from "./SoundTitle.js";
 import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
 
+// todo: add a share icon
+
 export default class Sound extends Component {
     constructor(props) {
         super(props);
