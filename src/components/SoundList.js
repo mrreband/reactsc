@@ -75,10 +75,9 @@ class SoundList extends React.Component {
         this.setState({ currentPlayerId: id.toString() });
     };
 
-    setNextTrack = (id) => {
-        console.log("setNextTrack");
-        var nextId = (id + 1).toString();
-        this.updateCurrentPlayer(nextId);
+    setNextTrack = () => {
+        const nextId = (parseInt(this.state.currentPlayerId) + 1).toString();
+        this.playPause(nextId);
     };
 
     setProgress = (pct) => {
