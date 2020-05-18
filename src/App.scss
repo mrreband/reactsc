@@ -45,8 +45,7 @@ h3,
 h4,
 h5,
 h6 {
-  padding-left: 10px;
-  margin: 0 0 1rem;
+  padding: 0;
   font-weight: 400;
   color: #263238;
 }
@@ -95,8 +94,7 @@ p {
 header {
   background: #455a64;
   color: #d6d8d7;
-  margin-bottom: 30px;
-  height: 200px;
+  height: 170px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -118,8 +116,9 @@ header h2 {
 }
 
 header .logo {
-  max-width: 180px;
-  padding: 15px 0;
+  max-width: 170px;
+  max-height: 170px;
+  padding: 15px 0 0 0;
   margin: 0 auto;
   display: block;
 }
@@ -130,7 +129,6 @@ header .logo {
 }
 .feeds {
   text-align: center;
-  padding-top: 15px;
 }
 @media only screen and (min-width: 600px) {
   header .logo {
@@ -140,6 +138,7 @@ header .logo {
   .feeds {
     float: right;
     margin: 0;
+    padding-top: 100px;
   }
 }
 
@@ -169,14 +168,30 @@ header .logo {
   max-width: 400px;
 }
 
-.musics {
-  margin-top: 30px;
-  margin-bottom: 30px;
+@media (max-width: 600px)
+{
+  .musics {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 
-.musics h2 {
-  font-size: 32px;
-  margin-bottom: 30px;
+.musics {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px)
+{
+  .PianoPodcastDiv h2 {
+    visibility: hidden;
+    height: 0px;
+  }
+}
+
+.PianoPodcastDiv h2 {
+  font-size: 26px;
+  font-family:'Radley-Regular';
 }
 
 .musics p {
@@ -473,7 +488,7 @@ footer h4 {
 /* Custom Sound Components */
 .Sound {
   height: 50px;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 0px 0px 0px;
   background-color: #b0bec5;
   display: flex;
 }
@@ -484,6 +499,13 @@ footer h4 {
   justify-content: center;
   align-content: center;
   white-space: nowrap;
+}
+
+.SoundElementText h5 {
+  position: relative;
+  bottom: 50%;
+  font-weight: 550;
+  font-family:'Radley-Regular';
 }
 
 .PlayButtonContainer {

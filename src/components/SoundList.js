@@ -102,7 +102,6 @@ class SoundList extends React.Component {
     render() {
         return (
             <div className="musics">
-                <h2>Piano Podcast</h2>
                 <LoadingIndicator />
 
                 <audio

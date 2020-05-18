@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+	 viewBox="0 0 1000 850" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;}
 	.st1{fill:none;}
@@ -456,7 +456,5 @@
 		c0.6,0.5,1.2,1.1,1.6,1.7C201.9,254.9,201.1,256.1,198.5,255.9z"/>
 </g>
 <rect x="32.9" y="616.3" class="st1" width="335.6" height="197.2"/>
-<text transform="matrix(1 0 0 1 32.8635 750.6292)" class="st2 st3 st4">mr.</text>
-<rect x="32.9" y="794.6" class="st1" width="700.6" height="172"/>
-<text transform="matrix(1 0 0 1 32.864 928.9315)" class="st2 st3 st4">Reband</text>
+<text transform="matrix(1 0 0 1 0.8635 780.6292)" class="st2 st3 st4">mr.Reband</text>
 </svg>
