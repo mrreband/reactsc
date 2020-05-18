@@ -17,6 +17,10 @@ export default class Sound extends Component {
         this.props.playPause(this.props.id);
     };
 
+    setProgress = (pct) => {
+        this.props.setProgress(pct);
+    };
+
     render() {
         return (
             <div>
@@ -38,7 +42,12 @@ export default class Sound extends Component {
                 </div>
                 <ProgressBar
                     duration={this.state.duration}
-                    currentTime={this.state.currentTime}
+                    currentTime={
+                        this.props.active
+                            ? this.props.currentTime
+                            : this.state.currentTime
+                    }
+                    setProgress={this.setProgress.bind(this)}
                 />
             </div>
         );

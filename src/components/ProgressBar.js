@@ -16,15 +16,11 @@ export default class ProgressBar extends Component {
         return currentProgress.toString() + "%";
     };
 
-    setProgress = (pct) => {
-        this.setState({ progressPct: pct });
-    };
-
     ScrubberClick = (e) => {
         var fullWidth = this.progressBarContainer.current.offsetWidth;
         var newWidth = e.clientX - this.progressBarContainer.current.offsetLeft;
         var pct = newWidth / fullWidth;
-        this.setProgress(pct);
+        this.props.setProgress(pct);
     };
 
     render() {

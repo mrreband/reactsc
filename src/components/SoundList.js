@@ -44,14 +44,16 @@ class SoundList extends React.Component {
 
     updateCurrentTime() {
         let newTime = this.audioPlayer.current.currentTime;
-        console.log(newTime);
         this.setState({ currentTime: newTime });
     }
     updateCurrentProgress(pct) {
-        console.log(pct);
         var newTime = Math.floor(pct * this.state.duration);
         this.audioPlayer.current.currentTime = newTime;
     }
+
+    currentSound = () => {
+        return this.getSoundById(this.state.currentPlayerId);
+    };
 
     getSoundById = (id) => {
         return this.state.SoundData.find(
@@ -60,8 +62,8 @@ class SoundList extends React.Component {
     };
 
     toggleActive = (id) => {
-        const currentSong = this.getSoundById(id);
-        currentSong.active = !currentSong.active;
+        const sound = this.getSoundById(id);
+        sound.active = !sound.active;
     };
 
     updateCurrentPlayer = (id) => {
@@ -74,8 +76,14 @@ class SoundList extends React.Component {
     };
 
     setNextTrack = (id) => {
+        console.log("setNextTrack");
         var nextId = (id + 1).toString();
         this.updateCurrentPlayer(nextId);
+    };
+
+    setProgress = (pct) => {
+        const newPosition = this.currentSound().duration * pct;
+        this.audioPlayer.current.currentTime = newPosition;
     };
 
     playPause = (id) => {
@@ -125,6 +133,7 @@ class SoundList extends React.Component {
                         url={sound.url}
                         duration={sound.duration}
                         playPause={this.playPause}
+                        setProgress={this.setProgress}
                     />
                 ))}
             </div>
