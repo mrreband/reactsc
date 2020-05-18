@@ -32,8 +32,18 @@ class SoundList extends React.Component {
                 this.setState({
                     SoundData: songs,
                 });
+
+                let params = new URLSearchParams(window.location.search);
+                let trackId = params.get("track");
+                if (trackId !== undefined) {
+                    let startTrack = this.getSoundById(trackId);
+                    if (startTrack !== undefined) {
+                        this.playPause(trackId);
+                    }
+                }
             })
         );
+
         this.render();
     }
 
