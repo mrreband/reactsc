@@ -42,13 +42,9 @@ class SoundList extends React.Component {
         this.render();
     }
 
-    updateCurrentTime() {
+    setCurrentTime() {
         let newTime = this.audioPlayer.current.currentTime;
         this.setState({ currentTime: newTime });
-    }
-    updateCurrentProgress(pct) {
-        var newTime = Math.floor(pct * this.state.duration);
-        this.audioPlayer.current.currentTime = newTime;
     }
 
     currentSound = () => {
@@ -66,7 +62,7 @@ class SoundList extends React.Component {
         sound.active = !sound.active;
     };
 
-    updateCurrentPlayer = (id) => {
+    setCurrentSound = (id) => {
         if (this.state.currentPlayerId) {
             this.toggleActive(this.state.currentPlayerId);
         } else {
@@ -75,7 +71,7 @@ class SoundList extends React.Component {
         this.setState({ currentPlayerId: id.toString() });
     };
 
-    setNextTrack = () => {
+    setNextSound = () => {
         const nextId = (parseInt(this.state.currentPlayerId) + 1).toString();
         this.playPause(nextId);
     };
@@ -94,7 +90,7 @@ class SoundList extends React.Component {
             }
         } else {
             this.audioPlayer.current.pause();
-            this.updateCurrentPlayer(id);
+            this.setCurrentSound(id);
             const sound = this.getSoundById(id);
             this.audioPlayer.current.src = sound.url;
             this.audioPlayer.current.play();
@@ -108,8 +104,8 @@ class SoundList extends React.Component {
                 <LoadingIndicator />
                 <audio
                     ref={this.audioPlayer}
-                    onEnded={this.setNextTrack}
-                    onTimeUpdate={this.updateCurrentTime.bind(this)}
+                    onEnded={this.setNextSound}
+                    onTimeUpdate={this.setCurrentTime.bind(this)}
                 >
                     {this.state.SoundData.map((sound) => (
                         <source
