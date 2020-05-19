@@ -25,7 +25,7 @@ export default class Sound extends Component {
     };
 
     share = () => {
-        console.log(this.props.url);
+        console.log(`sharing this url: ${this.props.url}`);
     };
 
     render() {
