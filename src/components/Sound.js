@@ -24,6 +24,10 @@ export default class Sound extends Component {
         this.props.setProgress(pct);
     };
 
+    share = () => {
+        console.log(this.props.url);
+    };
+
     render() {
         return (
             <div>
@@ -42,6 +46,7 @@ export default class Sound extends Component {
                                 : this.state.currentTime
                         }
                     />
+                    <ShareButton share={this.share} />
                 </div>
                 <ProgressBar
                     duration={this.state.duration}

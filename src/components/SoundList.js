@@ -88,8 +88,11 @@ class SoundList extends React.Component {
 
     /** Set the current time from the Progress Bar */
     setProgress = (pct) => {
-        const newPosition = this.currentSound().duration * pct;
-        this.audioPlayer.current.currentTime = newPosition;
+        const currentSound = this.currentSound();
+        if (currentSound) {
+            const newPosition = this.currentSound().duration * pct;
+            this.audioPlayer.current.currentTime = newPosition;
+        }
     };
 
     /** toggle play / pause status, update current sound if the id is different */
