@@ -26,6 +26,12 @@ export default class Sound extends Component {
 
     share = () => {
         console.log(`sharing this url: ${this.props.url}`);
+        let temporaryUrl = document.createElement("textarea");
+        temporaryUrl.innerText = this.props.url;
+        document.body.appendChild(temporaryUrl);
+        temporaryUrl.select();
+        document.execCommand("copy");
+        temporaryUrl.remove();
     };
 
     render() {

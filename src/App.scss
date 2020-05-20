@@ -516,20 +516,23 @@ footer h4 {
 }
 
 .SoundTitle {
-    width: 61%;
+    width: 71%;
     padding: 10px 0px 0px 20px;
 }
 
 .SoundTimer {
     color: #2d363f;
     padding: 10px 5px 0px 0px;
-    width: 19%;
+    width: 29%;
     text-align: right;
 }
 
 .ShareButton {
-    width: 10%;
+    cursor: pointer;
+    padding: 12px 5px 0px 10px;
+    align-content: right;
 }
+
 /* PlaySvg centers the svg inside the PlayButton div */
 .PlaySvg {
     display: block;
