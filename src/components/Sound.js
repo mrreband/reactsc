@@ -35,9 +35,12 @@ export default class Sound extends Component {
     };
 
     render() {
+        let classNames = ["Sound"];
+        // if (this.props.active) classNames.push("Active");
+
         return (
             <div>
-                <div className="Sound">
+                <div className={classNames}>
                     <PlayButton
                         id={`${this.props.id}`}
                         playing={this.props.active}
