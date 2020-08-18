@@ -37,6 +37,7 @@
     },
     "devDependencies": {
         "acorn": "^6.4.1",
-        "lodash": ">=4.17.19"
+        "lodash": ">=4.17.19",
+        "dot-prop": ">=4.2.1"
     }
 }
