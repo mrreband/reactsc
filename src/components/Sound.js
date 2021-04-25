@@ -1,8 +1,9 @@
+import moment from "moment";
 import React, { Component } from "react";
 import PlayButton from "./PlayButton.js";
-import SoundTitle from "./SoundTitle.js";
-import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
+import SoundTimer from "./SoundTimer.js";
+import SoundTitle from "./SoundTitle.js";
 
 export default class Sound extends Component {
     constructor(props) {
@@ -21,15 +22,17 @@ export default class Sound extends Component {
         this.props.setProgress(pct);
     };
 
+
     render() {
         return (
             <div>
+                {moment(this.props.pubDate).format("MMM DD, YYYY")}
                 <div className="Sound">
                     <PlayButton
                         id={`${this.props.id}`}
                         playing={this.props.active}
                         playPause={this.playPause}
-                    />
+                        />
                     <SoundTitle title={this.props.title} />
                     <SoundTimer
                         duration={this.state.duration}

@@ -30,7 +30,7 @@ export default async function parseRss() {
             description: item["itunes"]["subtitle"],
             url: item["enclosure"]["url"],
             duration: duration,
-            publish_date: item["publish_date"],
+            pubDate: item["pubDate"],
         };
         songs.push(song);
         i += 1;
