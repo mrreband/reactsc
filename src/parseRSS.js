@@ -1,14 +1,24 @@
 let Parser = require("rss-parser");
 let parser = new Parser();
 
-export default async function parseRss() {
+async function getRss() {
     const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
     const RSS_URL =
         "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
+    try {
+        return await parser.parseURL(CORS_PROXY + RSS_URL);
+    } catch (error) {
+        console.error("Error getting soundcloud rss - falling back on local");
+        console.error({ error });
+        return await parser.parseURL("./sounds.rss");
+    }
+}
+
+export default async function parseRss() {
     let songs = [];
     let i = 1;
 
-    let feed = await parser.parseURL(CORS_PROXY + RSS_URL);
+    let feed = await getRss();
 
     feed.items.forEach((item) => {
         let duration =
@@ -50,6 +60,12 @@ export default async function parseRss() {
         return song.publish_date;
     });
     shrodingers.sort((a, b) => a.title.localeCompare(b.title));
+
+    //// Simulate latency to test the LoadingIndicator
+    // const sleep = (milliseconds) => {
+    //   return new Promise(resolve => setTimeout(resolve, milliseconds))
+    // }
+    // await sleep(2000);
 
     //re-concatenate and re-assign ids
     var finalList = nonShrodingers.concat(shrodingers);
