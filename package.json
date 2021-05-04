@@ -42,6 +42,8 @@
         "lodash": ">=4.17.19",
         "dot-prop": ">=4.2.1",
         "handlebars": ">=4.5.3",
-        "yargs-parser": ">=13.1.2"
+        "yargs-parser": ">=13.1.2",
+        "sockjs": ">=0.3.20",
+        "ssri": ">=6.0.2"
     }
 }
