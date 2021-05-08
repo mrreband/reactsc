@@ -39,7 +39,7 @@
     "devDependencies": {
         "http-proxy": ">=1.18.1",
         "acorn": "^6.4.1",
-        "lodash": ">=4.17.19",
+        "lodash": ">=4.17.21",
         "dot-prop": ">=4.2.1",
         "handlebars": ">=4.5.3",
         "yargs-parser": ">=13.1.2",
