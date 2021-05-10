@@ -2,66 +2,141 @@ import React from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
+import { trackPromise } from "react-promise-tracker";
+import LoadingIndicator from "./LoadingIndicator";
+
+function getRssData() {
+    var songs = parseRss();
+    if (songs) {
+        return songs;
+    } else {
+        return SoundData;
+    }
+}
 
 class SoundList extends React.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
+        this.audioPlayer = React.createRef();
 
-    this.state = {
-      SoundData: [],
-      currentPlayerId: ""
+        this.state = {
+            SoundData: [],
+            currentSoundId: "",
+            currentTime: 0.0,
+        };
+    }
+
+    async componentWillMount() {
+        trackPromise(
+            getRssData().then((songs) => {
+                this.setState({
+                    SoundData: songs,
+                });
+            })
+        );
+        this.render();
+    }
+
+    currentSound = () => {
+        return this.getSoundById(this.state.currentSoundId);
     };
-  }
 
-  async componentWillMount() {
-    var songs = await parseRss();
-    if (songs) {
-      this.setState({ SoundData: songs });
-    } else {
-      this.setState({ SoundData: SoundData });
+    getSoundById = (id) => {
+        return this.state.SoundData.find(
+            (s) => s.id.toString() === id.toString()
+        );
+    };
+
+    toggleActive = (id) => {
+        const sound = this.getSoundById(id);
+        sound.active = !sound.active;
+    };
+
+    /** set the currentSound and set the active prop */
+    setCurrentSound = (id) => {
+        if (this.state.currentSoundId) {
+            this.toggleActive(this.state.currentSoundId);
+        } else {
+            this.toggleActive(id);
+        }
+        this.setState({ currentSoundId: id.toString() });
+    };
+
+    /** skip to the next track when one track ends */
+    setNextSound = () => {
+        const nextId = (parseInt(this.state.currentSoundId) + 1).toString();
+        if (this.getSoundById(nextId) !== undefined) {
+            this.playPause(nextId);
+        }
+    };
+
+    /** Set the currentTime from the audio element */
+    setCurrentTime() {
+        let newTime = this.audioPlayer.current.currentTime;
+        this.setState({ currentTime: newTime });
     }
-    this.render();
-  }
 
-  updateCurrentPlayer = id => {
-    this.setState({ currentPlayerId: id.toString() });
-  };
+    /** Set the current time from the Progress Bar */
+    setProgress = (pct) => {
+        const newPosition = this.currentSound().duration * pct;
+        this.audioPlayer.current.currentTime = newPosition;
+    };
 
-  pauseAllOtherTracks = e => {
-    for (var i = 1; i < this.state.SoundData.length; i++) {
-      var targetPlayerId = "SoundData_" + i.toString();
-      if (targetPlayerId !== e.target.id) {
-        var player = document.getElementById(targetPlayerId);
-        player.pause();
-      }
+    /** toggle play / pause status, update current sound if the id is different */
+    playPause = (id) => {
+        if (id.toString() === this.state.currentSoundId) {
+            if (this.audioPlayer.current.paused) {
+                this.audioPlayer.current.play();
+            } else {
+                this.audioPlayer.current.pause();
+            }
+        } else {
+            this.audioPlayer.current.pause();
+            this.setCurrentSound(id);
+            const sound = this.getSoundById(id);
+            this.audioPlayer.current.src = sound.url;
+            this.audioPlayer.current.play();
+        }
+    };
+
+    render() {
+        return (
+            <div className="musics">
+                <LoadingIndicator />
+
+                <audio
+                    ref={this.audioPlayer}
+                    onEnded={this.setNextSound}
+                    onTimeUpdate={this.setCurrentTime.bind(this)}
+                >
+                    {this.state.SoundData.map((sound) => (
+                        <source
+                            src={sound.url}
+                            type="audio/mpeg"
+                            key={sound.id}
+                        />
+                    ))}
+                </audio>
+
+                {this.state.SoundData.map((sound) => (
+                    <Sound
+                        active={
+                            sound.id.toString() === this.state.currentSoundId
+                        }
+                        currentSoundId={this.state.currentSoundId}
+                        currentTime={this.state.currentTime}
+                        key={sound.id}
+                        id={sound.id}
+                        title={sound.title}
+                        url={sound.url}
+                        duration={sound.duration}
+                        playPause={this.playPause}
+                        setProgress={this.setProgress}
+                    />
+                ))}
+            </div>
+        );
     }
-  };
-
-  setNextTrack = id => {
-    var nextId = (id + 1).toString();
-    this.updateCurrentPlayer(nextId);
-  };
-
-  render() {
-    return (
-      <div className="musics">
-        <h2 className="container">Piano Podcast</h2>
-        {this.state.SoundData.map(sound => (
-          <Sound
-            active={sound.id.toString() === this.state.currentPlayerId}
-            currentPlayerId={this.state.currentPlayerId}
-            key={sound.id}
-            id={sound.id}
-            title={sound.title}
-            url={sound.url}
-            duration={sound.duration}
-            setNextTrack={this.setNextTrack}
-            updateCurrentPlayer={this.updateCurrentPlayer}
-          />
-        ))}
-      </div>
-    );
-  }
 }
 
 export default SoundList;

@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <atom:link href="https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss?before=423945819" rel="next" type="application/rss+xml"/>
+        <title>mr.reband piano podcast</title>
+        <link>https://soundcloud.com/michael-reband</link>
+        <pubDate>Tue, 27 Oct 2020 19:26:45 +0000</pubDate>
+        <lastBuildDate>Tue, 27 Oct 2020 19:26:45 +0000</lastBuildDate>
+        <ttl>60</ttl>
+        <language>en</language>
+        <copyright>All rights reserved</copyright>
+        <webMaster>feeds@soundcloud.com (SoundCloud Feeds)</webMaster>
+        <description>Podcast by mr. reband</description>
+        <itunes:subtitle>Podcast by mr. reband</itunes:subtitle>
+        <itunes:owner>
+          <itunes:name>mr.reband</itunes:name>
+          <itunes:email>mr@reband.org</itunes:email>
+        </itunes:owner>
+        <itunes:author>mr. reband</itunes:author>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="https://i1.sndcdn.com/avatars-CeaQvCLpjH3gsvCw-hNriQQ-original.jpg"/>
+        <image>
+          <url>https://i1.sndcdn.com/avatars-CeaQvCLpjH3gsvCw-hNriQQ-original.jpg</url>
+          <title>mr.reband</title>
+          <link>https://soundcloud.com/michael-reband</link>
+        </image>
+        <itunes:category text="Music"/>
+        <item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/918576442</guid>
+      <title>Belated</title>
+      <pubDate>Tue, 27 Oct 2020 19:26:45 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/belated</link>
+      <itunes:duration>00:02:48</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Belated by mr. reband</itunes:summary>
+      <itunes:subtitle>Belated by mr. reband</itunes:subtitle>
+      <description>Belated by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/918576442-michael-reband-belated.mp3" length="2703777"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-zBXirSV5rX9PR4xE-2zh2AQ-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/785309290</guid>
+      <title>States In Stasis</title>
+      <pubDate>Sat, 28 Mar 2020 14:36:16 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/states-in-stasis</link>
+      <itunes:duration>00:03:42</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>States In Stasis by mr. reband</itunes:summary>
+      <itunes:subtitle>States In Stasis by mr. reband</itunes:subtitle>
+      <description>States In Stasis by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/785309290-michael-reband-states-in-stasis.mp3" length="3555159"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-raUFoLGxU0QiobFo-6gzLyg-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/767989183</guid>
+      <title>Ten Sensors</title>
+      <pubDate>Fri, 28 Feb 2020 14:44:30 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/ten-sensors</link>
+      <itunes:duration>00:02:19</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Ten Sensors by mr. reband</itunes:summary>
+      <itunes:subtitle>Ten Sensors by mr. reband</itunes:subtitle>
+      <description>Ten Sensors by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/767989183-michael-reband-ten-sensors.mp3" length="2233990"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-Tdy6iUlqsPerUTUE-T99CZg-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/752861854</guid>
+      <title>Fill Up More to Fill Up Less Often</title>
+      <pubDate>Fri, 31 Jan 2020 18:40:40 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/fill-up-more-to-fill-up-less-often</link>
+      <itunes:duration>00:02:57</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Fill Up More to Fill Up Less Often by mr. reband</itunes:summary>
+      <itunes:subtitle>Fill Up More to Fill Up Less Often by mr. reband</itunes:subtitle>
+      <description>Fill Up More to Fill Up Less Often by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/752861854-michael-reband-fill-up-more-to-fill-up-less-often.mp3" length="2835434"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000677832085-64a064-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/718507108</guid>
+      <title>Left Instead</title>
+      <pubDate>Mon, 25 Nov 2019 23:10:00 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/left-instead</link>
+      <itunes:duration>00:02:20</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Left Instead by mr. reband</itunes:summary>
+      <itunes:subtitle>Left Instead by mr. reband</itunes:subtitle>
+      <description>Left Instead by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/718507108-michael-reband-left-instead.mp3" length="5638396"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000643035298-dg2q3k-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/707523121</guid>
+      <title>Not the only Things Falling</title>
+      <pubDate>Mon, 04 Nov 2019 01:59:14 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/not-the-only-things-falling</link>
+      <itunes:duration>00:01:31</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Not the only Things Falling by mr. reband</itunes:summary>
+      <itunes:subtitle>Not the only Things Falling by mr. reband</itunes:subtitle>
+      <description>Not the only Things Falling by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/707523121-michael-reband-not-the-only-things-falling.mp3" length="3654135"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000643383904-8sqpk1-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/659235344</guid>
+      <title>Then Again</title>
+      <pubDate>Wed, 31 Jul 2019 21:15:05 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/then-again</link>
+      <itunes:duration>00:03:08</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Then Again by mr. reband</itunes:summary>
+      <itunes:subtitle>Then Again by mr. reband</itunes:subtitle>
+      <description>Then Again by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/659235344-michael-reband-then-again.mp3" length="7519808"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000575576018-iisk4c-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/630013437</guid>
+      <title>Star from Star</title>
+      <pubDate>Sat, 01 Jun 2019 13:55:12 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/star-from-star</link>
+      <itunes:duration>00:02:50</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Star from Star by mr. reband</itunes:summary>
+      <itunes:subtitle>Star from Star by mr. reband</itunes:subtitle>
+      <description>Star from Star by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/630013437-michael-reband-star-from-star.mp3" length="2733870"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000545025855-8wbf05-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/610950675</guid>
+      <title>Waves</title>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/waves</link>
+      <itunes:duration>00:01:34</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Waves by mr. reband</itunes:summary>
+      <itunes:subtitle>Waves by mr. reband</itunes:subtitle>
+      <description>Waves by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/610950675-michael-reband-waves.mp3" length="3764766"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-AXNwqe6T3nfipXWn-B6kkPw-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/565058706</guid>
+      <title>Microbial Life Beneath The Ice</title>
+      <pubDate>Sat, 26 Jan 2019 20:29:34 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/microbial-life-beneath-the-ice</link>
+      <itunes:duration>00:01:55</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Microbial Life Beneath The Ice by mr. reband</itunes:summary>
+      <itunes:subtitle>Microbial Life Beneath The Ice by mr. reband</itunes:subtitle>
+      <description>Microbial Life Beneath The Ice by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/565058706-michael-reband-microbial-life-beneath-the-ice.mp3" length="4629966"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000478239387-lxcy86-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/521373048</guid>
+      <title>Wasn't Hudson</title>
+      <pubDate>Mon, 29 Oct 2018 02:00:10 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/wasnt-hudson</link>
+      <itunes:duration>00:02:08</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Wasn't Hudson by mr. reband</itunes:summary>
+      <itunes:subtitle>Wasn't Hudson by mr. reband</itunes:subtitle>
+      <description>Wasn't Hudson by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/521373048-michael-reband-wasnt-hudson.mp3" length="5154608"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000430020183-2kn3ta-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/494676735</guid>
+      <title>8-bit ending</title>
+      <pubDate>Mon, 03 Sep 2018 17:50:44 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/8-bit-ending</link>
+      <itunes:duration>00:02:12</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>8-bit ending by mr. reband</itunes:summary>
+      <itunes:subtitle>8-bit ending by mr. reband</itunes:subtitle>
+      <description>8-bit ending by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/494676735-michael-reband-8-bit-ending.mp3" length="5287310"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000399293586-9tl3db-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/479004738</guid>
+      <title>Snapdragon</title>
+      <pubDate>Tue, 31 Jul 2018 02:34:24 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/snapdragon</link>
+      <itunes:duration>00:01:55</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Snapdragon by mr. reband</itunes:summary>
+      <itunes:subtitle>Snapdragon by mr. reband</itunes:subtitle>
+      <description>Snapdragon by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/479004738-michael-reband-snapdragon.mp3" length="4608127"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000381807351-fh4rh8-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/466134603</guid>
+      <title>Schrodinger's Fortune pt3</title>
+      <pubDate>Mon, 02 Jul 2018 02:43:09 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/schrodingers-fortune-pt3</link>
+      <itunes:duration>00:05:13</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Schrodinger's Fortune pt3 by mr. reband</itunes:summary>
+      <itunes:subtitle>Schrodinger's Fortune pt3 by mr. reband</itunes:subtitle>
+      <description>Schrodinger's Fortune pt3 by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/466134603-michael-reband-schrodingers-fortune-pt3.mp3" length="12533678"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000367611906-59ubo6-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/454579335</guid>
+      <title>Schrodinger's Fortune pt2</title>
+      <pubDate>Wed, 06 Jun 2018 12:21:09 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/schrodingers-fortune-pt2</link>
+      <itunes:duration>00:03:42</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Schrodinger's Fortune pt2 by mr. reband</itunes:summary>
+      <itunes:subtitle>Schrodinger's Fortune pt2 by mr. reband</itunes:subtitle>
+      <description>Schrodinger's Fortune pt2 by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/454579335-michael-reband-schrodingers-fortune-pt2.mp3" length="8891163"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000357377955-bl2wzj-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/437152749</guid>
+      <title>Schrodinger's Fortune pt1</title>
+      <pubDate>Mon, 30 Apr 2018 05:03:28 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/schrodingers-fortune-pt1-1</link>
+      <itunes:duration>00:03:35</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Schrodinger's Fortune pt1 by mr. reband</itunes:summary>
+      <itunes:subtitle>Schrodinger's Fortune pt1 by mr. reband</itunes:subtitle>
+      <description>Schrodinger's Fortune pt1 by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/437152749-michael-reband-schrodingers-fortune-pt1-1.mp3" length="8630984"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000342303507-1ta1vs-t3000x3000.jpg"/>
+    </item><item>
+      <guid isPermaLink="false">tag:soundcloud,2010:tracks/423945819</guid>
+      <title>Up</title>
+      <pubDate>Tue, 03 Apr 2018 00:55:00 +0000</pubDate>
+      <link>https://soundcloud.com/michael-reband/up-1</link>
+      <itunes:duration>00:07:06</itunes:duration>
+      <itunes:author>mr. reband</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary>Up by mr. reband</itunes:summary>
+      <itunes:subtitle>Up by mr. reband</itunes:subtitle>
+      <description>Up by mr. reband</description>
+      <enclosure type="audio/mpeg" url="https://feeds.soundcloud.com/stream/423945819-michael-reband-up-1.mp3" length="17054951"/>
+      <itunes:image href="https://i1.sndcdn.com/artworks-000329049234-0c8k70-t3000x3000.jpg"/>
+    </item>
+      </channel>
+    </rss>
