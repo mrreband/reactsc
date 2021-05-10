@@ -1,10 +1,11 @@
 import React from "react";
-import spotify from "../img/spotify.svg";
-import soundcloud from "../img/soundcloud.svg";
+import { Link } from "react-router-dom";
+import googlepodcasts from "../img/googlepodcasts.svg";
 import itunes from "../img/itunes.svg";
-import googlepodcasts from "../img/googlepodcasts.svg"
+import logo from "../img/mr.svg";
 import rss from "../img/rss.svg";
-import logo from "../img/mr.svg"
+import soundcloud from "../img/soundcloud.svg";
+import spotify from "../img/spotify.svg";
 // import itunes from "../img/itunes.svg";
 
 class Header extends React.Component {
@@ -12,6 +13,7 @@ class Header extends React.Component {
     return (
       <header>
         <div className="container">
+        <Link to="/waves">Waves</Link>
           <a href="/">
             <h1>
               <img src={logo} alt="mr.Reband" className="logo"/>
