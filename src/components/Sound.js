@@ -8,17 +8,13 @@ import SoundTitle from "./SoundTitle.js";
 
 export default class Sound extends Component {
     initMidiNotes() {
-        var midiNotes = {};
-        for (var i = 0; i < 128; i++) {
-            midiNotes[i] = false;
-        }
+        var midiNotes = Array(128).fill(false);
         return midiNotes;
     }
 
     constructor(props) {
         super(props);
         var midiNotes = this.initMidiNotes();
-        this.htmlPlayer = React.createRef();
 
         this.state = {
             duration: this.props.duration,
@@ -26,6 +22,12 @@ export default class Sound extends Component {
             midiNotes,
             MidiSequence,
         };
+    }
+
+    getCurrentTime() {
+        return this.props.active
+            ? this.props.currentTime
+            : this.state.currentTime;
     }
 
     playPause = () => {
@@ -37,19 +39,13 @@ export default class Sound extends Component {
     };
 
     updateCurrentTime() {
-        this.setState({ previousTicks: this.state.currentTicks });
-        console.log(this.state.currentTicks);
+        const currentTicks = this.getCurrentTime() * 1920;
 
-        this.setState({
-            currentTime: this.htmlPlayer.current.currentTime,
-            currentTicks: this.htmlPlayer.current.currentTime * 1920,
-        });
-
-        var currentNotes = {};
+        const currentNotes = {};
         this.state.MidiSequence.filter(
             (midiNote) =>
                 this.state.previousTicks <= midiNote.tick &&
-                midiNote.tick <= this.state.currentTicks
+                midiNote.tick <= currentTicks
         ).forEach(function (note) {
             currentNotes[note.noteNumber] = note.noteOn;
         });
@@ -78,20 +74,12 @@ export default class Sound extends Component {
                     <SoundTitle title={this.props.title} />
                     <SoundTimer
                         duration={this.state.duration}
-                        currentTime={
-                            this.props.active
-                                ? this.props.currentTime
-                                : this.state.currentTime
-                        }
+                        currentTime={ this.getCurrentTime() }
                     />
                 </div>
                 <ProgressBar
                     duration={this.state.duration}
-                    currentTime={
-                        this.props.active
-                            ? this.props.currentTime
-                            : this.state.currentTime
-                    }
+                    currentTime={ this.getCurrentTime() }
                     setProgress={this.setProgress.bind(this)}
                 />
                 <MidiCanvas
