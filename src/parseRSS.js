@@ -1,78 +1,27 @@
-let Parser = require("rss-parser");
-let parser = new Parser();
-
-async function getRss() {
-    const RSS_URL =
-        "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
-    try {
-        return await parser.parseURL(RSS_URL);
-    } catch (error) {
-        console.error("Error getting soundcloud rss - falling back on local");
-        console.error({ error });
-        return await parser.parseURL("./sounds.rss");
-    }
-}
+const fetch = require("node-fetch");
 
 export default async function parseRss() {
-    let songs = [];
-    let i = 1;
-
-    let feed = await getRss();
-
-    feed.items.forEach((item) => {
-        let duration =
-            parseInt(item["itunes"]["duration"].split(":")[1]) * 60 +
-            parseInt(item["itunes"]["duration"].split(":")[2]);
-        let song = {
-            id: i,
-            title: item["title"],
-            description: item["itunes"]["subtitle"],
-            url: item["enclosure"]["url"],
-            duration: duration,
-            publish_date: item["publish_date"],
-        };
-        songs.push(song);
-        i += 1;
-    });
-
-    /////////////////////////////////////////////////////////
-    // Custom track sorting
-
-    // split out shrodinger tracks to reorder them separately
-    function Shrodinger(title, include) {
-        if (title.includes("Schrodinger")) {
-            return include;
-        } else {
-            return !include;
+    try {
+        const response = await fetch(
+            "http://localhost:8888/.netlify/functions/parse-rss",
+            {
+                headers: { Accept: "application/json" },
+            }
+        );
+        if (!response.ok) {
+            // NOT res.status >= 200 && res.status < 300
+            return { statusCode: response.status, body: response.statusText };
         }
+        const data = await response.json();
+        console.log({data})
+        return data;
+    } catch (error) {
+        // output to netlify function log
+        console.log(error);
+        return {
+            statusCode: 500,
+            // Could be a custom message or object i.e. JSON.stringify(err)
+            body: JSON.stringify({ msg: error.message }),
+        };
     }
-
-    var nonShrodingers = songs.filter(function (song) {
-        return Shrodinger(song.title, false);
-    });
-    var shrodingers = songs.filter(function (song) {
-        return Shrodinger(song.title, true);
-    });
-
-    // sort each sub-array
-    nonShrodingers.sort(function (song) {
-        return song.publish_date;
-    });
-    shrodingers.sort((a, b) => a.title.localeCompare(b.title));
-
-    //// Simulate latency to test the LoadingIndicator
-    // const sleep = (milliseconds) => {
-    //   return new Promise(resolve => setTimeout(resolve, milliseconds))
-    // }
-    // await sleep(2000);
-
-    //re-concatenate and re-assign ids
-    var finalList = nonShrodingers.concat(shrodingers);
-    i = 1;
-    finalList.forEach((song) => {
-        song.id = i;
-        i++;
-    });
-
-    return finalList;
 }
