@@ -2,11 +2,10 @@ let Parser = require("rss-parser");
 let parser = new Parser();
 
 async function getRss() {
-    const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
     const RSS_URL =
         "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
     try {
-        return await parser.parseURL(CORS_PROXY + RSS_URL);
+        return await parser.parseURL(RSS_URL);
     } catch (error) {
         console.error("Error getting soundcloud rss - falling back on local");
         console.error({ error });
