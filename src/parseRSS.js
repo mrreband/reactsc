@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 export default async function parseRss() {
     try {
         const response = await fetch(
-            "http://localhost:8888/.netlify/functions/parse-rss",
+            "./.netlify/functions/parse-rss",
             {
                 headers: { Accept: "application/json" },
             }
@@ -17,7 +17,7 @@ export default async function parseRss() {
         return data;
     } catch (error) {
         // output to netlify function log
-        console.log(error);
+        console.error(error);
         return {
             statusCode: 500,
             // Could be a custom message or object i.e. JSON.stringify(err)
