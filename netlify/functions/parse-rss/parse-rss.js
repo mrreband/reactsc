@@ -1,19 +1,25 @@
-const fetch = require('node-fetch')
+const Parser = require("rss-parser");
+
+async function getRss() {
+    const parser = new Parser();
+    const RSS_URL =
+        "https://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
+    try {
+        return await parser.parseURL(RSS_URL);
+    } catch (error) {
+        console.error("Error getting soundcloud rss - falling back on local");
+        console.error({ error });
+        return await parser.parseURL("./sounds.rss");
+    }
+}
 
 const handler = async function () {
   try {
-    const response = await fetch('https://icanhazdadjoke.com', {
-      headers: { Accept: 'application/json' },
-    })
-    if (!response.ok) {
-      // NOT res.status >= 200 && res.status < 300
-      return { statusCode: response.status, body: response.statusText }
-    }
-    const data = await response.json()
+    const data = await getRss()
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ msg: data.joke }),
+      body: JSON.stringify( data ),
     }
   } catch (error) {
     // output to netlify function log
