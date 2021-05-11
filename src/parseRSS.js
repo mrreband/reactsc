@@ -13,7 +13,6 @@ export default async function parseRss() {
             return { statusCode: response.status, body: response.statusText };
         }
         const data = await response.json();
-        console.log({data})
         return data;
     } catch (error) {
         // output to netlify function log
