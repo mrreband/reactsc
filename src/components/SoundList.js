@@ -1,9 +1,9 @@
 import React from "react";
-import parseRss from "../parseRSS";
-import SoundData from "./data.json";
-import Sound from "./Sound";
 import { trackPromise } from "react-promise-tracker";
+import parseRss from "../parseRSS.js";
+import SoundData from "./data.json";
 import LoadingIndicator from "./LoadingIndicator";
+import Sound from "./Sound";
 
 function getRssData() {
     var songs = parseRss();
@@ -26,7 +26,7 @@ class SoundList extends React.Component {
         };
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         trackPromise(
             getRssData().then((songs) => {
                 this.setState({
@@ -34,11 +34,12 @@ class SoundList extends React.Component {
                 });
 
                 let params = new URLSearchParams(window.location.search);
-                let trackId = params.get("track");
-                if (trackId !== undefined) {
-                    let startTrack = this.getSoundById(trackId);
-                    if (startTrack !== undefined) {
-                        this.playPause(trackId);
+                let trackSlug = params.get("track");
+                if (trackSlug !== undefined) {
+                    let startTrack = this.state.SoundData.find(s => {return s.slug.toLowerCase() === trackSlug.toLowerCase()})
+                    if (startTrack && startTrack.id) {
+                        this.state.currentSoundId = startTrack.id;
+                        // this.playPause(startTrack.id);
                     }
                 }
             })
