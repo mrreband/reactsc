@@ -493,6 +493,10 @@ footer h4 {
   display: flex;
 }
 
+.Sound.active {
+    background-color: #d0dce1;
+}
+
 /* PlayButtonContainer, SoundTitle, and SoundTimer are all SoundElements*/
 .SoundElement {
   display: flex;
