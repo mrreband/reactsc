@@ -30,7 +30,7 @@ export default class Sound extends Component {
                         playing={this.props.active}
                         playPause={this.playPause}
                     />
-                    <SoundTitle title={this.props.title} />
+                    <SoundTitle title={this.props.title} slug={this.props.slug} />
                     <SoundTimer
                         duration={this.state.duration}
                         currentTime={
