@@ -1,15 +1,20 @@
 import React, { Component } from "react";
-import PlayButton from "./PlayButton.js";
-import ProgressBar from "./ProgressBar.js";
-import SoundTimer from "./SoundTimer.js";
-import SoundTitle from "./SoundTitle.js";
 
-export default class Sound extends Component {
+export default class SoundDetail extends Component {
     constructor(props) {
         super(props);
+        console.log({props: this.props})
+
+        const sound = this.props.SoundData.find((s) => {
+            return s.slug.toLowerCase() === "waves" //this.state.trackSlug.toLowerCase();
+        });
+
         this.state = {
             duration: this.props.duration,
+            active: false,
             currentTime: 0,
+            trackSlug: sound.slug,
+            sound,
         };
     }
 
@@ -24,15 +29,15 @@ export default class Sound extends Component {
     render() {
         return (
             <div>
-                <div className="SoundDetail">
+                {/* <div className="SoundDetail">
                     <PlayButton
-                        id={`${this.props.id}`}
-                        playing={this.props.active}
+                        id={`${this.Sound().id}`}
+                        playing={this.state.active}
                         playPause={this.playPause}
                     />
-                    <SoundTitle title={this.props.title} />
+                    <SoundTitle title={this.Sound().title} />
                     <SoundTimer
-                        duration={this.state.duration}
+                        duration={this.Sound().duration}
                         currentTime={
                             this.props.active
                                 ? this.props.currentTime
@@ -41,14 +46,14 @@ export default class Sound extends Component {
                     />
                 </div>
                 <ProgressBar
-                    duration={this.state.duration}
+                    duration={this.Sound().duration}
                     currentTime={
                         this.props.active
                             ? this.props.currentTime
                             : this.state.currentTime
                     }
                     setProgress={this.setProgress.bind(this)}
-                />
+                /> */}
             </div>
         );
     }
