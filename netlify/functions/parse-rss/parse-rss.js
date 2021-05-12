@@ -25,6 +25,7 @@ async function parseFeed(feed) {
             id: i,
             title: item["title"],
             description: item["itunes"]["subtitle"],
+            imageUrl: item["itunes"]["image"],
             url: item["enclosure"]["url"],
             duration: duration,
             publish_date: item["publish_date"],
