@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PlayButton from "./PlayButton.js";
-import SoundTitle from "./SoundTitle.js";
-import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
-
+import SoundTimer from "./SoundTimer.js";
+import SoundTitle from "./SoundTitle.js";
 export default class Sound extends Component {
     constructor(props) {
         super(props);
@@ -22,15 +21,21 @@ export default class Sound extends Component {
     };
 
     render() {
+        const imageUrl = `/images/${this.props.title}.png`
+        const myStyle = {
+            backgroundImage: `url("${imageUrl}")`,
+            backgroundSize: "100% 100%"
+          };
+
         return (
-            <div>
-                <div className="Sound">
+            <div  style={myStyle}>
+                <div className="Sound" style={myStyle}>
                     <PlayButton
                         id={`${this.props.id}`}
                         playing={this.props.active}
                         playPause={this.playPause}
                     />
-                    <SoundTitle title={this.props.title} />
+                    <SoundTitle title={this.props.title}/>
                     <SoundTimer
                         duration={this.state.duration}
                         currentTime={

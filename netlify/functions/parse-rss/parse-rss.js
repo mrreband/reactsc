@@ -79,7 +79,6 @@ const handler = async function () {
             body: JSON.stringify(trackList),
         };
     } catch (error) {
-        // output to netlify function log
         console.log(error);
         return {
             statusCode: 500,
