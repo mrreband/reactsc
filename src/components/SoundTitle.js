@@ -5,7 +5,7 @@ export default class SoundTitle extends Component {
   render() {
     return (
       <div className="SoundTitle SoundElement SoundElementText">
-        <h5><Link to={`${this.props.title}`} style={{ textDecoration: 'none' }}>{this.props.title}</Link></h5>
+        <h5><Link to={`${this.props.slug}`} style={{ textDecoration: 'none' }}>{this.props.title}</Link></h5>
       </div>
     );
   }

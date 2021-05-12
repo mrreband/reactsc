@@ -1,9 +1,9 @@
 import React from "react";
+import { trackPromise } from "react-promise-tracker";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
-import Sound from "./Sound";
-import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
+import Sound from "./Sound";
 
 function getRssData() {
     var songs = parseRss();
@@ -128,6 +128,7 @@ class SoundList extends React.Component {
                         key={sound.id}
                         id={sound.id}
                         title={sound.title}
+                        slug={sound.slug}
                         url={sound.url}
                         duration={sound.duration}
                         playPause={this.playPause}
