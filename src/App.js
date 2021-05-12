@@ -22,17 +22,17 @@ async function getRssData() {
 class App extends React.Component {
     constructor() {
         super();
-        this.state = { SoundData: [] };
-    }
-    async componentWillMount() {
+        this.state = {SoundData: []}
         trackPromise(
             getRssData().then((songs) => {
-                this.setState({
-                    SoundData: songs,
-                });
+                this.setState({ SoundData: songs })
             })
         );
         this.render();
+
+
+    }
+    async componentDidMount() {
     }
 
     render() {
@@ -49,13 +49,18 @@ class App extends React.Component {
                             <Route exact path="/about">
                                 <div>this is an about page</div>
                             </Route>
-                            <Route path="/:trackSlug">
-                                <SoundDetail
-                                    SoundData={this.state.SoundData}
-                                >
-                                    this is a detail page
-                                </SoundDetail>
-                            </Route>
+                            <Route
+                                exact
+                                path="/:trackSlug"
+                                render={(props) => (
+                                    <SoundDetail
+                                        trackSlug={props.match.params.trackSlug}
+                                        SoundData={this.state.SoundData}
+                                    >
+                                        this is a detail page
+                                    </SoundDetail>
+                                )}
+                            ></Route>
                             <Route path="/">
                                 <SoundList SoundData={this.state.SoundData} />
                             </Route>

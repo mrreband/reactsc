@@ -1,19 +1,24 @@
 import React, { Component } from "react";
+import PlayButton from "./PlayButton.js";
+import ProgressBar from "./ProgressBar.js";
+import SoundTimer from "./SoundTimer.js";
+import SoundTitle from "./SoundTitle.js";
 
 export default class SoundDetail extends Component {
     constructor(props) {
         super(props);
-        console.log({props: this.props})
+        console.log({props})
 
+        const trackSlug = this.props.trackSlug;
         const sound = this.props.SoundData.find((s) => {
-            return s.slug.toLowerCase() === "waves" //this.state.trackSlug.toLowerCase();
+            return s.slug.toLowerCase() === trackSlug.toLowerCase();
         });
 
         this.state = {
             duration: this.props.duration,
             active: false,
             currentTime: 0,
-            trackSlug: sound.slug,
+            trackSlug,
             sound,
         };
     }
@@ -29,15 +34,15 @@ export default class SoundDetail extends Component {
     render() {
         return (
             <div>
-                {/* <div className="SoundDetail">
+                <div className="SoundDetail">
                     <PlayButton
-                        id={`${this.Sound().id}`}
+                        id={`${this.state.trackSlug}`}
                         playing={this.state.active}
                         playPause={this.playPause}
                     />
-                    <SoundTitle title={this.Sound().title} />
+                    <SoundTitle title={this.state.sound.title} />
                     <SoundTimer
-                        duration={this.Sound().duration}
+                        duration={this.state.sound.duration}
                         currentTime={
                             this.props.active
                                 ? this.props.currentTime
@@ -46,14 +51,14 @@ export default class SoundDetail extends Component {
                     />
                 </div>
                 <ProgressBar
-                    duration={this.Sound().duration}
+                    duration={this.state.sound.duration}
                     currentTime={
                         this.props.active
                             ? this.props.currentTime
                             : this.state.currentTime
                     }
                     setProgress={this.setProgress.bind(this)}
-                /> */}
+                />
             </div>
         );
     }
