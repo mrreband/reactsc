@@ -17,12 +17,12 @@ class SubscribeLink extends React.Component {
                 subscribeUrl =
                     "https://podcasts.apple.com/us/podcast/mr-reband-piano-podcast/id1464272392?uo=4&at=1001lsYj";
                 subscribeText = "Subscribe on apple podcasts";
-                logo = itunes
+                logo = itunes;
             } else {
                 subscribeUrl =
-                    "https://subscribeonandroid.com/feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
+                    "http://subscribeonandroid.com/feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
                 subscribeText = "Subscribe with your podcast app";
-                logo = rss
+                logo = rss;
             }
         }
         this.state = {
@@ -30,7 +30,7 @@ class SubscribeLink extends React.Component {
             os,
             subscribeUrl,
             subscribeText,
-            logo
+            logo,
         };
     }
     render() {
