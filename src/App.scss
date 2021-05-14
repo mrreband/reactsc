@@ -183,9 +183,13 @@ header .logo {
 
 @media (max-width: 600px)
 {
-  .PianoPodcastDiv h2 {
-    visibility: hidden;
-    height: 0px;
+    .PianoPodcastDiv h2 {
+    display: flex;
+    justify-content: center;
+  }
+  .SubscribeLink {
+    display: flex;
+    justify-content: center;
   }
 }
 

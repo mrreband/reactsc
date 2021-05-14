@@ -12,17 +12,17 @@ class SubscribeLink extends React.Component {
         let subscribeText = "";
         let logo = undefined;
         if (deviceType === "mobile") {
-            if (os === "Android") {
-                subscribeUrl =
-                    "https://subscribeonandroid.com/feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
-                subscribeText = "Subscribe to the podcast";
-                logo = rss
-            } else {
+            if (os === "Mac/iOS") {
                 // ios
                 subscribeUrl =
                     "https://podcasts.apple.com/us/podcast/mr-reband-piano-podcast/id1464272392?uo=4&at=1001lsYj";
                 subscribeText = "Subscribe on apple podcasts";
                 logo = itunes
+            } else {
+                subscribeUrl =
+                    "https://subscribeonandroid.com/feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss";
+                subscribeText = "Subscribe with your podcast app";
+                logo = rss
             }
         }
         this.state = {
@@ -34,14 +34,14 @@ class SubscribeLink extends React.Component {
         };
     }
     render() {
-        const style = {height: "40px", width: "40px"}
+        // const style = {height: "40px", width: "40px"}
         return (
             <div className="SubscribeLink">
                 {this.state.deviceType === "mobile" && (
                     <a href={this.state.subscribeUrl}>
-                        <img src={this.state.logo} style={style} alt=""/>
+                        {/* <img src={this.state.logo} style={style} alt=""/> */}
                         <button type="button" className="btn btn-info">
-                            {this.state.subscribeText}
+                            {this.state.deviceType} | {this.state.os}
                         </button>
                     </a>
                 )}

@@ -5,7 +5,6 @@ import logo from "../img/mr.svg";
 import rss from "../img/rss.svg";
 import soundcloud from "../img/soundcloud.svg";
 import spotify from "../img/spotify.svg";
-import SubscribeLink from "./SubscribeLink";
 
 class Header extends React.Component {
   render() {
@@ -61,8 +60,6 @@ class Header extends React.Component {
             </ul>
           </div>
         </div>
-        <SubscribeLink />
-
       </header>
     );
   }
