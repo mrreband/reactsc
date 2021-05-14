@@ -34,17 +34,15 @@ class SubscribeLink extends React.Component {
         };
     }
     render() {
-        // const style = {height: "40px", width: "40px"}
         return (
             <div className="SubscribeLink">
-                {this.state.deviceType === "mobile" && (
+                {/* {this.state.deviceType === "mobile" && (
                     <a href={this.state.subscribeUrl}>
-                        {/* <img src={this.state.logo} style={style} alt=""/> */}
                         <button type="button" className="btn btn-info">
                             {this.state.deviceType} | {this.state.os}
                         </button>
                     </a>
-                )}
+                )} */}
             </div>
         );
     }
