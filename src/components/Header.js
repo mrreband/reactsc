@@ -1,11 +1,11 @@
 import React from "react";
-import spotify from "../img/spotify.svg";
-import soundcloud from "../img/soundcloud.svg";
+import googlepodcasts from "../img/googlepodcasts.svg";
 import itunes from "../img/itunes.svg";
-import googlepodcasts from "../img/googlepodcasts.svg"
+import logo from "../img/mr.svg";
 import rss from "../img/rss.svg";
-import logo from "../img/mr.svg"
-// import itunes from "../img/itunes.svg";
+import soundcloud from "../img/soundcloud.svg";
+import spotify from "../img/spotify.svg";
+import SubscribeLink from "./SubscribeLink";
 
 class Header extends React.Component {
   render() {
@@ -13,10 +13,11 @@ class Header extends React.Component {
       <header>
         <div className="container">
           <a href="/">
-            <h1>
-              <img src={logo} alt="mr.Reband" className="logo"/>
-            </h1>
-          </a>
+                <h1>
+                    <img src={logo} alt="mr.Reband" className="logo" />
+                </h1>
+            </a>
+
           <div className="bottom">
             <ul className="feeds">
               <li>
@@ -60,6 +61,8 @@ class Header extends React.Component {
             </ul>
           </div>
         </div>
+        <SubscribeLink />
+
       </header>
     );
   }
