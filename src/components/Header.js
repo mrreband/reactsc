@@ -1,5 +1,4 @@
 import React from "react";
-import googlepodcasts from "../img/googlepodcasts.svg";
 import itunes from "../img/itunes.svg";
 import logo from "../img/mr.svg";
 import rss from "../img/rss.svg";
@@ -37,13 +36,6 @@ class Header extends React.Component {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://play.google.com/music/m/I43twkhz5ocrkrcr4rky3j3i2ly?t=mrreband_piano_podcast"
-                >
-                  <img src={googlepodcasts} alt="" />
-                </a>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
                   href="https://soundcloud.com/michael-reband"
                 >
                   <img src={soundcloud} alt="" />
@@ -55,7 +47,6 @@ class Header extends React.Component {
                 >
                   <img src={rss} alt="" />
                 </a>
-                {/* <img src={itunes} alt="" /> */}
               </li>
             </ul>
           </div>
