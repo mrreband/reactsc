@@ -34,7 +34,7 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 
 ---
 
-### parseRSS.js
+### parse-rss.js
 
-Parse an RSS feed to create and return a list of `Sound` objects
+Netlify function to parse an RSS feed -- create and return a list of `Sound` objects
 
