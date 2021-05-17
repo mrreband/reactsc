@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PlayButton from "./PlayButton.js";
-import SoundTitle from "./SoundTitle.js";
-import SoundTimer from "./SoundTimer.js";
 import ProgressBar from "./ProgressBar.js";
+import SoundTimer from "./SoundTimer.js";
+import SoundTitle from "./SoundTitle.js";
 
 export default class Sound extends Component {
     constructor(props) {
@@ -24,7 +24,9 @@ export default class Sound extends Component {
     render() {
         return (
             <div>
-                <div className="Sound">
+                <div className={`Sound ${
+                this.props.active === true ? "active" : ""
+            }`}>
                     <PlayButton
                         id={`${this.props.id}`}
                         playing={this.props.active}
