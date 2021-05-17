@@ -19,6 +19,7 @@ export default class Sound extends Component {
         this.state = {
             duration: this.props.duration,
             currentTime: 0,
+            currentTicks: 0,
             midiNotes,
             MidiSequence,
         };
@@ -41,14 +42,17 @@ export default class Sound extends Component {
     updateCurrentTime() {
         const currentTicks = this.getCurrentTime() * 1920;
 
-        const currentNotes = {};
-        this.state.MidiSequence.filter(
+        const noteNumbers = this.state.MidiSequence.filter(
             (midiNote) =>
                 this.state.previousTicks <= midiNote.tick &&
                 midiNote.tick <= currentTicks
-        ).forEach(function (note) {
+        )
+        console.log(noteNumbers)
+
+        const currentNotes = {};
+        for (const note of noteNumbers) {
             currentNotes[note.noteNumber] = note.noteOn;
-        });
+        };
 
         var newMidiNotes = {};
         Object.keys(this.state.midiNotes).map(

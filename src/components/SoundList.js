@@ -1,9 +1,9 @@
 import React from "react";
+import { trackPromise } from "react-promise-tracker";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
-import Sound from "./Sound";
-import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
+import Sound from "./Sound";
 
 function getRssData() {
     var songs = parseRss();
@@ -73,7 +73,7 @@ class SoundList extends React.Component {
     /** Set the currentTime from the audio element */
     setCurrentTime() {
         let newTime = this.audioPlayer.current.currentTime;
-        this.setState({ currentTime: newTime });
+        this.setState({ currentTime: newTime, currentTicks: newTime * 1920 });
     }
 
     /** Set the current time from the Progress Bar */
@@ -125,6 +125,7 @@ class SoundList extends React.Component {
                         }
                         currentSoundId={this.state.currentSoundId}
                         currentTime={this.state.currentTime}
+                        currentTicks={this.state.currentTicks}
                         key={sound.id}
                         id={sound.id}
                         title={sound.title}
