@@ -8,15 +8,15 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 
 ### **Package Dependencies**
 
-    "node-sass": "^4.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-loader-spinner": "^3.1.5",
     "react-promise-tracker": "^2.0.6",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^5.0.1",
     "react-soundplayer": "^1.0.4",
     "rss-parser": "^3.7.2"
-
+    "sass": "^1.49.7"
+    
 ---
 
 ### **Component Structure**
