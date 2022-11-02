@@ -6,7 +6,7 @@ class Footer extends React.Component {
             <footer>
                 <div className="row">
                     <h4>
-                        © 2019 - 2021 Copyright - <a href="/">mr.reband.io</a>
+                        © 2019 - 2022 Copyright - <a href="/">mr.reband.io</a>
                     </h4>
                 </div>
             </footer>
