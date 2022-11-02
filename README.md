@@ -52,7 +52,8 @@ netlify dev
 
 ### Build: 
 
-netlify build command creates the `/build` directory with everything needed: 
+Creates the `/build` directory with everything needed.  This runs `npm run build` (among other things) under the hood
+
 ```
 netlify build
 ```
@@ -81,7 +82,7 @@ Use `netlify link` to link your repo to a Netlify site before deploying.
       > netlify deploy --alias=test-site
 
       Logs:              https://app.netlify.com/sites/infallible-swirles-271fb6/deploys/63627e4f61069a0de915bca5
-      Website Draft URL: https://npmaudit--infallible-swirles-271fb6.netlify.app
+      Website Draft URL: https://test-site--infallible-swirles-271fb6.netlify.app
       ```
 
       **NOTE**: Netlify uses branch names for aliases in CI - they recommend you don't use them for your own deploys
