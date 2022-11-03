@@ -19,46 +19,10 @@ class Header extends React.Component {
                     <div>
                         <ul className="feeds">
                             <li>
-                                <div class="linkDiv">
-                                    <a
-                                        className="link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        href="https://open.spotify.com/artist/2qFU2QneC3YZ32Qd6vGFAj?si=ZP_c9L3LQWCEC_lG_vQk8A"
-                                    >
-                                        <Spotify />
-                                    </a>
-                                </div>
-                                <div className="linkDiv">
-                                    <a
-                                        className="link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        href="https://podcasts.apple.com/us/podcast/mr-reband-piano-podcast/id1464272392"
-                                    >
-                                        <ApplePodcast />
-                                    </a>
-                                </div>
-                                <div class="linkDiv">
-                                    <a
-                                        className="link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        href="https://soundcloud.com/michael-reband"
-                                    >
-                                        <SoundCloud />
-                                    </a>
-                                </div>
-                                <div class="linkDiv">
-                                    <a
-                                        className="link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        href="http://feeds.soundcloud.com/users/soundcloud:users:31432799/sounds.rss"
-                                    >
-                                        <RSS />
-                                    </a>
-                                </div>
+                                <Spotify />
+                                <ApplePodcast />
+                                <SoundCloud />
+                                <RSS />
                             </li>
                         </ul>
                     </div>
