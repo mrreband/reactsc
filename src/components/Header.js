@@ -16,7 +16,7 @@ class Header extends React.Component {
                 </h1>
             </a>
 
-          <div className="bottom">
+          <div>
             <ul className="feeds">
               <li>
                 <a
