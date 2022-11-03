@@ -4,6 +4,7 @@ import { Spotify } from "./styled/Spotify";
 import { SoundCloud } from "./styled/SoundCloud";
 import { ApplePodcast } from "./styled/ApplePodcast";
 import { RSS } from "./styled/RSS";
+import {MR} from "./styled/MR";
 
 class Header extends React.Component {
     render() {
@@ -12,7 +13,7 @@ class Header extends React.Component {
                 <div className="headerContainer">
                     <a href="/">
                         <h1>
-                            <img src={logo} alt="mr.Reband" className="logo" />
+                            <MR />
                         </h1>
                     </a>
 
