@@ -18,8 +18,7 @@ ul li {
   --color-tertiary: #d0dce1;
 }
 
-:lightmode {
-  box-sizing: border-box;
+.lightmode {
   --color-headerFooterBG: #455a64;
   --color-headerFooterText: #d6d8d7;
   --color-bodyBG: #fff;
@@ -29,8 +28,7 @@ ul li {
   --color-tertiary: #d0dce1;
 }
 
-:darkmode {
-  box-sizing: border-box;
+.darkmode {
   --color-headerFooterBG: #455a64;
   --color-headerFooterText: #d6d8d7;
   --color-bodyBG: #263238;
