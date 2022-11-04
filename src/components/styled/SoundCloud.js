@@ -8,7 +8,7 @@ const Svg = styled(Icon)`
 `;
 
 export const SoundCloud = ({ className }) => (
-    <div class="linkDiv">
+    <div className="linkDiv">
         <a
             className="link"
             target="_blank"
