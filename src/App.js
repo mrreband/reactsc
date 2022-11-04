@@ -10,7 +10,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Header />
-                <div className="container">
+                <div className="appDiv">
                     <div className="PianoPodcastDiv">
                         <h2>Piano Podcast</h2>
                         <SubscribeLink />
