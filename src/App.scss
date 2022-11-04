@@ -9,11 +9,34 @@ ul li {
 
 :root {
   box-sizing: border-box;
-  --color-bodyBG: #fff;
+  --color-headerFooterBG: #455a64;
   --color-headerFooterText: #d6d8d7;
+  --color-bodyBG: #fff;
   --color-bodyText: #263238;
   --color-primary: #455a64;
   --color-secondary: #b0bec5;
+  --color-tertiary: #d0dce1;
+}
+
+:lightmode {
+  box-sizing: border-box;
+  --color-headerFooterBG: #455a64;
+  --color-headerFooterText: #d6d8d7;
+  --color-bodyBG: #fff;
+  --color-bodyText: #263238;
+  --color-primary: #455a64;
+  --color-secondary: #b0bec5;
+  --color-tertiary: #d0dce1;
+}
+
+:darkmode {
+  box-sizing: border-box;
+  --color-headerFooterBG: #455a64;
+  --color-headerFooterText: #d6d8d7;
+  --color-bodyBG: #263238;
+  --color-bodyText: #fff;
+  --color-primary: #b0bec5;
+  --color-secondary: #455a64;
   --color-tertiary: #d0dce1;
 }
 
@@ -70,7 +93,7 @@ button {
   padding-left: 20px;
   padding-right: 20px;
   line-height: 26px;
-  color: var(--color-primary);
+  color: var(--color-headerFooterBG);
 }
 
 @media only screen and (min-width: 940px) {
@@ -81,7 +104,7 @@ button {
 }
 
 header {
-  background: var(--color-primary);
+  background: var(--color-headerFooterBG);
   height: 170px;
 }
 
@@ -181,7 +204,7 @@ header .logo {
 footer {
   clear: both;
   text-align: center;
-  background: var(--color-primary);
+  background: var(--color-headerFooterBG);
   padding: 20px 0;
 }
 
