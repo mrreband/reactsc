@@ -1,0 +1,22 @@
+version: 2
+updates:
+  # root folder uses npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # ignore devdependencies
+    ignore:
+      - dependency-name: "react-scripts"
+      - dependency-name: "http-proxy"
+      - dependency-name: "acorn"
+      - dependency-name: "lodash"
+      - dependency-name: "dot-prop"
+      - dependency-name: "handlebars"
+      - dependency-name: "yargs-parser"
+      - dependency-name: "sockjs"
+      - dependency-name: "ssri"
+      - dependency-name: "immer"
+      - dependency-name: "tar"
+      - dependency-name: "trim-newlines"
+      - dependency-name: "nth-check"
