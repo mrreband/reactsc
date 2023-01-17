@@ -26,7 +26,6 @@ const DarkModeButton = () => {
 
     return (
         <button
-            className={theme}
             id="darkModeButton"
             onClick={(e) => switchTheme(e)}
         ></button>
