@@ -3,12 +3,13 @@ import "../../themes.css";
 
 const DarkModeButton = () => {
     const body = document.body;
-    const lightTheme = "light";
-    const darkTheme = "dark";
+    const lightTheme = "lightmode";
+    const darkTheme = "darkmode";
     let theme;
 
     if (localStorage) {
         theme = localStorage.getItem("theme");
+        if (!theme) theme = "lightmode";
     }
 
     if (theme === lightTheme || theme === darkTheme) {
