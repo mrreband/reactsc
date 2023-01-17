@@ -5,6 +5,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 1
     # ignore devdependencies
     ignore:
       - dependency-name: "react-scripts"
@@ -20,3 +21,5 @@ updates:
       - dependency-name: "tar"
       - dependency-name: "trim-newlines"
       - dependency-name: "nth-check"
+    labels: 
+      - dependabot
