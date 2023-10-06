@@ -1,4 +1,5 @@
 import React from "react";
+const currentYear = new Date().getFullYear();
 
 class Footer extends React.Component {
     render() {
@@ -6,7 +7,7 @@ class Footer extends React.Component {
             <footer>
                 <div className="row">
                     <h4>
-                        © 2019 - 2022 Copyright - <a href="/">mr.reband.io</a>
+                        © 2019 - { currentYear } Copyright - <a href="/">mr.reband.io</a>
                     </h4>
                 </div>
             </footer>
