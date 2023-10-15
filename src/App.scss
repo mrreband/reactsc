@@ -127,14 +127,17 @@ header .logo {
 .placeholder-wrapper {
   padding: 30px 0 20px;
 }
+
 .feeds {
   text-align: center;
 }
+
 @media only screen and (min-width: 600px) {
   header .logo {
     float: left;
     margin: 0;
   }
+
   .feeds {
     float: right;
     margin: 0;
@@ -168,8 +171,7 @@ header .logo {
   max-width: 400px;
 }
 
-@media (max-width: 600px)
-{
+@media (max-width: 600px) {
   .musics {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -181,21 +183,41 @@ header .logo {
   margin-bottom: 20px;
 }
 
-@media (max-width: 600px)
-{
-    .PianoPodcastDiv h2 {
+@media (max-width: 600px) {
+  .PianoPodcastDiv {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
   }
+
   .SubscribeLink {
     display: flex;
     justify-content: center;
   }
 }
 
+
+.PianoPodcastDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
 .PianoPodcastDiv h2 {
   font-size: 26px;
-  font-family:'Radley-Regular';
+  font-family: 'Radley-Regular';
+  // display: inline-block;
+}
+
+.VolumeBarContainer {
+  // float: right;
+  margin-top: 18px;
+}
+
+.VolumeBarContainer input {
+  height: 30px;
+  margin-left: 10px;
 }
 
 .musics p {
@@ -261,19 +283,23 @@ header .logo {
     height: 40px;
     line-height: 40px;
   }
+
   .music .title {
     order: 3;
     margin: 15px 0;
   }
+
   .music .date {
     order: 2;
     margin-bottom: 0;
     line-height: 40px;
     width: calc(100% - 50px);
   }
+
   .music .description {
     order: 4;
   }
+
   .music p {
     margin-left: 0;
   }
@@ -323,19 +349,23 @@ header .logo {
     height: 40px;
     line-height: 40px;
   }
+
   .placeholder-musics .title-area {
     margin-bottom: 20px;
   }
+
   .placeholder-musics .title {
     order: 3;
     margin: 5px 0;
   }
+
   .placeholder-musics .date {
     order: 2;
     margin-bottom: 0;
     line-height: 40px;
     width: calc(100% - 50px);
   }
+
   .placeholder-musics .description {
     order: 4;
     margin-left: auto;
@@ -380,14 +410,12 @@ footer {
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   background: #eee;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(8%, #eee),
-    color-stop(18%, #ddd),
-    color-stop(33%, #eee)
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      color-stop(8%, #eee),
+      color-stop(18%, #ddd),
+      color-stop(33%, #eee));
   background: -webkit-linear-gradient(left, #eee 8%, #ddd 18%, #eee 33%);
   background: linear-gradient(to right, #eee 8%, #ddd 18%, #eee 33%);
   -webkit-background-size: 800px 104px;
@@ -399,6 +427,7 @@ footer {
   0% {
     background-position: -468px 0;
   }
+
   100% {
     background-position: 468px 0;
   }
@@ -408,6 +437,7 @@ footer {
   0% {
     background-position: -468px 0;
   }
+
   100% {
     background-position: 468px 0;
   }
@@ -480,10 +510,12 @@ footer h4 {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.3);
   }
@@ -498,7 +530,7 @@ footer h4 {
 }
 
 .Sound.active {
-    background-color: #d0dce1;
+  background-color: #d0dce1;
 }
 
 /* PlayButtonContainer, SoundTitle, and SoundTimer are all SoundElements*/
@@ -513,7 +545,7 @@ footer h4 {
   position: relative;
   bottom: 50%;
   font-weight: 550;
-  font-family:'Radley-Regular';
+  font-family: 'Radley-Regular';
 }
 
 .PlayButtonContainer {
@@ -554,7 +586,17 @@ footer h4 {
   height: 100%;
   background-color: #455A64;
 }
+
 /* end of progress bar stuff */
+
+/* start of volume bar stuff */
+.VolumeBar {
+  position: relative;
+  height: 100%;
+  accent-color: #455A64;
+}
+
+/* end of volume bar stuff */
 
 /* start of play button stuff */
 .PlayButton g .play {

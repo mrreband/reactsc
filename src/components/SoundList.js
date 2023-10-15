@@ -2,6 +2,8 @@ import React from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 import Sound from "./Sound";
+import VolumeBar from "./VolumeBar";
+
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -23,6 +25,7 @@ class SoundList extends React.Component {
             SoundData: [],
             currentSoundId: "",
             currentTime: 0.0,
+            currentVolume: 1.0,
         };
     }
 
@@ -82,6 +85,12 @@ class SoundList extends React.Component {
         this.audioPlayer.current.currentTime = newPosition;
     };
 
+    /** Set volume */
+    setVolume = (pct) => {
+        this.audioPlayer.current.volume = pct;
+        this.setState({ currentVolume: pct });
+    };
+
     /** toggle play / pause status, update current sound if the id is different */
     playPause = (id) => {
         if (id.toString() === this.state.currentSoundId) {
@@ -102,6 +111,15 @@ class SoundList extends React.Component {
     render() {
         return (
             <div className="musics">
+                <div className="PianoPodcastDiv">
+                    <h2>Piano Podcast</h2>
+
+                    <VolumeBar
+                        setVolume={this.setVolume.bind(this)}
+                        volume={this.state.currentVolume}
+                    />
+                </div>
+
                 <LoadingIndicator />
 
                 <audio
