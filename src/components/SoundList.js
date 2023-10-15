@@ -112,7 +112,7 @@ class SoundList extends React.Component {
         return (
             <div className="musics">
                 <div className="PianoPodcastDiv">
-                    <h2>Piano Podcast 2</h2>
+                    <h2>Piano Podcast</h2>
 
                     <VolumeBar
                         setVolume={this.setVolume.bind(this)}
