@@ -62,7 +62,7 @@ class SoundList extends React.Component {
     /** Set volume */
     setVolume = (pct) => {
         this.audioPlayer.current.volume = pct;
-        this.setState({currentVolume: pct});
+        this.setState({ currentVolume: pct });
     };
 
     /** toggle play / pause status, update current sound if the id is different */
