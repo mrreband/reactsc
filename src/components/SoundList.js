@@ -1,20 +1,6 @@
 import React from "react";
-import parseRss from "../parseRSS";
-import SoundData from "./data.json";
 import Sound from "./Sound";
 import VolumeBar from "./VolumeBar";
-
-import { trackPromise } from "react-promise-tracker";
-import LoadingIndicator from "./LoadingIndicator";
-
-function getRssData() {
-    var songs = parseRss();
-    if (songs) {
-        return songs;
-    } else {
-        return SoundData;
-    }
-}
 
 class SoundList extends React.Component {
     constructor() {
@@ -22,22 +8,10 @@ class SoundList extends React.Component {
         this.audioPlayer = React.createRef();
 
         this.state = {
-            SoundData: [],
             currentSoundId: "",
             currentTime: 0.0,
             currentVolume: 1.0,
         };
-    }
-
-    async componentWillMount() {
-        trackPromise(
-            getRssData().then((songs) => {
-                this.setState({
-                    SoundData: songs,
-                });
-            })
-        );
-        this.render();
     }
 
     currentSound = () => {
@@ -45,7 +19,7 @@ class SoundList extends React.Component {
     };
 
     getSoundById = (id) => {
-        return this.state.SoundData.find(
+        return this.props.SoundData.find(
             (s) => s.id.toString() === id.toString()
         );
     };
@@ -120,14 +94,12 @@ class SoundList extends React.Component {
                     />
                 </div>
 
-                <LoadingIndicator />
-
                 <audio
                     ref={this.audioPlayer}
                     onEnded={this.setNextSound}
                     onTimeUpdate={this.setCurrentTime.bind(this)}
                 >
-                    {this.state.SoundData.map((sound) => (
+                    {this.props.SoundData.map((sound) => (
                         <source
                             src={sound.url}
                             type="audio/mpeg"
@@ -136,7 +108,7 @@ class SoundList extends React.Component {
                     ))}
                 </audio>
 
-                {this.state.SoundData.map((sound) => (
+                {this.props.SoundData.map((sound) => (
                     <Sound
                         active={
                             sound.id.toString() === this.state.currentSoundId

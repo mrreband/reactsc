@@ -10,7 +10,7 @@
         "react-dom": "^16.8.6",
         "react-loader-spinner": "^3.1.5",
         "react-promise-tracker": "^2.0.6",
-        "react-router-dom": "^5.2.0",
+        "react-router-dom": "^5.3.4",
         "react-soundplayer": "^1.0.4",
         "rss-parser": "^3.7.2",
         "sass": "^1.49.7",
@@ -39,19 +39,19 @@
         ]
     },
     "devDependencies": {
-        "react-scripts": "^5.0.1",
-        "http-proxy": ">=1.18.1",
         "acorn": "^6.4.1",
-        "lodash": ">=4.17.21",
         "dot-prop": ">=4.2.1",
         "handlebars": ">=4.7.7",
-        "yargs-parser": ">=13.1.2",
+        "http-proxy": ">=1.18.1",
+        "immer": ">=9.0.6",
+        "lodash": ">=4.17.21",
+        "nth-check": ">=2.0.1",
+        "react-scripts": "^5.0.1",
         "sockjs": ">=0.3.20",
         "ssri": ">=6.0.2",
-        "immer": ">=9.0.6",
         "tar": ">=4.4.18",
         "trim-newlines": ">=3.0.1",
-        "nth-check": ">=2.0.1"
+        "yargs-parser": ">=13.1.2"
     },
     "overrides": {
         "ejs": "3.1.8"
