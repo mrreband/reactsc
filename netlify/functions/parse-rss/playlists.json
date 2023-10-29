@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Schrodinger's Fortune",
+    "position": "bottom",
+    "slugs": [
+      "schrodingers-fortune-pt1-1",
+      "schrodingers-fortune-pt2",
+      "schrodingers-fortune-pt3"
+    ]
+  },
+  {
+    "name": "Is and Isn't",
+    "position": "top",
+    "slugs": [
+      "is-and-isnt-pt1",
+      "is-and-isnt-pt2"
+    ]
+  }
+]
