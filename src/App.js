@@ -4,6 +4,7 @@ import "./App.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Canvas from "./components/Canvas";
+import Playlist from "./components/Playlist";
 
 class App extends React.Component {
     render() {
@@ -18,8 +19,8 @@ class App extends React.Component {
                                 <Canvas />
                             </Route>
                             
-                            <Route path="/test">
-                                hello
+                            <Route path="/playlists/:playlistSlug">
+                                <Playlist />
                             </Route>
                         
                         </Switch>
