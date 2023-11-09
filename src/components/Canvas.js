@@ -34,7 +34,6 @@ class Canvas extends React.Component {
                 this.setState({
                     SoundData: songs,
                 });
-                console.log(this.state.SoundData)
             })
         );
         this.render();
