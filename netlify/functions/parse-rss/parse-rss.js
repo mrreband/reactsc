@@ -1,4 +1,5 @@
 const Parser = require("rss-parser");
+const playlists = require("./playlists.json")
 
 async function getRssFeed() {
     const parser = new Parser();
@@ -11,6 +12,14 @@ async function getRssFeed() {
         console.error({ error });
         return await parser.parseURL("./sounds.rss");
     }
+}
+
+function getSlug(url) {
+    let slug = url.split("/").pop()
+    slug = slug.split(".")[0]
+    slug = slug.replace("reband", "")
+    slug = slug.split("--")[1]
+    return slug
 }
 
 async function parseFeed(feed) {
@@ -30,44 +39,39 @@ async function parseFeed(feed) {
             duration: duration,
             publish_date: item["publish_date"],
         };
+        
+        song.slug = getSlug(song.url);
         songs.push(song);
         i += 1;
     });
 
     /////////////////////////////////////////////////////////
-    // Custom track sorting
-
-    // split out shrodinger tracks to reorder them separately
-    function Shrodinger(title, include) {
-        if (title.includes("Schrodinger")) {
-            return include;
+    // Custom track sorting    
+    for (const playlist of playlists) {
+        const trackSlugs = playlist.slugs;
+        const playlistSongs = []
+        for (const slug of trackSlugs) {
+            const playlistSong = songs.find(s => {return s.slug === slug})
+            if (playlistSong !== undefined) playlistSongs.push(playlistSong)
+        }
+        songs = songs.filter(s => {
+            return !(trackSlugs.includes(s.slug));
+        })
+        if (playlist.position === "top"){
+            songs = [...playlistSongs, ...songs]
         } else {
-            return !include;
+            songs = [...songs, ...playlistSongs]
         }
     }
 
-    var nonShrodingers = songs.filter(function (song) {
-        return Shrodinger(song.title, false);
-    });
-    var shrodingers = songs.filter(function (song) {
-        return Shrodinger(song.title, true);
-    });
-
-    // sort each sub-array
-    nonShrodingers.sort(function (song) {
-        return song.publish_date;
-    });
-    shrodingers.sort((a, b) => a.title.localeCompare(b.title));
-
     //re-concatenate and re-assign ids
-    var finalList = nonShrodingers.concat(shrodingers);
     i = 1;
-    finalList.forEach((song) => {
+    songs.forEach((song) => {
         song.id = i;
         i++;
     });
 
-    return finalList;
+    return songs;
 }
 
 const handler = async function () {
