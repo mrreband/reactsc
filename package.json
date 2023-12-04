@@ -10,7 +10,7 @@
         "react-dom": "^16.8.6",
         "react-loader-spinner": "^3.1.5",
         "react-promise-tracker": "^2.0.6",
-        "react-router-dom": "^5.2.0",
+        "react-router-dom": "^6.20.1",
         "react-soundplayer": "^1.0.4",
         "rss-parser": "^3.7.2",
         "sass": "^1.49.7",
