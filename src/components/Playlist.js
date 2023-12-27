@@ -22,19 +22,19 @@ class Playlist extends React.Component {
     }
 
     playlistTracks = () => {
-        if (this.state.playlistSlug === undefined) {
-            return this.props.SoundData;
-        }
-        return this.props.SoundData.filter(
+        if (this.state.playlistSlug === undefined) return this.props.SoundData;
+        const filteredTracks = this.props.SoundData.filter(
             (s) => s.playlists && s.playlists.includes(this.state.playlistSlug)
         );
+        if (filteredTracks.length > 0) return filteredTracks;
+        return this.props.SoundData;
     };
 
     playlistTitle = () => {
         const playlist = this.props.Playlists.find(
             (s) => s.slug === this.state.playlistSlug
         ) || {};
-        return playlist.title || this.state.playlistSlug || "Piano Podcast";
+        return playlist.title || "Piano Podcast";
     };
 
     render() {
