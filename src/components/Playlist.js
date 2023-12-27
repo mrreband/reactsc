@@ -27,10 +27,17 @@ class Playlist extends React.Component {
         );
     };
 
+    playlistTitle = () => {
+        const playlist = this.props.Playlists.find(
+            (s) => s.slug === this.state.playlistSlug
+        ) || {};
+        return playlist.title || this.state.playlistSlug;
+    };
+
     render() {
         return (
             <div className="musics">
-                <SoundList SoundData={this.playlistTracks()} Title={this.state.playlistSlug} />
+                <SoundList SoundData={this.playlistTracks()} Title={this.playlistTitle()} />
             </div>
         );
     }
