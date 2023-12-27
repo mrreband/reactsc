@@ -10,11 +10,11 @@ import LoadingIndicator from "./LoadingIndicator";
 import Playlist from "./Playlist";
 
 function getRssData() {
-    var songs = parseRss();
-    if (songs) {
-        return songs;
+    var result = parseRss();
+    if (result) {
+        return result;
     } else {
-        return SoundData;
+        return { tracks: SoundData };
     }
 }
 
@@ -32,9 +32,10 @@ class Canvas extends React.Component {
 
     async componentWillMount() {
         trackPromise(
-            getRssData().then((songs) => {
+            getRssData().then((result) => {
+                const { tracks, playlists } = result;
                 this.setState({
-                    SoundData: songs,
+                    SoundData: tracks,
                 });
             })
         );
