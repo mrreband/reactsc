@@ -1,8 +1,6 @@
 import React from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
-import SoundList from "./SoundList";
-import VolumeBar from "./VolumeBar";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { trackPromise } from "react-promise-tracker";
