@@ -18,6 +18,8 @@
     },
     "scripts": {
         "dev": "netlify dev",
+        "build+deploy": "netlify build && netlify deploy --alias test",
+        "deploy:prod": "netlify deploy --prod",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
