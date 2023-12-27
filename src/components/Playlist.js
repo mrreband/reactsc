@@ -22,6 +22,9 @@ class Playlist extends React.Component {
     }
 
     playlistTracks = () => {
+        if (this.state.playlistSlug === undefined) {
+            return this.props.SoundData;
+        }
         return this.props.SoundData.filter(
             (s) => s.playlists && s.playlists.includes(this.state.playlistSlug)
         );
@@ -31,7 +34,7 @@ class Playlist extends React.Component {
         const playlist = this.props.Playlists.find(
             (s) => s.slug === this.state.playlistSlug
         ) || {};
-        return playlist.title || this.state.playlistSlug;
+        return playlist.title || this.state.playlistSlug || "Piano Podcast";
     };
 
     render() {
