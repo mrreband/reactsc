@@ -1,19 +1,19 @@
 [
   {
-    "name": "schrodingers-fortune",
+    "slug": "schrodingers-fortune",
     "title": "Schrodinger's Fortune",
     "position": "bottom",
-    "slugs": [
+    "tracks": [
       "schrodingers-fortune-pt1-1",
       "schrodingers-fortune-pt2",
       "schrodingers-fortune-pt3"
     ]
   },
   {
-    "name": "is-and-isnt",
+    "slug": "is-and-isnt",
     "title": "Is and Isn't",
     "position": "last",
-    "slugs": [
+    "tracks": [
       "is-and-isnt-pt1",
       "is-and-isnt-pt2"
     ]

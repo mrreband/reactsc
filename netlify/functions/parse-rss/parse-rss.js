@@ -47,7 +47,7 @@ async function parseFeed(feed) {
     /////////////////////////////////////////////////////////
     // Custom track sorting
     for (const playlist of playlists) {
-        const trackSlugs = playlist.slugs;
+        const trackSlugs = playlist.tracks;
 
         // get the tracks for this playlist
         const playlistSongs = []
@@ -55,7 +55,7 @@ async function parseFeed(feed) {
             const playlistSong = songs.find(s => {return s.slug === slug})
             if (playlistSong !== undefined) {
                 if (playlistSong.playlists === undefined) { playlistSong.playlists = [] }
-                playlistSong.playlists.push(playlist.name)
+                playlistSong.playlists.push(playlist.slug)
                 playlistSongs.push(playlistSong)
             }
         }
