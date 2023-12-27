@@ -101,7 +101,7 @@ const handler = async function () {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ tracks: trackList }),
+            body: JSON.stringify({ tracks: trackList, playlists: playlists }),
         };
     } catch (error) {
         // output to netlify function log

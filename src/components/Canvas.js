@@ -24,6 +24,7 @@ class Canvas extends React.Component {
 
         this.state = {
             SoundData: [],
+            playlists: [],
             currentSoundId: "",
             currentTime: 0.0,
             currentVolume: 1.0,
@@ -36,6 +37,7 @@ class Canvas extends React.Component {
                 const { tracks, playlists } = result;
                 this.setState({
                     SoundData: tracks,
+                    playlists: playlists,
                 });
             })
         );
