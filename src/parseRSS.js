@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 export default async function parseRss() {
     try {
         const response = await fetch(
-            "./.netlify/functions/parse-rss",
+            "/.netlify/functions/parse-rss",
             {
                 headers: { Accept: "application/json" },
             }
