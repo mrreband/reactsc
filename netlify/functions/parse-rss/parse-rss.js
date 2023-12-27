@@ -53,7 +53,11 @@ async function parseFeed(feed) {
         const playlistSongs = []
         for (const slug of trackSlugs) {
             const playlistSong = songs.find(s => {return s.slug === slug})
-            if (playlistSong !== undefined) playlistSongs.push(playlistSong)
+            if (playlistSong !== undefined) {
+                if (playlistSong.playlists === undefined) { playlistSong.playlists = [] }
+                playlistSong.playlists.push(playlist.name)
+                playlistSongs.push(playlistSong)
+            }
         }
 
         // strip from the full list
