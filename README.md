@@ -16,20 +16,23 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
     "react-soundplayer": "^1.0.4",
     "rss-parser": "^3.7.2"
     "sass": "^1.49.7"
-    
+
 ---
 
 ### **Component Structure**
 
 - App.js
     - Header.js
-    - SoundList.js
-        - LoadingIndicator.js
-        - Sound.js
-            - PlayButton.js
-            - ProgressBar.js
-            - SoundTimer.js
-            - SoundTitle.js
+    - Canvas.js
+      - VolumeBar.js
+      - Playlist.js
+      - SoundList.js
+          - LoadingIndicator.js
+          - Sound.js
+              - PlayButton.js
+              - ProgressBar.js
+              - SoundTimer.js
+              - SoundTitle.js
     - Footer.js
 
 ---
@@ -42,7 +45,7 @@ Netlify function to parse an RSS feed -- create and return a list of `Sound` obj
 
 ## Netlify CLI
 
-### running locally: 
+### running locally:
 
 ```
 netlify dev
@@ -50,7 +53,7 @@ netlify dev
 
 ---
 
-### Build: 
+### Build:
 
 Creates the `/build` directory with everything needed.  This runs `npm run build` (among other things) under the hood
 
@@ -60,13 +63,13 @@ netlify build
 
 ---
 
-### Deploy: 
+### Deploy:
 
-Use `netlify link` to link your repo to a Netlify site before deploying. 
+Use `netlify link` to link your repo to a Netlify site before deploying.
 
 -   #### Deploy Preview
 
-    - by default, a unique id gets generated to use as a prefix to the site location: 
+    - by default, a unique id gets generated to use as a prefix to the site location:
 
       ```
       > netlify deploy
@@ -75,8 +78,8 @@ Use `netlify link` to link your repo to a Netlify site before deploying.
       Website Draft URL: https://63627f2848363a0f8b64ae61--infallible-swirles-271fb6.netlify.app
       ```
 
-    - use `--alias` to define the prefix: 
-      
+    - use `--alias` to define the prefix:
+
 
       ```
       > netlify deploy --alias=test-site
@@ -88,7 +91,7 @@ Use `netlify link` to link your repo to a Netlify site before deploying.
       **NOTE**: Netlify uses branch names for aliases in CI - they recommend you don't use them for your own deploys
 
 
-  - #### Deploy to production: 
+  - #### Deploy to production:
 
     ```
     netlify deploy --prod
