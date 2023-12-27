@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import SoundList from "./SoundList";
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
@@ -29,14 +30,7 @@ class Playlist extends React.Component {
     render() {
         return (
             <div className="musics">
-                Playlist:  {this.state.playlistSlug}
-                <ul>
-                    {this.playlistTracks().map((sound) => (
-                        <li key={sound.id}>
-                            {sound.title}
-                        </li>
-                    ))}
-                </ul>
+                <SoundList SoundData={this.playlistTracks()} />
             </div>
         );
     }
