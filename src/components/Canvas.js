@@ -4,8 +4,10 @@ import SoundData from "./data.json";
 import SoundList from "./SoundList";
 import VolumeBar from "./VolumeBar";
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
+import Playlist from "./Playlist";
 
 function getRssData() {
     var songs = parseRss();
@@ -44,7 +46,17 @@ class Canvas extends React.Component {
             <div className="musics">
                 <LoadingIndicator />
 
-                <SoundList SoundData={this.state.SoundData}/>
+                <Router>
+                    <Switch>
+                        <Route exact path="/">
+                            <SoundList SoundData={this.state.SoundData} />
+                        </Route>
+                        <Route path="/playlists/:playlistSlug">
+                            <Playlist SoundData={this.state.SoundData} />
+                        </Route>
+                    </Switch>
+                </Router>
+
             </div>
         );
     }
