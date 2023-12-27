@@ -49,7 +49,7 @@ class Canvas extends React.Component {
                 <Router>
                     <Switch>
                         <Route exact path="/">
-                            <SoundList SoundData={this.state.SoundData} />
+                            <SoundList SoundData={this.state.SoundData} Title="Piano Podcast" />
                         </Route>
                         <Route path="/playlists/:playlistSlug">
                             <Playlist SoundData={this.state.SoundData} />

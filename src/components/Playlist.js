@@ -30,7 +30,7 @@ class Playlist extends React.Component {
     render() {
         return (
             <div className="musics">
-                <SoundList SoundData={this.playlistTracks()} />
+                <SoundList SoundData={this.playlistTracks()} Title={this.state.playlistSlug} />
             </div>
         );
     }
