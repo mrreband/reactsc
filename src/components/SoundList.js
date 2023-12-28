@@ -1,132 +1,120 @@
-import React from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Sound from "./Sound";
 import VolumeBar from "./VolumeBar";
 
-class SoundList extends React.Component {
-    constructor() {
-        super();
-        this.audioPlayer = React.createRef();
+function SoundList({ SoundData, Title }) {
+    const audioPlayer = useRef(null);
 
-        this.state = {
-            currentSoundId: "",
-            currentTime: 0.0,
-            currentVolume: 1.0,
+    const [state, setState] = useState({
+        currentSoundId: "",
+        currentTime: 0.0,
+        currentVolume: 1.0,
+    });
+
+    const currentSound = () => {
+        return getSoundById(state.currentSoundId);
+    };
+
+    const getSoundById = useCallback((id) => {
+        return SoundData.find((s) => s.id.toString() === id.toString());
+    }, [SoundData]);
+
+    const setCurrentSound = useCallback((id) => {
+        const toggleActive = (id) => {
+            const sound = getSoundById(id);
+            sound.active = !sound.active;
         };
-    }
 
-    currentSound = () => {
-        return this.getSoundById(this.state.currentSoundId);
-    };
-
-    getSoundById = (id) => {
-        return this.props.SoundData.find(
-            (s) => s.id.toString() === id.toString()
-        );
-    };
-
-    toggleActive = (id) => {
-        const sound = this.getSoundById(id);
-        sound.active = !sound.active;
-    };
-
-    /** set the currentSound and set the active prop */
-    setCurrentSound = (id) => {
-        if (this.state.currentSoundId) {
-            this.toggleActive(this.state.currentSoundId);
+        if (state.currentSoundId) {
+            toggleActive(state.currentSoundId);
         } else {
-            this.toggleActive(id);
+            toggleActive(id);
         }
-        this.setState({ currentSoundId: id.toString() });
-    };
+        setState(prevState => ({ ...prevState, currentSoundId: id.toString() }));
+    }, [state.currentSoundId, getSoundById]);
 
-    /** skip to the next track when one track ends */
-    setNextSound = () => {
-        const nextId = (parseInt(this.state.currentSoundId) + 1).toString();
-        if (this.getSoundById(nextId) !== undefined) {
-            this.playPause(nextId);
-        }
-    };
-
-    /** Set the currentTime from the audio element */
-    setCurrentTime() {
-        let newTime = this.audioPlayer.current.currentTime;
-        this.setState({ currentTime: newTime });
-    }
-
-    /** Set the current time from the Progress Bar */
-    setProgress = (pct) => {
-        const newPosition = this.currentSound().duration * pct;
-        this.audioPlayer.current.currentTime = newPosition;
-    };
-
-    /** Set volume */
-    setVolume = (pct) => {
-        this.audioPlayer.current.volume = pct;
-        this.setState({ currentVolume: pct });
-    };
-
-    /** toggle play / pause status, update current sound if the id is different */
-    playPause = (id) => {
-        if (id.toString() === this.state.currentSoundId) {
-            if (this.audioPlayer.current.paused) {
-                this.audioPlayer.current.play();
+    const playPause = useCallback((id) => {
+        if (id.toString() === state.currentSoundId) {
+            if (audioPlayer.current.paused) {
+                audioPlayer.current.play();
             } else {
-                this.audioPlayer.current.pause();
+                audioPlayer.current.pause();
             }
         } else {
-            this.audioPlayer.current.pause();
-            this.setCurrentSound(id);
-            const sound = this.getSoundById(id);
-            this.audioPlayer.current.src = sound.url;
-            this.audioPlayer.current.play();
+            audioPlayer.current.pause();
+            setCurrentSound(id);
+            const sound = getSoundById(id);
+            if (sound !== undefined) {
+                audioPlayer.current.src = sound.url;
+                audioPlayer.current.play();
+            }
         }
+    }, [getSoundById, state.currentSoundId, setCurrentSound]);
+
+    const setNextSound = useCallback(() => {
+        const nextId = (parseInt(state.currentSoundId) + 1).toString();
+        playPause(nextId);
+    }, [state.currentSoundId, playPause]);
+
+    const setCurrentTime = useCallback(() => {
+        let newTime = audioPlayer.current.currentTime;
+        setState(prevState => ({ ...prevState, currentTime: newTime }));
+    }, []);
+
+    const setProgress = (pct) => {
+        const newPosition = currentSound().duration * pct;
+        audioPlayer.current.currentTime = newPosition;
     };
 
-    render() {
-        return (
-            <div className="musics">
-                <div className="PianoPodcastDiv">
-                    <h2>{this.props.Title}</h2>
+    const setVolume = (pct) => {
+        audioPlayer.current.volume = pct;
+        setState(prevState => ({ ...prevState, currentVolume: pct }));
+    };
 
-                    <VolumeBar
-                        setVolume={this.setVolume.bind(this)}
-                        volume={this.state.currentVolume}
-                    />
-                </div>
+    useEffect(() => {
+        if (audioPlayer.current) {
+            audioPlayer.current.onended = setNextSound;
+            audioPlayer.current.ontimeupdate = setCurrentTime;
+        }
+    }, [setNextSound, setCurrentTime]);
 
-                <audio
-                    ref={this.audioPlayer}
-                    onEnded={this.setNextSound}
-                    onTimeUpdate={this.setCurrentTime.bind(this)}
-                >
-                    {this.props.SoundData.map((sound) => (
-                        <source
-                            src={sound.url}
-                            type="audio/mpeg"
-                            key={sound.id}
-                        />
-                    ))}
-                </audio>
+    return (
+        <div className="musics">
+            <div className="PianoPodcastDiv">
+                <h2>{Title}</h2>
 
-                {this.props.SoundData.map((sound) => (
-                    <Sound
-                        active={
-                            sound.id.toString() === this.state.currentSoundId
-                        }
-                        currentSoundId={this.state.currentSoundId}
-                        currentTime={this.state.currentTime}
+                <VolumeBar
+                    setVolume={setVolume}
+                    volume={state.currentVolume}
+                />
+            </div>
+
+            <audio ref={audioPlayer}>
+                {SoundData.map((sound) => (
+                    <source
+                        src={sound.url}
+                        type="audio/mpeg"
                         key={sound.id}
-                        id={sound.id}
-                        title={sound.title}
-                        url={sound.url}
-                        duration={sound.duration}
-                        playPause={this.playPause}
-                        setProgress={this.setProgress}
                     />
                 ))}
-            </div>
-        );
-    }
+            </audio>
+
+            {SoundData.map((sound) => (
+                <Sound
+                    active={sound.id.toString() === state.currentSoundId}
+                    currentSoundId={state.currentSoundId}
+                    currentTime={state.currentTime}
+                    key={sound.id}
+                    id={sound.id}
+                    title={sound.title}
+                    url={sound.url}
+                    duration={sound.duration}
+                    playPause={playPause}
+                    setProgress={setProgress}
+                />
+            ))}
+        </div>
+    );
 }
 
 export default SoundList;

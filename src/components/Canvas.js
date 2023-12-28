@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 
@@ -16,51 +16,42 @@ function getRssData() {
     }
 }
 
-class Canvas extends React.Component {
-    constructor() {
-        super();
+function Canvas() {
+    const [state, setState] = useState({
+        SoundData: [],
+        playlists: [],
+        currentSoundId: "",
+        currentTime: 0.0,
+        currentVolume: 1.0,
+    });
 
-        this.state = {
-            SoundData: [],
-            playlists: [],
-            currentSoundId: "",
-            currentTime: 0.0,
-            currentVolume: 1.0,
-        };
-    }
-
-    async componentWillMount() {
+    useEffect(() => {
         trackPromise(
             getRssData().then((result) => {
                 const { tracks, playlists } = result;
-                this.setState({
+                setState(prevState => ({
+                    ...prevState,
                     SoundData: tracks,
                     playlists: playlists,
-                });
+                }));
             })
         );
-        this.render();
-    }
+    }, []);
 
-    render() {
-        return (
-            <div className="musics">
-                <LoadingIndicator />
+    return (
+        <div className="musics">
+            <LoadingIndicator />
 
-                <Router>
-                    <Switch>
-                        <Route exact path="/">
-                            <Playlist SoundData={this.state.SoundData} Playlists={this.state.playlists} />
-                        </Route>
-                        <Route path="/playlists/:playlistSlug">
-                            <Playlist SoundData={this.state.SoundData} Playlists={this.state.playlists} />
-                        </Route>
-                    </Switch>
-                </Router>
+            <Router>
+                <Switch>
+                    <Route exact path={["/", "/playlists/:playlistSlug"]}>
+                        <Playlist SoundData={state.SoundData} Playlists={state.playlists} />
+                    </Route>
+                </Switch>
+            </Router>
 
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Canvas;

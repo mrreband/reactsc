@@ -1,12 +1,10 @@
-import React from "react";
 import itunes from "../img/itunes.svg";
 import logo from "../img/mr.svg";
 import rss from "../img/rss.svg";
 import soundcloud from "../img/soundcloud.svg";
 import spotify from "../img/spotify.svg";
 
-class Header extends React.Component {
-  render() {
+function Header() {
     return (
       <header>
         <div className="container">
@@ -53,7 +51,6 @@ class Header extends React.Component {
         </div>
       </header>
     );
-  }
 }
 
 export default Header;
