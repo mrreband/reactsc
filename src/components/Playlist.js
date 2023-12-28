@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import Sound from "./Sound";
 import VolumeBar from "./VolumeBar";
 
-function Playlist({ SoundData, Playlists }) {
+function Playlist({ SoundData, Playlists, audioPlayer }) {
     // playlist stuff
     const { playlistSlug } = useParams();
     const playlistTracks = () => {
@@ -22,9 +22,7 @@ function Playlist({ SoundData, Playlists }) {
         return playlist.title || "Piano Podcast";
     };
 
-    // Soundlist stuff
-    const audioPlayer = useRef(null);
-
+    // SoundList stuff
     const [state, setState] = useState({
         currentSoundId: "",
         currentTime: 0.0,

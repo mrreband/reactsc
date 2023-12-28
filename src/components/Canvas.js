@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 
@@ -17,6 +17,8 @@ function getRssData() {
 }
 
 function Canvas() {
+    const audioPlayer = useRef(null);
+
     const [state, setState] = useState({
         SoundData: [],
         playlists: [],
@@ -45,7 +47,7 @@ function Canvas() {
             <Router>
                 <Switch>
                     <Route exact path={["/", "/playlists/:playlistSlug"]}>
-                        <Playlist SoundData={state.SoundData} Playlists={state.playlists} />
+                        <Playlist audioPlayer={audioPlayer} SoundData={state.SoundData} Playlists={state.playlists} />
                     </Route>
                 </Switch>
             </Router>
