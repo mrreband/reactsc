@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
 import Playlist from "./Playlist";
@@ -19,11 +19,13 @@ function getRssData() {
 }
 
 function Canvas() {
+    const params = useParams();
+
     const [state, setState] = useState({
         SoundData: [],
         playlists: [],
         currentTime: 0.0,
-        currentVolume: 1.0,
+        currentVolume: 1.0
     });
 
     const audioPlayer = useRef(null);
@@ -68,6 +70,22 @@ function Canvas() {
         playPause(nextId);
     }, [currentSoundId]);
 
+    const playlistTitle = () => {
+        const playlist = state.playlists.find(
+            (s) => s.slug === params.playlistSlug
+        ) || {};
+        return playlist.title || "Piano Podcast";
+    };
+
+    const playlistTracks = () => {
+        if (params.playlistSlug === undefined) return state.SoundData;
+        const playlist = state.playlists.find(pl => pl.slug === params.playlistSlug);
+        if (playlist === undefined) return state.SoundData
+
+        const tracks = state.SoundData.filter((s) => playlist.tracks.includes(s.slug))
+        return tracks;
+    }
+
     useEffect(() => {
         if (audioPlayer.current) {
             audioPlayer.current.onended = setNextSound;
@@ -94,33 +112,25 @@ function Canvas() {
         <div className="musics">
             <LoadingIndicator />
 
-            <Router>
-                <Switch>
-                    <Route exact path={["/", "/playlists/:playlistSlug"]}>
-                        <div className="musics">
+            <div className="musics">
+                <div className="PianoPodcastDiv">
+                    <h2>{playlistTitle()}</h2>
 
-                            <div className="PianoPodcastDiv">
-                                <h2>Piano Podcast</h2>
+                    <VolumeBar
+                        setVolume={setVolume}
+                        volume={state.currentVolume}
+                    />
+                </div>
 
-                                <VolumeBar
-                                    setVolume={setVolume}
-                                    volume={state.currentVolume}
-                                />
-                            </div>
-
-                            <Playlist
-                                audioPlayer={audioPlayer}
-                                SoundData={state.SoundData}
-                                Playlists={state.playlists}
-                                playPause={playPause}
-                                setProgress={setProgress}
-                                currentSoundId={currentSoundId}
-                                currentTime={state.currentTime}
-                            />
-                        </div>
-                    </Route>
-                </Switch>
-            </Router>
+                <Playlist
+                    audioPlayer={audioPlayer}
+                    tracks={playlistTracks()}
+                    playPause={playPause}
+                    setProgress={setProgress}
+                    currentSoundId={currentSoundId}
+                    currentTime={state.currentTime}
+                />
+            </div>
 
         </div>
     );

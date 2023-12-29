@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,7 +10,13 @@ function App() {
         <div className="App">
             <Header />
             <div className="container">
-                <Canvas />
+                <Router>
+                    <Switch>
+                        <Route exact path={["/", "/playlists/:playlistSlug"]}>
+                            <Canvas />
+                        </Route>
+                    </Switch>
+                </Router>
             </div>
             <Footer />
         </div>
