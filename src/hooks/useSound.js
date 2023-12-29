@@ -18,21 +18,6 @@ export default function useSound(audioPlayer, SoundData) {
         return getSoundById(currentSoundId);
     }, [getSoundById, currentSoundId]);
 
-    const setCurrentSound = useCallback((id) => {
-        //todo: I don't think we're using this active attribute - playlist calculates active and passes that as a prop to sound
-        const toggleActive = (id) => {
-            const sound = getSoundById(id);
-            sound.active = !sound.active;
-        };
-
-        if (currentSoundId) {
-            toggleActive(currentSoundId);
-        } else {
-            toggleActive(id);
-        }
-        setCurrentSoundId(id.toString());
-    }, [currentSoundId, getSoundById]);
-
     const playPause = useCallback((id) => {
         if (id.toString() === currentSoundId) {
             if (audioPlayer.current.paused) {
@@ -42,14 +27,14 @@ export default function useSound(audioPlayer, SoundData) {
             }
         } else {
             audioPlayer.current.pause();
-            setCurrentSound(id);
+            setCurrentSoundId(id.toString());
             const sound = getSoundById(id);
             if (sound !== undefined) {
                 audioPlayer.current.src = sound.url;
                 audioPlayer.current.play();
             }
         }
-    }, [getSoundById, currentSoundId, setCurrentSound, audioPlayer]);
+    }, [getSoundById, currentSoundId, setCurrentSoundId, audioPlayer]);
 
     const setCurrentTime = useCallback(() => {
         let newTime = audioPlayer.current.currentTime;
@@ -72,5 +57,5 @@ export default function useSound(audioPlayer, SoundData) {
     }, [currentSoundId, playPause]);
 
 
-    return { currentSoundId, currentSound, setCurrentSoundId, setCurrentSound, getSoundById, setCurrentTime, setProgress, setVolume, setNextSound, playPause, ...state }
+    return { currentSoundId, currentSound, setCurrentSoundId, getSoundById, setCurrentTime, setProgress, setVolume, setNextSound, playPause, ...state }
 }
