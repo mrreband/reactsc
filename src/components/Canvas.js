@@ -23,24 +23,21 @@ function Canvas() {
 
     const [soundData, setSoundData] = useState([]);
     const [playlists, setPlaylists] = useState([]);
+    const [currentPlaylist, setCurrentPlaylist] = useState({});
 
     const audioPlayer = useRef(null);
     const { currentSoundId, currentTime, setNextSound, setCurrentTime, setVolume, setProgress, playPause } = useSound(audioPlayer, soundData);
 
     const playlistTitle = () => {
-        const playlist = playlists.find(
-            (s) => s.slug === params.playlistSlug
-        ) || {};
-        return playlist.title || "Piano Podcast";
+        return currentPlaylist.title || "Piano Podcast";
     };
 
     const playlistTracks = () => {
-        if (params.playlistSlug === undefined) return soundData;
-        const playlist = playlists.find(pl => pl.slug === params.playlistSlug);
-        if (playlist === undefined) return soundData
-
-        const tracks = soundData.filter((s) => playlist.tracks.includes(s.slug))
-        return tracks;
+        if (currentPlaylist.tracks) {
+            const tracks = soundData.filter((s) => currentPlaylist.tracks.includes(s.slug))
+            return tracks;
+        }
+        return soundData;
     }
 
     useEffect(() => {
@@ -56,9 +53,12 @@ function Canvas() {
                 const { tracks, playlists } = result;
                 setSoundData(tracks);
                 setPlaylists(playlists);
+                if (params.playlistSlug !== undefined) {
+                    setCurrentPlaylist(playlists.find((pl) => pl.slug === params.playlistSlug) || {});
+                }
             })
         );
-    }, []);
+    }, [params.playlistSlug]);
 
     return (
         <div className="musics">
