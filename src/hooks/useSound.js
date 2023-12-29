@@ -1,13 +1,28 @@
-// useSound.js
+/**
+ * Custom hook to manage sound playback.
+ *
+ * @param {Object} audioPlayer - A ref object pointing to the audio player.
+ * @param {Array} soundData - An array of sound objects, each with an id and url.
+ *
+ * @returns {Object} An object containing:
+ * state:
+ * - currentSoundId: The id of the currently active track.
+ * - setCurrentSoundId: A function to set the currently selected sound id.
+ * - currentTime: The current playback time.
+ * - setCurrentTime: A function to set the current playback time.
+ * auxiliary:
+ * - currentSound:
+ * - getSoundById:
+ * - setProgress: set playback progress by percentage
+ * - setVolume: set volume by percentage
+ * - setNextSound: increment the CurrentSoundId by 1
+ * - playPause: Toggle play/pause for the provided id
+ */
 import { useState, useCallback } from 'react';
 
 export default function useSound(audioPlayer, soundData) {
     const [currentSoundId, setCurrentSoundId] = useState(null);
-
-    const [state, setState] = useState({
-        playlists: [],
-        currentTime: 0.0
-    });
+    const [currentTime, setCurrentTime] = useState(0.0);
 
     const getSoundById = useCallback((id) => {
         return soundData.find((s) => s.id.toString() === id.toString());
@@ -35,11 +50,6 @@ export default function useSound(audioPlayer, soundData) {
         }
     }, [getSoundById, currentSoundId, setCurrentSoundId, audioPlayer]);
 
-    const setCurrentTime = useCallback(() => {
-        let newTime = audioPlayer.current.currentTime;
-        setState(prevState => ({ ...prevState, currentTime: newTime }));
-    }, [audioPlayer]);
-
     const setProgress = useCallback((pct) => {
         const newPosition = currentSound().duration * pct;
         audioPlayer.current.currentTime = newPosition;
@@ -51,10 +61,10 @@ export default function useSound(audioPlayer, soundData) {
 
     const setNextSound = useCallback(() => {
         const nextId = (parseInt(currentSoundId) + 1).toString();
-        setState(prevState => ({ ...prevState, currentTime: 0.0 }));
+        setCurrentTime(0.0);
         playPause(nextId);
     }, [currentSoundId, playPause]);
 
 
-    return { currentSoundId, currentSound, setCurrentSoundId, getSoundById, setCurrentTime, setProgress, setVolume, setNextSound, playPause, ...state }
+    return { currentSoundId, currentSound, setCurrentSoundId, getSoundById, setCurrentTime, setProgress, setVolume, setNextSound, playPause, currentTime }
 }
