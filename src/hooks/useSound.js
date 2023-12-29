@@ -7,8 +7,7 @@ export default function useSound(audioPlayer, SoundData) {
     const [state, setState] = useState({
         SoundData: [],
         playlists: [],
-        currentTime: 0.0,
-        currentVolume: 1.0
+        currentTime: 0.0
     });
 
     const getSoundById = useCallback((id) => {
@@ -64,7 +63,6 @@ export default function useSound(audioPlayer, SoundData) {
 
     const setVolume = useCallback((pct) => {
         audioPlayer.current.volume = pct;
-        setState(prevState => ({ ...prevState, currentVolume: pct }));
     }, [audioPlayer]);
 
     const setNextSound = useCallback(() => {
