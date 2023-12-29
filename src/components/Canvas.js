@@ -21,27 +21,25 @@ function getRssData() {
 function Canvas() {
     const params = useParams();
 
-    const [state, setState] = useState({
-        SoundData: [],
-        playlists: []
-    });
+    const [soundData, setSoundData] = useState([]);
+    const [playlists, setPlaylists] = useState([]);
 
     const audioPlayer = useRef(null);
-    const { currentSoundId, currentTime, setNextSound, setCurrentTime, setVolume, setProgress, playPause } = useSound(audioPlayer, state.SoundData);
+    const { currentSoundId, currentTime, setNextSound, setCurrentTime, setVolume, setProgress, playPause } = useSound(audioPlayer, soundData);
 
     const playlistTitle = () => {
-        const playlist = state.playlists.find(
+        const playlist = playlists.find(
             (s) => s.slug === params.playlistSlug
         ) || {};
         return playlist.title || "Piano Podcast";
     };
 
     const playlistTracks = () => {
-        if (params.playlistSlug === undefined) return state.SoundData;
-        const playlist = state.playlists.find(pl => pl.slug === params.playlistSlug);
-        if (playlist === undefined) return state.SoundData
+        if (params.playlistSlug === undefined) return soundData;
+        const playlist = playlists.find(pl => pl.slug === params.playlistSlug);
+        if (playlist === undefined) return soundData
 
-        const tracks = state.SoundData.filter((s) => playlist.tracks.includes(s.slug))
+        const tracks = soundData.filter((s) => playlist.tracks.includes(s.slug))
         return tracks;
     }
 
@@ -56,11 +54,8 @@ function Canvas() {
         trackPromise(
             getRssData().then((result) => {
                 const { tracks, playlists } = result;
-                setState(prevState => ({
-                    ...prevState,
-                    SoundData: tracks,
-                    playlists: playlists,
-                }));
+                setSoundData(tracks);
+                setPlaylists(playlists);
             })
         );
     }, []);
