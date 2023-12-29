@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { trackPromise } from "react-promise-tracker";
 import LoadingIndicator from "./LoadingIndicator";
 import Playlist from "./Playlist";
+import VolumeBar from "./VolumeBar";
 import useSound from "../hooks/useSound";
 
 function getRssData() {
@@ -98,13 +99,21 @@ function Canvas() {
                     <Route exact path={["/", "/playlists/:playlistSlug"]}>
                         <div className="musics">
 
+                            <div className="PianoPodcastDiv">
+                                <h2>Piano Podcast</h2>
+
+                                <VolumeBar
+                                    setVolume={setVolume}
+                                    volume={state.currentVolume}
+                                />
+                            </div>
+
                             <Playlist
                                 audioPlayer={audioPlayer}
                                 SoundData={state.SoundData}
                                 Playlists={state.playlists}
                                 playPause={playPause}
                                 setProgress={setProgress}
-                                setVolume={setVolume}
                                 currentSoundId={currentSoundId}
                                 currentTime={state.currentTime}
                             />

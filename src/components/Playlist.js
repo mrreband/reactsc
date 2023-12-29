@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import { useParams } from "react-router-dom";
 import Sound from "./Sound";
-import VolumeBar from "./VolumeBar";
 
-function Playlist({ SoundData, currentSoundId, Playlists, audioPlayer, playPause, setVolume, setProgress, currentTime }) {
+function Playlist({ SoundData, currentSoundId, Playlists, audioPlayer, playPause, setProgress, currentTime }) {
     // playlist stuff
     const { playlistSlug } = useParams();
 
@@ -24,23 +23,8 @@ function Playlist({ SoundData, currentSoundId, Playlists, audioPlayer, playPause
         return playlist.title || "Piano Podcast";
     };
 
-    // SoundList stuff
-    const [state, setState] = useState({
-        currentVolume: 1.0,
-    });
-
     return (
         <div className="playlistDiv">
-            {/* todo: this div with title and volumebar do not belong in the playlist component */}
-            <div className="PianoPodcastDiv">
-                <h2>{playlistTitle()}</h2>
-
-                <VolumeBar
-                    setVolume={setVolume}
-                    volume={state.currentVolume}
-                />
-            </div>
-
             <audio ref={audioPlayer}>
                 {playlistTracks().map((sound) => (
                     <source
