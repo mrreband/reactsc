@@ -15,6 +15,7 @@ function Sound(props) {
 
     return (
         <div>
+
             <div className={`Sound ${props.active === true ? "active" : ""}`}>
                 <PlayButton
                     id={`${props.id}`}
