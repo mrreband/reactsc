@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import parseRss from "../parseRSS";
 import SoundData from "./data.json";
 
@@ -27,7 +27,7 @@ function Canvas() {
     });
 
     const audioPlayer = useRef(null);
-    const { currentSoundId, setNextSound, setCurrentTime, setVolume, setProgress, playPause, currentTime } = useSound(audioPlayer, state.SoundData);
+    const { currentSoundId, currentTime, setNextSound, setCurrentTime, setVolume, setProgress, playPause } = useSound(audioPlayer, state.SoundData);
 
     const playlistTitle = () => {
         const playlist = state.playlists.find(
@@ -51,8 +51,6 @@ function Canvas() {
             audioPlayer.current.ontimeupdate = setCurrentTime;
         }
     }, [setCurrentTime, setNextSound]);
-
-
 
     useEffect(() => {
         trackPromise(
