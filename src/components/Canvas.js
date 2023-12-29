@@ -23,52 +23,11 @@ function Canvas() {
 
     const [state, setState] = useState({
         SoundData: [],
-        playlists: [],
-        currentTime: 0.0,
-        currentVolume: 1.0
+        playlists: []
     });
 
     const audioPlayer = useRef(null);
-    const { currentSoundId, currentSound, setCurrentSoundId, setCurrentSound, getSoundById } = useSound(null, state.SoundData);
-
-    const playPause = useCallback((id) => {
-        if (id.toString() === currentSoundId) {
-            if (audioPlayer.current.paused) {
-                audioPlayer.current.play();
-            } else {
-                audioPlayer.current.pause();
-            }
-        } else {
-            audioPlayer.current.pause();
-            setCurrentSound(id);
-            const sound = getSoundById(id);
-            if (sound !== undefined) {
-                audioPlayer.current.src = sound.url;
-                audioPlayer.current.play();
-            }
-        }
-    }, [getSoundById, currentSoundId, setCurrentSound]);
-
-    const setCurrentTime = useCallback(() => {
-        let newTime = audioPlayer.current.currentTime;
-        setState(prevState => ({ ...prevState, currentTime: newTime }));
-    }, []);
-
-    const setProgress = (pct) => {
-        const newPosition = currentSound().duration * pct;
-        audioPlayer.current.currentTime = newPosition;
-    };
-
-    const setVolume = (pct) => {
-        audioPlayer.current.volume = pct;
-        setState(prevState => ({ ...prevState, currentVolume: pct }));
-    };
-
-    const setNextSound = useCallback(() => {
-        const nextId = (parseInt(currentSoundId) + 1).toString();
-        setState(prevState => ({ ...prevState, currentTime: 0.0 }));
-        playPause(nextId);
-    }, [currentSoundId]);
+    const { currentSoundId, setNextSound, setCurrentTime, setVolume, setProgress, playPause, currentTime } = useSound(audioPlayer, state.SoundData);
 
     const playlistTitle = () => {
         const playlist = state.playlists.find(
@@ -116,10 +75,7 @@ function Canvas() {
                 <div className="PianoPodcastDiv">
                     <h2>{playlistTitle()}</h2>
 
-                    <VolumeBar
-                        setVolume={setVolume}
-                        volume={state.currentVolume}
-                    />
+                    <VolumeBar setVolume={setVolume} />
                 </div>
 
                 <Playlist
@@ -128,7 +84,7 @@ function Canvas() {
                     playPause={playPause}
                     setProgress={setProgress}
                     currentSoundId={currentSoundId}
-                    currentTime={state.currentTime}
+                    currentTime={currentTime}
                 />
             </div>
 
