@@ -1,18 +1,17 @@
 // useSound.js
 import { useState, useCallback } from 'react';
 
-export default function useSound(audioPlayer, SoundData) {
+export default function useSound(audioPlayer, soundData) {
     const [currentSoundId, setCurrentSoundId] = useState(null);
 
     const [state, setState] = useState({
-        SoundData: [],
         playlists: [],
         currentTime: 0.0
     });
 
     const getSoundById = useCallback((id) => {
-        return SoundData.find((s) => s.id.toString() === id.toString());
-    }, [SoundData]);
+        return soundData.find((s) => s.id.toString() === id.toString());
+    }, [soundData]);
 
     const currentSound = useCallback(() => {
         return getSoundById(currentSoundId);
