@@ -24,16 +24,22 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 - App.js
     - Header.js
     - Canvas.js
+      - LoadingIndicator.js
       - VolumeBar.js
       - Playlist.js
-      - SoundList.js
-          - LoadingIndicator.js
-          - Sound.js
-              - PlayButton.js
-              - ProgressBar.js
-              - SoundTimer.js
-              - SoundTitle.js
+        - Sound.js
+          - PlayButton.js
+          - ProgressBar.js
+          - SoundTimer.js
+          - SoundTitle.js
     - Footer.js
+
+---
+
+### **Custom hooks**
+
+- useSound.js
+- usePlaylist.js
 
 ---
 
