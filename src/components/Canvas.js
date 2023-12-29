@@ -96,7 +96,19 @@ function Canvas() {
             <Router>
                 <Switch>
                     <Route exact path={["/", "/playlists/:playlistSlug"]}>
-                        <Playlist audioPlayer={audioPlayer} SoundData={state.SoundData} Playlists={state.playlists} playPause={playPause} setProgress={setProgress} setVolume={setVolume} currentSoundId={currentSoundId} currentTime={state.currentTime} />
+                        <div className="musics">
+
+                            <Playlist
+                                audioPlayer={audioPlayer}
+                                SoundData={state.SoundData}
+                                Playlists={state.playlists}
+                                playPause={playPause}
+                                setProgress={setProgress}
+                                setVolume={setVolume}
+                                currentSoundId={currentSoundId}
+                                currentTime={state.currentTime}
+                            />
+                        </div>
                     </Route>
                 </Switch>
             </Router>

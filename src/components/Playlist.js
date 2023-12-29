@@ -30,8 +30,8 @@ function Playlist({ SoundData, currentSoundId, Playlists, audioPlayer, playPause
     });
 
     return (
-        <div className="musics">
-            {/* todo: this dif with title and volumebar do not belong in the playlist component */}
+        <div className="playlistDiv">
+            {/* todo: this div with title and volumebar do not belong in the playlist component */}
             <div className="PianoPodcastDiv">
                 <h2>{playlistTitle()}</h2>
 
