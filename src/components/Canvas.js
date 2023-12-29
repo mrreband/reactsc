@@ -8,6 +8,7 @@ import LoadingIndicator from "./LoadingIndicator";
 import Playlist from "./Playlist";
 import VolumeBar from "./VolumeBar";
 import useSound from "../hooks/useSound";
+import usePlaylist from '../hooks/usePlaylist';
 
 function getRssData() {
     var result = parseRss();
@@ -22,28 +23,19 @@ function Canvas() {
     const params = useParams();
 
     const [soundData, setSoundData] = useState([]);
-    const [playlists, setPlaylists] = useState([]);
-    const [currentPlaylist, setCurrentPlaylist] = useState({});
 
     const audioPlayer = useRef(null);
     const { currentSoundId, currentTime, setNextSound, setCurrentTime, setVolume, setProgress, playPause } = useSound(audioPlayer, soundData);
-
-    const playlistTitle = () => {
-        return currentPlaylist.title || "Piano Podcast";
-    };
-
-    const playlistTracks = () => {
-        if (currentPlaylist.tracks) {
-            const tracks = soundData.filter((s) => currentPlaylist.tracks.includes(s.slug))
-            return tracks;
-        }
-        return soundData;
-    }
+    const { playlistTitle, playlistTracks, setPlaylists } = usePlaylist(soundData, params.playlistSlug);
 
     useEffect(() => {
+        const handleTimeUpdate = () => {
+            setCurrentTime(audioPlayer.current.currentTime);
+        };
+
         if (audioPlayer.current) {
             audioPlayer.current.onended = setNextSound;
-            audioPlayer.current.ontimeupdate = setCurrentTime;
+            audioPlayer.current.ontimeupdate = handleTimeUpdate;
         }
     }, [setCurrentTime, setNextSound]);
 
@@ -53,12 +45,9 @@ function Canvas() {
                 const { tracks, playlists } = result;
                 setSoundData(tracks);
                 setPlaylists(playlists);
-                if (params.playlistSlug !== undefined) {
-                    setCurrentPlaylist(playlists.find((pl) => pl.slug === params.playlistSlug) || {});
-                }
             })
         );
-    }, [params.playlistSlug]);
+    }, []);
 
     return (
         <div className="musics">
