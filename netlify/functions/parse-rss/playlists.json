@@ -17,5 +17,15 @@
       "is-and-isnt-pt1",
       "is-and-isnt-pt2"
     ]
+  },
+  {
+    "slug": "civilianaire",
+    "title": "Civilianaire",
+    "position": "last",
+    "tracks": [
+      "civilianaire-pt1",
+      "civilianaire-pt2",
+      "civilianaire-pt3"
+    ]
   }
 ]
