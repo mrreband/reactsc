@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import SoundList from "./components/SoundList";
+import Canvas from "./components/Canvas";
 
 class App extends React.Component {
     render() {
@@ -10,9 +10,8 @@ class App extends React.Component {
             <div className="App">
                 <Header />
                 <div className="container">
-                    <SoundList />
+                    <Canvas />
                 </div>
-
                 <Footer />
             </div>
         );

@@ -37,30 +37,50 @@ async function parseFeed(feed) {
             imageUrl: item["itunes"]["image"],
             url: item["enclosure"]["url"],
             duration: duration,
-            publish_date: item["publish_date"],
+            publish_date: item["isoDate"],
         };
-        
         song.slug = getSlug(song.url);
         songs.push(song);
         i += 1;
     });
 
     /////////////////////////////////////////////////////////
-    // Custom track sorting    
+    // Custom track sorting
     for (const playlist of playlists) {
-        const trackSlugs = playlist.slugs;
+        const trackSlugs = playlist.tracks;
+
+        // get the tracks for this playlist
         const playlistSongs = []
         for (const slug of trackSlugs) {
             const playlistSong = songs.find(s => {return s.slug === slug})
-            if (playlistSong !== undefined) playlistSongs.push(playlistSong)
+            if (playlistSong !== undefined) {
+                if (playlistSong.playlists === undefined) { playlistSong.playlists = [] }
+                playlistSong.playlists.push(playlist.slug)
+                playlistSongs.push(playlistSong)
+            }
         }
+
+        // strip from the full list
         songs = songs.filter(s => {
             return !(trackSlugs.includes(s.slug));
         })
+
+        // add to the top or bottom, or insert all where the first or last track was released
         if (playlist.position === "top"){
             songs = [...playlistSongs, ...songs]
-        } else {
+        } else if (playlist.position === "bottom") {
             songs = [...songs, ...playlistSongs]
+        } else if (playlist.position === "first") {
+            const maxPlaylistId = Math.max(...playlistSongs.map(s => s.id))
+            const first = songs.slice(0, maxPlaylistId - 1)
+            const last = songs.slice(maxPlaylistId - 1)
+            songs = [...first, ...playlistSongs, ...last]
+        } else {
+            // last
+            const minPlaylistId = Math.min(...playlistSongs.map(s => s.id))
+            const first = songs.slice(0, minPlaylistId - 1)
+            const last = songs.slice(minPlaylistId - 1)
+            songs = [...first, ...playlistSongs, ...last]
         }
     }
 
@@ -81,7 +101,7 @@ const handler = async function () {
 
         return {
             statusCode: 200,
-            body: JSON.stringify(trackList),
+            body: JSON.stringify({ tracks: trackList, playlists: playlists }),
         };
     } catch (error) {
         // output to netlify function log

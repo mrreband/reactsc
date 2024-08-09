@@ -1,19 +1,31 @@
 [
   {
-    "name": "Schrodinger's Fortune",
+    "slug": "schrodingers-fortune",
+    "title": "Schrodinger's Fortune",
     "position": "bottom",
-    "slugs": [
+    "tracks": [
       "schrodingers-fortune-pt1-1",
       "schrodingers-fortune-pt2",
       "schrodingers-fortune-pt3"
     ]
   },
   {
-    "name": "Is and Isn't",
-    "position": "top",
-    "slugs": [
+    "slug": "is-and-isnt",
+    "title": "Is and Isn't",
+    "position": "last",
+    "tracks": [
       "is-and-isnt-pt1",
       "is-and-isnt-pt2"
+    ]
+  },
+  {
+    "slug": "civilianaire",
+    "title": "Civilianaire",
+    "position": "last",
+    "tracks": [
+      "civilianaire-pt1",
+      "civilianaire-pt2",
+      "civilianaire-pt3"
     ]
   }
 ]
