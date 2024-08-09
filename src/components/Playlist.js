@@ -11,22 +11,30 @@ class Playlist extends React.Component {
         super();
         this.state = {
             playlistSlug: "",
+            trackSlug: "",
             currentSoundId: "",
             currentTime: 0.0,
             currentVolume: 1.0,
         };
     }
     componentDidMount() {
-        let { playlistSlug } = this.props.params;
-        this.setState({ playlistSlug })
+        let { playlistSlug, trackSlug } = this.props.params;
+        this.setState({ playlistSlug, trackSlug })
     }
 
     playlistTracks = () => {
-        if (this.state.playlistSlug === undefined) return this.props.SoundData;
-        const filteredTracks = this.props.SoundData.filter(
-            (s) => s.playlists && s.playlists.includes(this.state.playlistSlug)
-        );
-        if (filteredTracks.length > 0) return filteredTracks;
+        if (this.state.playlistSlug !== undefined) {
+            const filteredTracks = this.props.SoundData.filter(
+                (s) => s.playlists && s.playlists.includes(this.state.playlistSlug)
+            );
+            if (filteredTracks.length > 0) return filteredTracks;
+        }
+        if (this.state.trackSlug !== undefined) {
+            const filteredTracks = this.props.SoundData.filter(
+                (s) => s.slug === this.state.trackSlug
+            );
+            if (filteredTracks.length > 0) return filteredTracks;
+        }
         return this.props.SoundData;
     };
 
